@@ -137,7 +137,7 @@ You may use, modify, and distribute it for research or development with appropri
 ## Citation
 
 Reid, S. (2025). Recursive Division Tree (RDT): A Unified Log–Log Spatial Index for CPU/GPU Systems.
-GitHub: https://github.com/stevenreid/rdt-spatial-index
+GitHub: https://github.com/RRG314/rdt-spatial-index
 
 
 
