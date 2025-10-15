@@ -59,10 +59,6 @@ numpy
 numba
 scipy
 
-Clone and install:
-git clone https://github.com/<yourusername>/rdt-spatial-index.git
-cd rdt-spatial-index
-pip install -r requirements.txt
 
 ## Usage Example
 
