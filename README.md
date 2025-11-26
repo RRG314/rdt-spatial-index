@@ -54,19 +54,37 @@ RDT queries flatten in runtime as dataset size increases, consistent with log–
 
 ## Installation
 
-Requirements:
-numpy
-numba
-scipy
+### From source (recommended)
+
+```bash
+git clone https://github.com/RRG314/rdt-spatial-index.git
+cd rdt-spatial-index
+pip install -e .
+```
+
+### Using pip (once published to PyPI)
+
+```bash
+pip install rdt-spatial-index
+```
+
+### Requirements
+
+- Python >= 3.8
+- numpy >= 1.24.0
+- numba >= 0.58.0
+- scipy >= 1.11.0
 
 
 ## Usage Example
 
-from RDTv4_unified import RDTIndex
+```python
+from rdt_spatial_index import RDTIndex
 import numpy as np
 
 # Generate random 2D points
-points = [(np.random.uniform(0, 1000), np.random.uniform(0, 1000)) for _ in range(100000)]
+points = [(np.random.uniform(0, 1000), np.random.uniform(0, 1000))
+          for _ in range(100000)]
 
 # Build the RDT index
 rdt = RDTIndex(alpha=1.5)
@@ -75,11 +93,23 @@ rdt.build(points)
 # Query around (500, 500) with radius 50
 results = rdt.query([(500, 500)], 50)
 print("Neighbors found:", results[0])
+```
 
 If a GPU is detected, RDT executes CUDA kernels; otherwise it runs the optimized CPU version automatically.
 
+### Running Examples
+
+```bash
+# Basic usage example
+python examples/basic_usage.py
+
+# Run benchmark against cKDTree
+python examples/benchmark.py
+```
+
 ## Benchmark Comparison
 
+```python
 from scipy.spatial import cKDTree
 import time
 
@@ -92,7 +122,8 @@ print("SciPy KDTree:", time.time() - start)
 
 start = time.time()
 _ = rdt.query([(500, 500), (750, 250)], 50)
-print("RDT GPU:", time.time() - start)
+print("RDT:", time.time() - start)
+```
 
 ## Algorithm Summary
 
