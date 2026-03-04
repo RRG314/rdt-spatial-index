@@ -1,176 +1,72 @@
 # rdt-spatial-index
-Unified CPU/GPU spatial indexing algorithm using recursive logarithmic subdivision (O(log log N)).
-# RDT Spatial Index
-### Unified CPU/GPU Recursive Division Tree Algorithm
 
-## Overview
+RDT-style adaptive spatial indexing with reproducible baseline comparisons.
 
-The Recursive Division Tree (RDT) is a spatial indexing algorithm developed by Steven Reid (2025).
-It introduces a logarithmic subdivision rule that produces log–log scaling in both construction and query depth,
-while maintaining deterministic and geometry-independent performance.
+## What this repo now provides
+- `RDTIndex`: recursive, occupancy-adaptive index using the rule
+  - `g = min(max_grid, max(2, floor(log(n_local + 1)^alpha)))`
+- `RDTOptimizedIndex`: tuned RDT variant (same rule, tuned `alpha/max_leaf` via holdout timing + exactness)
+- Conventional baselines in the same package:
+  - `UniformGridIndex`
+  - `KDTreeIndex`
+- Honest benchmark harness comparing correctness, speed, partition balance, and depth.
 
-Unlike KD-trees, Quadtrees, or BVH structures, the RDT subdivides each node dynamically according to:
+## Important notes
+- This implementation is currently a **CPU reference implementation** focused on correctness and reproducibility.
+- No claim of universal superiority over KD-tree/grid.
+- All benchmark results should be interpreted by dataset/task, not as global wins.
 
-g = min(32, max(2, floor(log(n_local + 1)^α)))
-
-where
-- n_local is the number of points within a node
-- α is the subdivision constant (default 1.5)
-
-This recursive rule creates a balanced hierarchy that converges faster than O(log N)
-and empirically approaches O(log log N) behavior in both build and query operations.
-
-## Key Features
-
-- Unified CPU and GPU implementation (automatic fallback when CUDA is unavailable)
-- Log–log scaling for both build and query depth
-- Dynamic, density-aware subdivision rule
-- Fully JIT-compiled with Numba (CPU and CUDA kernels)
-- Benchmarked against SciPy’s cKDTree
-- Simple, consistent API for both hardware targets
-
-## Theoretical Background
-
-The RDT is derived from the Recursive Depth Transformation (RDT) algorithm, originally defined for integers as a logarithmic division process independent of factorization.
-When extended to geometric data, this produces a spatial structure whose depth obeys
-
-Depth(N) ≈ c × log(log N)
-
-with an empirical constant c ≈ 2.17.
-This makes RDT one of the first spatial data structures to demonstrate sub-logarithmic scaling in practical tests.
-
-## Performance Summary
-
-Benchmarked against SciPy’s cKDTree (Colab, Tesla T4 GPU):
-
-| Dataset | cKDTree Query | RDT GPU Query | Speedup | Nodes |
-|----------|---------------|---------------|----------|-------|
-| 10,000   | 0.0034 s | 0.0016 s | 2.1× | 730 |
-| 50,000   | 0.0028 s | 0.0022 s | 1.3× | 1,025 |
-| 100,000  | 0.0035 s | 0.0042 s | ≈1× | 1,247 |
-| 500,000  | 0.0175 s | 0.0031 s | 5.6× | 39,060 |
-
-RDT queries flatten in runtime as dataset size increases, consistent with log–log scaling behavior.
-
-## Installation
-
-### From source (recommended)
+## Install
 
 ```bash
-git clone https://github.com/RRG314/rdt-spatial-index.git
-cd rdt-spatial-index
 pip install -e .
 ```
 
-### Using pip (once published to PyPI)
-
-```bash
-pip install rdt-spatial-index
-```
-
-### Requirements
-
-- Python >= 3.8
-- numpy >= 1.24.0
-- numba >= 0.58.0
-- scipy >= 1.11.0
-
-
-## Usage Example
+## Quick usage
 
 ```python
-from rdt_spatial_index import RDTIndex
 import numpy as np
+from rdt_spatial_index import RDTIndex, RDTOptimizedIndex
 
-# Generate random 2D points
-points = [(np.random.uniform(0, 1000), np.random.uniform(0, 1000))
-          for _ in range(100000)]
+points = np.random.default_rng(1).uniform(0, 1000, size=(10000, 2))
+queries = np.random.default_rng(2).uniform(0, 1000, size=(100, 2))
 
-# Build the RDT index
-rdt = RDTIndex(alpha=1.5)
-rdt.build(points)
+idx = RDTIndex(alpha=1.5, max_leaf=96)
+idx.build(points)
+counts = idx.query(queries, radius=30.0)
+print(counts[:5])
+print(idx.summary())
 
-# Query around (500, 500) with radius 50
-results = rdt.query([(500, 500)], 50)
-print("Neighbors found:", results[0])
+# Tuned variant
+tuned = RDTOptimizedIndex.from_tuning(points, queries[:64], radius=30.0)
+counts_tuned = tuned.query(queries, radius=30.0)
+print(tuned.summary()["tuning"]["chosen"])
 ```
 
-If a GPU is detected, RDT executes CUDA kernels; otherwise it runs the optimized CPU version automatically.
-
-### Running Examples
+## Run tests
 
 ```bash
-# Basic usage example
-python examples/basic_usage.py
-
-# Run benchmark against cKDTree
-python examples/benchmark.py
+python tests/run_tests.py
 ```
 
-## Benchmark Comparison
+## Run benchmark (RDT vs conventional)
 
-```python
-from scipy.spatial import cKDTree
-import time
-
-tree = cKDTree(points)
-
-start = time.time()
-for qx, qy in [(500, 500), (750, 250)]:
-    _ = tree.query_ball_point([qx, qy], 50)
-print("SciPy KDTree:", time.time() - start)
-
-start = time.time()
-_ = rdt.query([(500, 500), (750, 250)], 50)
-print("RDT:", time.time() - start)
+```bash
+python benchmarks/compare_indexes.py --n 50000
 ```
 
-## Algorithm Summary
+Outputs:
+- `results/benchmark_results.json`
+- `results/benchmark_report.md`
 
-1. Build Phase
-   - The dataset begins in the root node.
-   - Each node subdivides into g × g cells where g = floor(log(n)^α).
-   - Subdivision stops when the number of points ≤ max_leaf or depth ≥ 20.
+## Benchmark metrics
+- Build/query time
+- Exact query correctness vs brute-force
+- Leaf-size balance (CV)
+- Depth distribution
 
-2. Query Phase
-   - Circle–box intersection tests identify relevant nodes.
-   - Only points inside intersecting leaf nodes are checked.
-   - On GPU, thousands of queries can be evaluated concurrently.
-
-3. Adaptive Behavior
-   - As local density decreases, subdivision depth naturally flattens.
-   - Query times stabilize regardless of global dataset size.
-
-## Typical Parameters
-
-- α (subdivision constant): 1.5
-- Maximum grid size: 32×32
-- Maximum depth: 20
-- Typical node count: O(N / log N)
-- Query complexity: Θ(log log N) average case
-
-## Future Work
-
-- GPU multi-query batching for simultaneous region searches
-- Shared-memory optimizations for dense datasets
-- 3D and volumetric extensions
-- Integration with CuPy for full GPU pipelines
-- Formal proof of convergence constants
+## Why this changed
+Previous versions could silently lose points in deep builds due bounded internal storage. This version removes that failure mode by using in-place index partitioning with exact point accounting.
 
 ## License
-
-MIT License  
-Copyright (c) 2025 Steven Reid
-
-This software is provided "as is", without warranty of any kind.
-You may use, modify, and distribute it for research or development with appropriate credit.
-
-## Citation
-
-Reid, S. (2025). Recursive Division Tree (RDT): A Unified Log–Log Spatial Index for CPU/GPU Systems.
-GitHub: https://github.com/RRG314/rdt-spatial-index
-
-
-
- 
-
+MIT

@@ -8,9 +8,9 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="rdt-spatial-index",
-    version="4.1.0",
+    version="4.2.0",
     author="Steven Reid",
-    description="Unified CPU/GPU spatial indexing algorithm using recursive logarithmic subdivision (O(log log N))",
+    description="RDT-inspired spatial index with conventional baseline benchmarks",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/RRG314/rdt-spatial-index",

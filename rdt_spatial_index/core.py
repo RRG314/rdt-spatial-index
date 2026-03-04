@@ -1,362 +1,307 @@
 """
-RDT SPATIAL INDEX v4.1 — GPU + CPU HYBRID (AUTO-FALLBACK)
+RDT spatial index (CPU reference implementation).
 
-Recursive Division Tree (RDT) spatial indexing algorithm with unified CPU/GPU implementation.
-Provides log-log scaling for both build and query operations.
+This implementation prioritizes correctness and reproducibility:
+- no silent point drops
+- exact query counts
+- deterministic tree build
+
+The subdivision rule follows the project RDT variant:
+    g = min(max_grid, max(2, floor(log(n_local + 1) ** alpha)))
 """
 
-import numpy as np
-import time
-from numba import njit, cuda, int32
+from __future__ import annotations
+
+from dataclasses import dataclass, field
 import math
+import time
+from typing import Iterable, Sequence
+
+import numpy as np
 
 
-# ----------------------------------------------------------------------------
-# Core RDT math
-# ----------------------------------------------------------------------------
-@njit(fastmath=True, inline='always')
-def rdt_grid_size(n, alpha=1.5):
-    """Calculate grid size based on point count using RDT subdivision rule."""
-    if n <= 1:
+@dataclass
+class _Node:
+    x0: float
+    y0: float
+    x1: float
+    y1: float
+    depth: int
+    start: int
+    end: int
+    leaf: bool = True
+    grid: int = 0
+    children: list[int] = field(default_factory=list)
+
+
+
+def rdt_grid_size(n_local: int, alpha: float = 1.5, max_grid: int = 32) -> int:
+    """RDT subdivision rule for local occupancy."""
+    if n_local <= 1:
         return 2
-    d = max(2, int(np.log(n + 1) ** alpha))
-    return min(d, 32)
+    g = max(2, int(math.floor(math.log(n_local + 1.0) ** alpha)))
+    return min(max_grid, g)
 
 
-@njit(fastmath=True, inline='always')
-def point_to_cell(x, y, x0, y0, cw, ch, g):
-    """Map a point to its grid cell."""
-    ix = int((x - x0) / cw)
-    iy = int((y - y0) / ch)
-    ix = max(0, min(g - 1, ix))
-    iy = max(0, min(g - 1, iy))
-    return iy * g + ix
+
+def _circle_box(cx: float, cy: float, r2: float, x0: float, y0: float, x1: float, y1: float) -> bool:
+    px = min(max(cx, x0), x1)
+    py = min(max(cy, y0), y1)
+    dx = cx - px
+    dy = cy - py
+    return (dx * dx + dy * dy) <= r2
 
 
-@njit(fastmath=True, inline='always')
-def cell_to_bounds(cid, g, x0, y0, cw, ch):
-    """Convert cell ID to bounding box coordinates."""
-    ix = cid % g
-    iy = cid // g
-    return x0 + ix * cw, y0 + iy * ch, x0 + (ix + 1) * cw, y0 + (iy + 1) * ch
-
-
-@njit(fastmath=True, inline='always')
-def circle_box(cx, cy, r2, x0, y0, x1, y1):
-    """Test if circle intersects with box."""
-    cx2 = max(x0, min(cx, x1))
-    cy2 = max(y0, min(cy, y1))
-    dx, dy = cx - cx2, cy - cy2
-    return dx * dx + dy * dy <= r2
-
-
-# ----------------------------------------------------------------------------
-# Tree construction (CPU)
-# ----------------------------------------------------------------------------
-@njit
-def create_tree_arrays(max_nodes, max_pts_per_node):
-    """Allocate arrays for tree structure."""
-    node_x0 = np.zeros(max_nodes)
-    node_y0 = np.zeros(max_nodes)
-    node_x1 = np.zeros(max_nodes)
-    node_y1 = np.zeros(max_nodes)
-    depth = np.zeros(max_nodes, int32)
-    leaf = np.ones(max_nodes, np.bool_)
-    count = np.zeros(max_nodes, int32)
-    grid = np.zeros(max_nodes, int32)
-    start = np.zeros(max_nodes, int32)
-    child = np.full((max_nodes, 1024), -1, int32)
-    px = np.zeros(max_nodes * max_pts_per_node)
-    py = np.zeros_like(px)
-    return (node_x0, node_y0, node_x1, node_y1, depth, leaf, count, grid, start, child, px, py)
-
-
-@njit
-def init_root(arrs, x0, y0, x1, y1):
-    """Initialize root node."""
-    nx0, ny0, nx1, ny1, depth, leaf, count, grid, start, child, px, py = arrs
-    nx0[0], ny0[0], nx1[0], ny1[0] = x0, y0, x1, y1
-    leaf[0] = True
-    depth[0] = 0
-    start[0] = 0
-    return 1
-
-
-@njit
-def build_tree(px_in, py_in, arrs, nid, pid, alpha, max_leaf, max_depth):
-    """Build RDT tree structure recursively."""
-    nx0, ny0, nx1, ny1, depth, leaf, count, grid, start, child, px, py = arrs
-    n = len(px_in)
-    max_s = len(px)
-    start[0] = 0
-    for i in range(n):
-        if i >= max_s:
-            break
-        px[i] = px_in[i]
-        py[i] = py_in[i]
-    count[0] = n
-    pid = n
-    stack = [0]
-    while stack:
-        node = stack.pop()
-        if count[node] <= max_leaf or depth[node] >= max_depth:
-            continue
-        g = rdt_grid_size(count[node], alpha)
-        grid[node] = g
-        w = nx1[node] - nx0[node]
-        h = ny1[node] - ny0[node]
-        cw, ch = w / g, h / g
-        st = start[node]
-        cnt = count[node]
-        cell_ct = np.zeros(g * g, int32)
-        cellid = np.zeros(cnt, int32)
-        for i in range(cnt):
-            cid = point_to_cell(px[st + i], py[st + i], nx0[node], ny0[node], cw, ch, g)
-            cellid[i] = cid
-            cell_ct[cid] += 1
-        for cid in range(g * g):
-            if cell_ct[cid] == 0:
-                continue
-            if nid >= len(nx0):
-                break
-            cid_new = nid
-            nid += 1
-            x0, y0, x1, y1 = cell_to_bounds(cid, g, nx0[node], ny0[node], cw, ch)
-            nx0[cid_new], ny0[cid_new], nx1[cid_new], ny1[cid_new] = x0, y0, x1, y1
-            depth[cid_new] = depth[node] + 1
-            leaf[cid_new] = True
-            if pid + cell_ct[cid] >= max_s:
-                break
-            start[cid_new] = pid
-            count[cid_new] = 0
-            widx = pid
-            for i in range(cnt):
-                if cellid[i] == cid:
-                    px[widx] = px[st + i]
-                    py[widx] = py[st + i]
-                    widx += 1
-                    count[cid_new] += 1
-            pid = widx
-            child[node, cid] = cid_new
-            stack.append(cid_new)
-        leaf[node] = False
-        count[node] = 0
-    return nid, pid
-
-
-# ----------------------------------------------------------------------------
-# GPU kernel – same recursive logic, explicit stack
-# ----------------------------------------------------------------------------
-@cuda.jit
-def gpu_query_rdt(qx, qy, r2, node_x0, node_y0, node_x1, node_y1,
-                  leaf, count, grid, start, child, px, py, res):
-    """GPU kernel for batch query processing."""
-    i = cuda.grid(1)
-    if i >= qx.size:
-        return
-    cx, cy = qx[i], qy[i]
-    stack = cuda.local.array(64, int32)
-    sp = 0
-    stack[sp] = 0
-    hits = 0
-    while sp >= 0:
-        n = stack[sp]
-        sp -= 1
-        if not circle_box(cx, cy, r2, node_x0[n], node_y0[n], node_x1[n], node_y1[n]):
-            continue
-        if leaf[n]:
-            s = start[n]
-            c = count[n]
-            for j in range(c):
-                dx = px[s + j] - cx
-                dy = py[s + j] - cy
-                if dx * dx + dy * dy <= r2:
-                    hits += 1
-        else:
-            g = grid[n]
-            if g <= 0:
-                continue
-            for cid in range(g * g):
-                ch = child[n, cid]
-                if ch >= 0 and sp < 63:
-                    sp += 1
-                    stack[sp] = ch
-    res[i] = hits
-
-
-# ----------------------------------------------------------------------------
-# CPU fallback (same traversal)
-# ----------------------------------------------------------------------------
-@njit(fastmath=True)
-def cpu_query(cx, cy, r2, arrs):
-    """CPU fallback for query processing."""
-    nx0, ny0, nx1, ny1, depth, leaf, count, grid, start, child, px, py = arrs
-    stack = [0]
-    hits = 0
-    while stack:
-        n = stack.pop()
-        if not circle_box(cx, cy, r2, nx0[n], ny0[n], nx1[n], ny1[n]):
-            continue
-        if leaf[n]:
-            s = start[n]
-            c = count[n]
-            for j in range(c):
-                dx = px[s + j] - cx
-                dy = py[s + j] - cy
-                if dx * dx + dy * dy <= r2:
-                    hits += 1
-        else:
-            g = grid[n]
-            for cid in range(g * g):
-                ch = child[n, cid]
-                if ch >= 0:
-                    stack.append(ch)
-    return hits
-
-
-# ----------------------------------------------------------------------------
-# Unified RDT Index class
-# ----------------------------------------------------------------------------
 class RDTIndex:
     """
-    Recursive Division Tree spatial index with unified CPU/GPU support.
+    Recursive Division Tree spatial index (CPU reference).
 
     Parameters
     ----------
     x0, y0, x1, y1 : float
-        Bounding box coordinates for the spatial domain
+        Global bounding box.
     alpha : float, default=1.5
-        Subdivision constant controlling grid size (g = floor(log(n)^alpha))
+        Subdivision exponent used in RDT local grid sizing.
     max_leaf : int, default=128
-        Maximum points per leaf node before subdivision
-    max_pts : int, default=1_000_000
-        Expected maximum number of points (for array allocation)
-    verbose : bool, default=True
-        Print build and query information
-
-    Examples
-    --------
-    >>> import numpy as np
-    >>> from rdt_spatial_index import RDTIndex
-    >>>
-    >>> # Generate random points
-    >>> points = [(np.random.uniform(0, 1000), np.random.uniform(0, 1000))
-    ...           for _ in range(100000)]
-    >>>
-    >>> # Build index
-    >>> rdt = RDTIndex(alpha=1.5)
-    >>> rdt.build(points)
-    >>>
-    >>> # Query
-    >>> results = rdt.query([(500, 500)], radius=50)
-    >>> print(f"Found {results[0]} neighbors")
+        Maximum points in a leaf.
+    max_depth : int, default=20
+        Hard depth limit.
+    max_grid : int, default=32
+        Maximum local grid side length.
+    verbose : bool, default=False
+        Print short timing summaries.
     """
 
-    def __init__(self, x0=0, y0=0, x1=1000, y1=1000, alpha=1.5, max_leaf=128,
-                 max_pts=1_000_000, verbose=True):
-        self.arrs = create_tree_arrays(
-            min(100000, max(1000, max_pts // max_leaf * 10)),
-            max_leaf * 3
-        )
-        self.bounds = (x0, y0, x1, y1)
-        self.alpha = alpha
-        self.max_leaf = max_leaf
-        self.built = False
-        self.gpu_ready = False
-        self.verbose = verbose
+    def __init__(
+        self,
+        x0: float = 0.0,
+        y0: float = 0.0,
+        x1: float = 1000.0,
+        y1: float = 1000.0,
+        alpha: float = 1.5,
+        max_leaf: int = 128,
+        max_depth: int = 20,
+        max_grid: int = 32,
+        verbose: bool = False,
+    ) -> None:
+        if not (x1 > x0 and y1 > y0):
+            raise ValueError("Invalid bounding box")
+        if max_leaf < 1:
+            raise ValueError("max_leaf must be >= 1")
+        if max_depth < 1:
+            raise ValueError("max_depth must be >= 1")
+        if max_grid < 2:
+            raise ValueError("max_grid must be >= 2")
 
-    def build(self, pts):
-        """
-        Build the RDT index from a list of 2D points.
+        self.bounds = (float(x0), float(y0), float(x1), float(y1))
+        self.alpha = float(alpha)
+        self.max_leaf = int(max_leaf)
+        self.max_depth = int(max_depth)
+        self.max_grid = int(max_grid)
+        self.verbose = bool(verbose)
 
-        Parameters
-        ----------
-        pts : list of tuples
-            List of (x, y) coordinate tuples
-        """
-        px = np.array([p[0] for p in pts])
-        py = np.array([p[1] for p in pts])
-        self.nid = init_root(self.arrs, *self.bounds)
-        self.nid, _ = build_tree(px, py, self.arrs, self.nid, 0, self.alpha, self.max_leaf, 20)
-        self.count = len(pts)
-        self.built = True
+        self._px = np.array([], dtype=np.float64)
+        self._py = np.array([], dtype=np.float64)
+        self._order = np.array([], dtype=np.int64)
+        self._nodes: list[_Node] = []
+        self._built = False
 
-        if cuda.is_available():
-            nx0, ny0, nx1, ny1, depth, leaf, count, grid, start, child, px, py = self.arrs
-            self.dnode_x0 = cuda.to_device(nx0)
-            self.dnode_y0 = cuda.to_device(ny0)
-            self.dnode_x1 = cuda.to_device(nx1)
-            self.dnode_y1 = cuda.to_device(ny1)
-            self.dleaf = cuda.to_device(leaf)
-            self.dcount = cuda.to_device(count)
-            self.dgrid = cuda.to_device(grid)
-            self.dstart = cuda.to_device(start)
-            self.dchild = cuda.to_device(child)
-            self.dpx = cuda.to_device(px)
-            self.dpy = cuda.to_device(py)
-            self.gpu_ready = True
-            if self.verbose:
-                print(f"GPU tree uploaded ({self.count:,} pts, {self.nid:,} nodes)")
-        else:
-            if self.verbose:
-                print("GPU unavailable — using CPU fallback")
+    @property
+    def built(self) -> bool:
+        return self._built
 
-    def query(self, queries, radius, timing=False):
-        """
-        Query the index for points within a radius of query locations.
+    @property
+    def count(self) -> int:
+        return int(self._px.size)
 
-        Parameters
-        ----------
-        queries : list of tuples
-            List of (x, y) query point coordinates
-        radius : float
-            Search radius around each query point
-        timing : bool, default=False
-            Print timing information
+    def build(self, points: Sequence[Sequence[float]]) -> None:
+        """Build index from iterable of 2D points."""
+        t0 = time.perf_counter()
 
-        Returns
-        -------
-        results : np.ndarray
-            Array of neighbor counts for each query point
-        """
-        qx = np.array([q[0] for q in queries])
-        qy = np.array([q[1] for q in queries])
-        r2 = radius * radius
-        res = np.zeros(len(qx), dtype=np.int32)
+        if len(points) == 0:
+            self._px = np.array([], dtype=np.float64)
+            self._py = np.array([], dtype=np.float64)
+            self._order = np.array([], dtype=np.int64)
+            self._nodes = []
+            self._built = True
+            return
 
-        if self.gpu_ready:
-            dqx, dqy = cuda.to_device(qx), cuda.to_device(qy)
-            dres = cuda.to_device(res)
-            threads = 256
-            blocks = (len(qx) + threads - 1) // threads
+        arr = np.asarray(points, dtype=np.float64)
+        if arr.ndim != 2 or arr.shape[1] != 2:
+            raise ValueError("points must be shape (N,2)")
 
-            if timing:
-                start_evt = cuda.event()
-                end_evt = cuda.event()
-                start_evt.record()
+        self._px = arr[:, 0].copy()
+        self._py = arr[:, 1].copy()
+        n = arr.shape[0]
+        self._order = np.arange(n, dtype=np.int64)
 
-            gpu_query_rdt[blocks, threads](
-                dqx, dqy, r2,
-                self.dnode_x0, self.dnode_y0, self.dnode_x1, self.dnode_y1,
-                self.dleaf, self.dcount, self.dgrid, self.dstart, self.dchild,
-                self.dpx, self.dpy, dres
+        x0, y0, x1, y1 = self.bounds
+        self._nodes = [_Node(x0=x0, y0=y0, x1=x1, y1=y1, depth=0, start=0, end=n)]
+
+        stack = [0]
+        while stack:
+            nid = stack.pop()
+            node = self._nodes[nid]
+            cnt = node.end - node.start
+
+            if cnt <= self.max_leaf or node.depth >= self.max_depth:
+                node.leaf = True
+                continue
+
+            g = rdt_grid_size(cnt, alpha=self.alpha, max_grid=self.max_grid)
+            w = node.x1 - node.x0
+            h = node.y1 - node.y0
+            if w <= 0.0 or h <= 0.0:
+                node.leaf = True
+                continue
+
+            cw = w / g
+            ch = h / g
+            if cw <= 0.0 or ch <= 0.0:
+                node.leaf = True
+                continue
+
+            local_idx = self._order[node.start : node.end]
+            lx = self._px[local_idx]
+            ly = self._py[local_idx]
+
+            ix = np.floor((lx - node.x0) / cw).astype(np.int64)
+            iy = np.floor((ly - node.y0) / ch).astype(np.int64)
+            np.clip(ix, 0, g - 1, out=ix)
+            np.clip(iy, 0, g - 1, out=iy)
+            cid = iy * g + ix
+
+            counts = np.bincount(cid, minlength=g * g)
+            nonzero = np.flatnonzero(counts)
+
+            # Degenerate split (all points in one cell): keep as leaf.
+            if nonzero.size <= 1:
+                node.leaf = True
+                continue
+
+            # Stable grouping by cell id to keep child slices contiguous.
+            sorter = np.argsort(cid, kind="mergesort")
+            self._order[node.start : node.end] = local_idx[sorter]
+
+            node.leaf = False
+            node.grid = g
+            node.children = []
+
+            cursor = node.start
+            for cell_id in nonzero:
+                c = int(counts[cell_id])
+                child_start = cursor
+                child_end = cursor + c
+                cursor = child_end
+
+                cx = int(cell_id % g)
+                cy = int(cell_id // g)
+                cx0 = node.x0 + cx * cw
+                cy0 = node.y0 + cy * ch
+                cx1 = cx0 + cw
+                cy1 = cy0 + ch
+
+                child = _Node(
+                    x0=float(cx0),
+                    y0=float(cy0),
+                    x1=float(cx1),
+                    y1=float(cy1),
+                    depth=node.depth + 1,
+                    start=child_start,
+                    end=child_end,
+                )
+                self._nodes.append(child)
+                child_id = len(self._nodes) - 1
+                node.children.append(child_id)
+                stack.append(child_id)
+
+        self._built = True
+
+        if self.verbose:
+            ms = (time.perf_counter() - t0) * 1000.0
+            s = self.summary()
+            print(
+                f"RDT build: n={self.count}, nodes={s['nodes']}, leaves={s['leaves']}, "
+                f"max_depth={s['max_depth']}, {ms:.2f} ms"
             )
 
-            if timing:
-                end_evt.record()
-                end_evt.synchronize()
-                ms = cuda.event_elapsed_time(start_evt, end_evt)
-                print(f"GPU kernel time: {ms:.3f} ms")
+    def query(self, queries: Sequence[Sequence[float]], radius: float, timing: bool = False) -> np.ndarray:
+        """Return neighbor counts for each query point within radius."""
+        if not self._built:
+            raise RuntimeError("Index not built")
+        if len(self._nodes) == 0:
+            return np.zeros(len(queries), dtype=np.int32)
 
-            dres.copy_to_host(res)
+        q = np.asarray(queries, dtype=np.float64)
+        if q.ndim != 2 or q.shape[1] != 2:
+            raise ValueError("queries must be shape (M,2)")
+        r2 = float(radius) * float(radius)
+
+        t0 = time.perf_counter()
+        out = np.zeros(q.shape[0], dtype=np.int32)
+
+        for i, (qx, qy) in enumerate(q):
+            hits = 0
+            stack = [0]
+            while stack:
+                nid = stack.pop()
+                node = self._nodes[nid]
+                if not _circle_box(qx, qy, r2, node.x0, node.y0, node.x1, node.y1):
+                    continue
+                if node.leaf:
+                    ids = self._order[node.start : node.end]
+                    if ids.size == 0:
+                        continue
+                    dx = self._px[ids] - qx
+                    dy = self._py[ids] - qy
+                    hits += int(np.count_nonzero(dx * dx + dy * dy <= r2))
+                else:
+                    stack.extend(node.children)
+            out[i] = hits
+
+        if timing and self.verbose:
+            ms = (time.perf_counter() - t0) * 1000.0
+            print(f"RDT query: q={len(queries)}, {ms:.2f} ms")
+        return out
+
+    def summary(self) -> dict[str, object]:
+        """Return structure summary used in benchmarking/reporting."""
+        if not self._built:
+            return {
+                "built": False,
+                "points": 0,
+                "nodes": 0,
+                "leaves": 0,
+                "max_depth": 0,
+                "leaf_size_mean": 0.0,
+                "leaf_size_cv": 0.0,
+                "depth_hist": {},
+            }
+
+        leaves = [n for n in self._nodes if n.leaf]
+        leaf_sizes = np.array([n.end - n.start for n in leaves], dtype=np.float64)
+        depth_hist: dict[int, int] = {}
+        for n in self._nodes:
+            depth_hist[n.depth] = depth_hist.get(n.depth, 0) + 1
+
+        if leaf_sizes.size > 0:
+            mean = float(np.mean(leaf_sizes))
+            std = float(np.std(leaf_sizes))
+            cv = float(std / mean) if mean > 0.0 else 0.0
         else:
-            if timing:
-                tb = time.perf_counter()
+            mean = 0.0
+            cv = 0.0
 
-            for i in range(len(qx)):
-                res[i] = cpu_query(qx[i], qy[i], r2, self.arrs)
+        return {
+            "built": True,
+            "points": self.count,
+            "nodes": len(self._nodes),
+            "leaves": len(leaves),
+            "max_depth": max((n.depth for n in self._nodes), default=0),
+            "leaf_size_mean": mean,
+            "leaf_size_cv": cv,
+            "depth_hist": {str(k): int(v) for k, v in sorted(depth_hist.items())},
+        }
 
-            if timing:
-                print(f"CPU fallback time: {time.perf_counter() - tb:.4f}s")
 
-        return res
+__all__ = ["RDTIndex", "rdt_grid_size"]

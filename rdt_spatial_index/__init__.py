@@ -1,37 +1,14 @@
-"""
-RDT Spatial Index
-=================
+"""RDT Spatial Index package.
 
-Unified CPU/GPU spatial indexing algorithm using recursive logarithmic subdivision.
-
-The Recursive Division Tree (RDT) is a spatial indexing algorithm that achieves
-O(log log N) scaling for both construction and query operations through dynamic,
-density-aware subdivision.
-
-Main Classes
-------------
-RDTIndex : Unified spatial index with automatic CPU/GPU fallback
-
-Example Usage
--------------
->>> from rdt_spatial_index import RDTIndex
->>> import numpy as np
->>>
->>> # Generate random points
->>> points = [(np.random.uniform(0, 1000), np.random.uniform(0, 1000))
-...           for _ in range(100000)]
->>>
->>> # Build index
->>> rdt = RDTIndex(alpha=1.5)
->>> rdt.build(points)
->>>
->>> # Query
->>> results = rdt.query([(500, 500)], radius=50)
->>> print(f"Found {results[0]} neighbors")
+Exports:
+- RDTIndex: RDT-style adaptive spatial index (correctness-first CPU reference)
+- UniformGridIndex, KDTreeIndex: conventional baselines for fair benchmarking
 """
 
-from .core import RDTIndex
+from .core import RDTIndex, rdt_grid_size
+from .baselines import UniformGridIndex, KDTreeIndex
+from .optimized import RDTOptimizedIndex
 
-__version__ = "4.1.0"
+__version__ = "4.2.0"
 __author__ = "Steven Reid"
-__all__ = ["RDTIndex"]
+__all__ = ["RDTIndex", "rdt_grid_size", "UniformGridIndex", "KDTreeIndex", "RDTOptimizedIndex"]
