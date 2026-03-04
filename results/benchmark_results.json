@@ -8,8 +8,8 @@
       "radius": 25.0,
       "systems": {
         "rdt": {
-          "build_ms": 4.835582978557795,
-          "query_ms": 114.46750001050532,
+          "build_ms": 4.7780419990886,
+          "query_ms": 113.97120798937976,
           "summary": {
             "built": true,
             "points": 50000,
@@ -30,8 +30,8 @@
           }
         },
         "rdt_optimized": {
-          "build_ms": 7.1823750040493906,
-          "query_ms": 10.522041993681341,
+          "build_ms": 6.996125011937693,
+          "query_ms": 10.391166986664757,
           "summary": {
             "built": true,
             "points": 50000,
@@ -53,8 +53,8 @@
                 "alpha": 0.8,
                 "max_leaf": 128,
                 "exact_match": 1.0,
-                "build_ms": 6.664458982413635,
-                "query_ms": 2.7262080111540854,
+                "build_ms": 8.120125014102086,
+                "query_ms": 2.7322089881636202,
                 "nodes": 613,
                 "max_depth": 2
               },
@@ -64,8 +64,8 @@
                   "alpha": 0.8,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 6.664458982413635,
-                  "query_ms": 2.7262080111540854,
+                  "build_ms": 8.120125014102086,
+                  "query_ms": 2.7322089881636202,
                   "nodes": 613,
                   "max_depth": 2
                 },
@@ -73,8 +73,8 @@
                   "alpha": 0.7,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 11.205083021195605,
-                  "query_ms": 3.284624981461093,
+                  "build_ms": 11.138333997223526,
+                  "query_ms": 3.3188329834956676,
                   "nodes": 1839,
                   "max_depth": 3
                 },
@@ -82,26 +82,26 @@
                   "alpha": 0.8,
                   "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 9.450375015148893,
-                  "query_ms": 3.2877920020837337,
+                  "build_ms": 11.033624992705882,
+                  "query_ms": 3.729666001163423,
                   "nodes": 1459,
                   "max_depth": 3
                 },
                 {
                   "alpha": 0.7,
-                  "max_leaf": 64,
+                  "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 17.22508401144296,
-                  "query_ms": 4.498499998589978,
-                  "nodes": 3351,
+                  "build_ms": 17.733291984768584,
+                  "query_ms": 4.634458018699661,
+                  "nodes": 3343,
                   "max_depth": 3
                 },
                 {
                   "alpha": 0.9,
-                  "max_leaf": 64,
+                  "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 8.370875002583489,
-                  "query_ms": 4.507292003836483,
+                  "build_ms": 8.138207980664447,
+                  "query_ms": 4.662583000026643,
                   "nodes": 1665,
                   "max_depth": 2
                 }
@@ -115,8 +115,8 @@
           }
         },
         "uniform_grid": {
-          "build_ms": 12.848041980760172,
-          "query_ms": 3.4177910129074007,
+          "build_ms": 12.754499999573454,
+          "query_ms": 3.243250015657395,
           "summary": {
             "points": 50000,
             "nodes": 256,
@@ -135,8 +135,8 @@
           }
         },
         "kd_tree": {
-          "build_ms": 39.508832996943966,
-          "query_ms": 12.29541702196002,
+          "build_ms": 39.28016699501313,
+          "query_ms": 11.892167007317767,
           "summary": {
             "points": 50000,
             "nodes": 3743,
@@ -173,8 +173,8 @@
       "radius": 40.0,
       "systems": {
         "rdt": {
-          "build_ms": 27.965291985310614,
-          "query_ms": 175.63466599676758,
+          "build_ms": 28.409833001205698,
+          "query_ms": 153.02445899578743,
           "summary": {
             "built": true,
             "points": 50000,
@@ -196,8 +196,8 @@
           }
         },
         "rdt_optimized": {
-          "build_ms": 14.807166007813066,
-          "query_ms": 20.95466697937809,
+          "build_ms": 11.053792026359588,
+          "query_ms": 14.405540976440534,
           "summary": {
             "built": true,
             "points": 50000,
@@ -221,8 +221,8 @@
                 "alpha": 0.7,
                 "max_leaf": 128,
                 "exact_match": 1.0,
-                "build_ms": 11.274209013208747,
-                "query_ms": 4.084957996383309,
+                "build_ms": 10.932999983197078,
+                "query_ms": 3.2983330020215362,
                 "nodes": 1448,
                 "max_depth": 4
               },
@@ -232,8 +232,8 @@
                   "alpha": 0.7,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 11.274209013208747,
-                  "query_ms": 4.084957996383309,
+                  "build_ms": 10.932999983197078,
+                  "query_ms": 3.2983330020215362,
                   "nodes": 1448,
                   "max_depth": 4
                 },
@@ -241,36 +241,36 @@
                   "alpha": 0.7,
                   "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 14.543625002261251,
-                  "query_ms": 4.82083298265934,
+                  "build_ms": 14.26066699787043,
+                  "query_ms": 4.149833024712279,
                   "nodes": 2125,
-                  "max_depth": 4
-                },
-                {
-                  "alpha": 0.7,
-                  "max_leaf": 64,
-                  "exact_match": 1.0,
-                  "build_ms": 17.76583300670609,
-                  "query_ms": 5.122791975736618,
-                  "nodes": 2840,
                   "max_depth": 4
                 },
                 {
                   "alpha": 0.8,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 10.818792012287304,
-                  "query_ms": 5.347250000340864,
+                  "build_ms": 10.503625002456829,
+                  "query_ms": 4.5103339944034815,
                   "nodes": 1656,
                   "max_depth": 3
                 },
                 {
-                  "alpha": 0.7,
-                  "max_leaf": 48,
+                  "alpha": 0.8,
+                  "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 20.407582982443273,
-                  "query_ms": 5.440375010948628,
-                  "nodes": 3164,
+                  "build_ms": 11.092625005403534,
+                  "query_ms": 4.690790985478088,
+                  "nodes": 1845,
+                  "max_depth": 3
+                },
+                {
+                  "alpha": 0.7,
+                  "max_leaf": 64,
+                  "exact_match": 1.0,
+                  "build_ms": 17.724165983963758,
+                  "query_ms": 4.935709002893418,
+                  "nodes": 2840,
                   "max_depth": 4
                 }
               ]
@@ -283,8 +283,8 @@
           }
         },
         "uniform_grid": {
-          "build_ms": 23.897625011159107,
-          "query_ms": 5.678083980455995,
+          "build_ms": 12.818832998163998,
+          "query_ms": 3.7468750088009983,
           "summary": {
             "points": 50000,
             "nodes": 256,
@@ -303,8 +303,8 @@
           }
         },
         "kd_tree": {
-          "build_ms": 39.27962502348237,
-          "query_ms": 19.849499978590757,
+          "build_ms": 36.50858401670121,
+          "query_ms": 18.57191600720398,
           "summary": {
             "points": 50000,
             "nodes": 3743,
@@ -341,8 +341,8 @@
       "radius": 20.0,
       "systems": {
         "rdt": {
-          "build_ms": 7.912416011095047,
-          "query_ms": 134.84449998941272,
+          "build_ms": 7.669832993997261,
+          "query_ms": 131.61645899526775,
           "summary": {
             "built": true,
             "points": 50000,
@@ -364,81 +364,81 @@
           }
         },
         "rdt_optimized": {
-          "build_ms": 7.474999991245568,
-          "query_ms": 62.11437500314787,
+          "build_ms": 6.3085409929044545,
+          "query_ms": 39.94929199689068,
           "summary": {
             "built": true,
             "points": 50000,
-            "nodes": 1745,
-            "leaves": 1584,
+            "nodes": 1067,
+            "leaves": 954,
             "max_depth": 3,
-            "leaf_size_mean": 31.565656565656564,
-            "leaf_size_cv": 0.839672126487476,
+            "leaf_size_mean": 52.41090146750524,
+            "leaf_size_cv": 0.9257293003896981,
             "depth_hist": {
               "0": 1,
-              "1": 20,
-              "2": 140,
-              "3": 1584
+              "1": 16,
+              "2": 96,
+              "3": 954
             },
             "tuned": true,
             "tuning": {
               "sample_size": 64,
               "radius": 20.0,
               "chosen": {
-                "alpha": 1.0,
-                "max_leaf": 96,
+                "alpha": 0.9,
+                "max_leaf": 128,
                 "exact_match": 1.0,
-                "build_ms": 7.286000007297844,
-                "query_ms": 14.949207979952917,
-                "nodes": 1745,
+                "build_ms": 6.044999987352639,
+                "query_ms": 9.70766699174419,
+                "nodes": 1067,
                 "max_depth": 3
               },
               "n_trials": 20,
               "top_trials": [
                 {
-                  "alpha": 1.0,
-                  "max_leaf": 96,
-                  "exact_match": 1.0,
-                  "build_ms": 7.286000007297844,
-                  "query_ms": 14.949207979952917,
-                  "nodes": 1745,
-                  "max_depth": 3
-                },
-                {
-                  "alpha": 1.0,
-                  "max_leaf": 128,
-                  "exact_match": 1.0,
-                  "build_ms": 7.266750006237999,
-                  "query_ms": 14.992749987868592,
-                  "nodes": 1745,
-                  "max_depth": 3
-                },
-                {
-                  "alpha": 0.8,
-                  "max_leaf": 128,
-                  "exact_match": 1.0,
-                  "build_ms": 11.253957985900342,
-                  "query_ms": 16.113834019051865,
-                  "nodes": 1986,
-                  "max_depth": 4
-                },
-                {
-                  "alpha": 0.8,
-                  "max_leaf": 96,
-                  "exact_match": 1.0,
-                  "build_ms": 10.980332997860387,
-                  "query_ms": 16.115416976390406,
-                  "nodes": 1986,
-                  "max_depth": 4
-                },
-                {
                   "alpha": 0.9,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 31.470082991290838,
-                  "query_ms": 20.438792009372264,
+                  "build_ms": 6.044999987352639,
+                  "query_ms": 9.70766699174419,
                   "nodes": 1067,
                   "max_depth": 3
+                },
+                {
+                  "alpha": 1.0,
+                  "max_leaf": 96,
+                  "exact_match": 1.0,
+                  "build_ms": 7.767125003738329,
+                  "query_ms": 14.757625001948327,
+                  "nodes": 1745,
+                  "max_depth": 3
+                },
+                {
+                  "alpha": 1.0,
+                  "max_leaf": 128,
+                  "exact_match": 1.0,
+                  "build_ms": 7.268667017342523,
+                  "query_ms": 14.779499993892387,
+                  "nodes": 1745,
+                  "max_depth": 3
+                },
+                {
+                  "alpha": 0.8,
+                  "max_leaf": 128,
+                  "exact_match": 1.0,
+                  "build_ms": 10.716916003730148,
+                  "query_ms": 15.276458987500519,
+                  "nodes": 1986,
+                  "max_depth": 4
+                },
+                {
+                  "alpha": 0.8,
+                  "max_leaf": 96,
+                  "exact_match": 1.0,
+                  "build_ms": 10.225707985227928,
+                  "query_ms": 15.29137502075173,
+                  "nodes": 1986,
+                  "max_depth": 4
                 }
               ]
             }
@@ -450,8 +450,8 @@
           }
         },
         "uniform_grid": {
-          "build_ms": 12.430417002178729,
-          "query_ms": 6.788041995605454,
+          "build_ms": 12.384959001792595,
+          "query_ms": 6.543916009832174,
           "summary": {
             "points": 50000,
             "nodes": 256,
@@ -470,8 +470,8 @@
           }
         },
         "kd_tree": {
-          "build_ms": 19.438875024206936,
-          "query_ms": 72.87183398148045,
+          "build_ms": 19.066582986852154,
+          "query_ms": 71.80079200770706,
           "summary": {
             "points": 50000,
             "nodes": 3743,
