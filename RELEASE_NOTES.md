@@ -1,37 +1,39 @@
 # Release Notes
 
-## v0.1.0 (2026-03-12)
+## v0.1.0 (2026-03-12) - Initial Public Release
 
-This patch release finalizes cross-platform CI and compiled-backend stability
-for the unified research repository.
+This is the first public release of the unified `rdt_spatial_index`
+repository. It establishes a coherent baseline for development, external
+evaluation, and reproducible benchmarking across Linux, macOS, and Windows.
 
-### Highlights
+### What This Initial Release Includes
 
-- Windows CI compatibility hardening:
-  - replaced shell heredoc checks with portable Python scripts.
-- Windows compiled backend correctness fixes:
-  - Cython integer-width handling now uses explicit `int64` memoryviews,
-  - C extension integer-width handling now uses explicit `npy_int64`.
-- Improved GitHub landing experience:
-  - clearer README start path and navigation,
-  - release/CI/license/python badges,
-  - release notes linked from docs index.
+- Unified repository structure across source, tests, benchmarks, docs,
+  publication artifacts, and legacy material.
+- Multiple implementation paths with clear roles:
+  - `RDTFastIndex`: recommended practical default,
+  - `RDTIndex`: readable reference implementation,
+  - `RDTCIndex`, `RDTCythonIndex`, `RDTNumbaIndex`: optional accelerated paths.
+- Cross-platform CI coverage for unit checks and compiled backend validation.
+- Public-facing documentation for installation, testing, benchmarking,
+  reproducibility, and known limitations.
 
-### Recommended Usage Path
+### Recommended Starting Path
 
-1. Default practical implementation: `RDTFastIndex`.
-2. Reference correctness baseline: `RDTIndex`.
-3. Optional acceleration: `RDTCIndex`, `RDTCythonIndex`, `RDTNumbaIndex`.
+1. Install base package:
 
-### Validation Commands
+```bash
+pip install .
+```
+
+2. Validate local environment:
 
 ```bash
 python tests/run_tests.py
 python tests/ci/verify_core_imports.py
-python tests/test_pub_correctness.py
 ```
 
-Compiled backend validation:
+3. If acceleration is required, build and verify compiled backends:
 
 ```bash
 python rdt_spatial_index/c_ext/setup.py build_ext --inplace
@@ -39,7 +41,7 @@ python rdt_spatial_index/setup_cython.py build_ext --inplace
 python tests/ci/verify_compiled_wrappers.py
 ```
 
-### Benchmark / Reproducibility Commands
+### Reproducibility and Benchmark Entry Points
 
 ```bash
 python benchmarks/compare_indexes.py --n 50000
@@ -53,9 +55,15 @@ Or run:
 ./run_publication_suite.sh --fast
 ```
 
-### Compatibility and Breaking Changes
+### Scope and Limitations
 
-- Initial unified public release line (`0.1.0`) for this repository state.
-- Existing imports continue to work.
-- Results and performance conclusions remain workload-sensitive; see
-  [LIMITATIONS.md](LIMITATIONS.md) and [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md).
+- This release does not claim universal superiority across all workloads.
+- Performance conclusions are workload- and implementation-dependent.
+- Some components are intentionally preserved as legacy/experimental material
+  and are not the recommended production path.
+- See `LIMITATIONS.md` and `RESULTS_SUMMARY.md` for evidence-based guidance.
+
+### Compatibility
+
+- Python: `3.9+`
+- This release establishes the initial semantic version baseline: `0.1.0`.
