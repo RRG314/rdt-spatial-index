@@ -19,7 +19,7 @@ def read_requirements(path: str) -> list[str]:
 
 setup(
     name="rdt-spatial-index",
-    version="8.1.1",
+    version="0.1.0",
     author="Steven Reid",
     description="RDT Spatial Index: reference, optimized, and compiled query implementations",
     long_description=read_text("README.md"),

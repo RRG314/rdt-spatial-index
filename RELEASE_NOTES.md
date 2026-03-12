@@ -1,6 +1,6 @@
 # Release Notes
 
-## v8.1.1 (2026-03-12)
+## v0.1.0 (2026-03-12)
 
 This patch release finalizes cross-platform CI and compiled-backend stability
 for the unified research repository.
@@ -55,8 +55,7 @@ Or run:
 
 ### Compatibility and Breaking Changes
 
-- No intentional API break from `8.1.0`.
+- Initial unified public release line (`0.1.0`) for this repository state.
 - Existing imports continue to work.
 - Results and performance conclusions remain workload-sensitive; see
   [LIMITATIONS.md](LIMITATIONS.md) and [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md).
-

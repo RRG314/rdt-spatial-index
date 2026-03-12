@@ -12,7 +12,7 @@ from .ndim import RDTNdIndex, rdt_grid_size_nd
 from .optimized import RDTOptimizedIndex
 from .physics import EntropyRDTIndex, PDEAdaptiveMesh, AdaptiveCell, rdt_depth_entropy
 
-__version__ = "8.1.1"
+__version__ = "0.1.0"
 __author__ = "Steven Reid"
 
 __all__ = [
