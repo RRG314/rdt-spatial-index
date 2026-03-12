@@ -1,0 +1,21 @@
+changelog:
+  categories:
+    - title: Core and API
+      labels:
+        - core
+        - api
+    - title: Compiled Backends and Performance
+      labels:
+        - perf
+        - compiled
+        - benchmark
+    - title: Tests and CI
+      labels:
+        - ci
+        - tests
+    - title: Documentation
+      labels:
+        - docs
+    - title: Other Changes
+      labels:
+        - "*"

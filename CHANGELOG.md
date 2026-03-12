@@ -1,5 +1,25 @@
 # Changelog
 
+## 8.1.1 - 2026-03-12
+
+### Added
+- Top-level release document: `RELEASE_NOTES.md`.
+- Release-oriented README improvements:
+  - GitHub release badge,
+  - clearer start-here navigation,
+  - explicit environment validation commands.
+
+### Changed
+- Updated release metadata to 8.1.1 in package and citation files.
+- Expanded docs index to include release notes directly.
+
+### Fixed
+- Cross-platform CI portability by replacing shell heredoc checks with Python
+  scripts.
+- Windows compiled backend correctness:
+  - Cython memoryview integer-width mismatch,
+  - C backend integer-width mismatch (`int64` arrays interpreted as `long`).
+
 ## 8.1.0 - 2026-03-11
 
 ### Added

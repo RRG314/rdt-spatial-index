@@ -34,6 +34,7 @@ This index is the fastest way to navigate the repository as a new visitor.
 ## Project Governance
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
+- [RELEASE_NOTES.md](RELEASE_NOTES.md)
 - [CHANGELOG.md](CHANGELOG.md)
 - [LICENSE](LICENSE)
 - [CITATION.cff](CITATION.cff)

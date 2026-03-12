@@ -1,61 +1,36 @@
 # RDT Spatial Index
 
+[![CI](https://github.com/RRG314/rdt-spatial-index/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/RRG314/rdt-spatial-index/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/RRG314/rdt-spatial-index?display_name=tag)](https://github.com/RRG314/rdt-spatial-index/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](setup.py)
-[![CI](https://github.com/RRG314/rdt-spatial-index/actions/workflows/ci.yml/badge.svg)](https://github.com/RRG314/rdt-spatial-index/actions/workflows/ci.yml)
 
-RDT Spatial Index is a research and engineering repository for adaptive spatial
-indexing, comparative benchmarking, and reproducible evaluation.
+RDT Spatial Index is a research-grade repository for adaptive spatial indexing.
+It includes readable reference implementations, practical fast paths, optional
+compiled query backends, baseline comparisons, and reproducibility artifacts.
 
-It includes:
-- readable reference implementations,
-- practical fast Python implementations,
-- optional compiled query backends,
-- baseline comparisons (grid/KD-tree/quadtree/R-tree wrappers),
-- reproducibility artifacts (figures, tables, raw benchmark outputs),
-- preserved legacy history.
+The project is organized for external review: tests, benchmarks, limitations,
+and publication-oriented outputs are part of the repository.
 
-## What This Project Is
+## Start Here
 
-RDT uses an occupancy-adaptive subdivision rule:
-
-`g = min(max_grid, max(2, floor(log(n_local + 1)^alpha)))`
-
-This repository focuses on **testable and reproducible evaluation** rather than
-marketing claims. Different datasets and workloads favor different methods.
-
-## Why Someone Might Care
-
-- You need a configurable adaptive index and want both reference and fast paths.
-- You want to compare RDT against conventional baselines under the same harness.
-- You need a repository that includes tests, benchmarks, limitations, and
-  reproducibility materials in one place.
+- [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md): recommended class path and backend matrix.
+- [TESTING.md](TESTING.md): correctness and consistency test entry points.
+- [BENCHMARKS.md](BENCHMARKS.md): quick and publication benchmark commands.
+- [REPRODUCIBILITY.md](REPRODUCIBILITY.md): end-to-end reproduction flow.
+- [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md): concise evidence summary.
+- [LIMITATIONS.md](LIMITATIONS.md): known weaknesses and caveats.
+- [RELEASE_NOTES.md](RELEASE_NOTES.md): release highlights and migration notes.
+- [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md): full navigation index.
 
 ## Recommended Implementation Path
 
-1. Use `RDTFastIndex` for practical Python usage.
-2. Keep `RDTIndex` as the reference correctness baseline.
-3. Add `RDTCIndex` / `RDTCythonIndex` / `RDTNumbaIndex` only when you need
-   compiled query acceleration and can satisfy build/runtime dependencies.
-
-See [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md) for full matrix and build details.
-
-## Implementation Variants At A Glance
-
-| Category | Primary Classes | Status |
-|---|---|---|
-| Core reference | `RDTIndex` | Maintained |
-| Recommended Python path | `RDTFastIndex` | Maintained |
-| Tuned variant | `RDTOptimizedIndex` | Maintained |
-| Optional compiled query backends | `RDTCIndex`, `RDTCythonIndex`, `RDTNumbaIndex` | Maintained (optional) |
-| Conventional baselines | `UniformGridIndex`, `KDTreeIndex` | Maintained |
-| Extended/advanced modules | `RDTNdIndex`, `EntropyRDTIndex`, `RDTGameIndex` | Maintained (advanced) |
-| Experimental research scripts | `experiments/*` | Experimental |
-| Historical snapshots | `legacy/*` | Preserved (not recommended for new work) |
+1. Use `RDTFastIndex` as the default practical implementation.
+2. Use `RDTIndex` as the reference correctness baseline.
+3. Add `RDTCIndex`, `RDTCythonIndex`, or `RDTNumbaIndex` only when compiled
+   acceleration is needed and your environment supports it.
 
 ## Install
-
-Base install:
 
 ```bash
 pip install -e .
@@ -64,14 +39,9 @@ pip install -e .
 Optional extras:
 
 ```bash
-# benchmark + optional baseline stack
-pip install -e ".[bench]"
-
-# acceleration dependencies (platform/Python dependent)
-pip install -e ".[accel]"
-
-# full benchmark stack including rtree (requires system libspatialindex)
-pip install -e ".[bench_full]"
+pip install -e ".[bench]"      # benchmark dependencies
+pip install -e ".[accel]"      # optional acceleration dependencies
+pip install -e ".[bench_full]" # includes rtree (needs libspatialindex on many systems)
 ```
 
 ## Quick Start
@@ -87,42 +57,59 @@ idx = RDTFastIndex(alpha=1.5, max_leaf=96)
 idx.build(points)
 counts = idx.query(queries, radius=30.0)
 print(counts[:5])
-print(idx.summary())
 ```
 
-## Tests, Benchmarks, Reproducibility
+## Validate Your Environment
 
 ```bash
-# smoke tests
-python3 tests/run_tests.py
+python tests/run_tests.py
+python tests/ci/verify_core_imports.py
+```
 
-# extended correctness suite
-python3 tests/test_pub_correctness.py
+Optional compiled verification:
 
-# quick benchmark + report
-python3 benchmarks/compare_indexes.py --n 50000
+```bash
+python rdt_spatial_index/c_ext/setup.py build_ext --inplace
+python rdt_spatial_index/setup_cython.py build_ext --inplace
+python tests/ci/verify_compiled_wrappers.py
+```
 
-# publication-style pipeline
+## Benchmark and Reproduce
+
+```bash
+python benchmarks/compare_indexes.py --n 50000
+python benchmarks/pub_benchmark.py --fast
+python benchmarks/generate_figures.py
+```
+
+Or run:
+
+```bash
 ./run_publication_suite.sh --fast
 ```
 
-## Results Snapshot (Honest Summary)
+## Results Snapshot
 
-- RDT implementations are exact on tested correctness suites.
-- Performance is workload-sensitive; there is no universal winner.
-- In included benchmark artifacts, default Python RDT variants are often
-  competitive in build time but not universally best in query time.
-- Compiled query backends can materially change query-time outcomes, but they
-  require additional toolchain/dependency setup.
+- Correctness: RDT variants are exact on the included brute-force checks.
+- Performance: workload-dependent, not universally dominant.
+- Compiled backends: can materially improve query time and should be reported
+  separately from pure-Python comparisons.
+- Reproducibility: raw outputs, figures, and tables are versioned in-repo.
 
-See:
-- [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md)
-- [LIMITATIONS.md](LIMITATIONS.md)
-- `publication/RESULTS_SUMMARY.md`
-- `publication/LIMITATIONS.md`
-- `publication/C_IMPLEMENTATION_RESULTS.md`
+See [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md) and
+[publication/RESULTS_SUMMARY.md](publication/RESULTS_SUMMARY.md).
 
-## Repository Navigation
+## Limitations Up Front
+
+- No universal superiority claim over grid/KD-tree/R-tree families.
+- Performance depends on workload, parameters, and backend.
+- Optional dependencies (`scipy`, `rtree`, compiler toolchains) affect which
+  comparisons are available.
+- Experimental modules under `experiments/` are exploratory, not stable API.
+
+See [LIMITATIONS.md](LIMITATIONS.md).
+
+## Repository Layout
 
 - Source package: `rdt_spatial_index/`
 - Benchmarks: `benchmarks/`
@@ -132,16 +119,14 @@ See:
 - Experiments: `experiments/`
 - Legacy archive: `legacy/`
 
-Start with [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) for a guided map.
-
 ## Citation
 
-If you use this repository in research, cite using [CITATION.cff](CITATION.cff).
+If this repository contributes to your work, cite via [CITATION.cff](CITATION.cff).
 
 ## Contributing
 
-Contribution guide: [CONTRIBUTING.md](CONTRIBUTING.md)
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-MIT, see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
