@@ -13,6 +13,7 @@
 ### Changed
 - Top-level docs now link to npm package usage and integration path.
 - Contributing guide now includes npm package validation steps.
+- GitHub Actions toolchain updated to current major actions (`v6`) for Node 24 readiness.
 
 ## 0.1.0 - 2026-03-12
 
