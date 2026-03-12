@@ -28,10 +28,7 @@ jobs:
           python tests/run_tests.py
       - name: Verify core imports
         run: |
-          python - <<'PY'
-          from rdt_spatial_index import RDTIndex, RDTFastIndex, RDTOptimizedIndex
-          print("core imports OK")
-          PY
+          python tests/ci/verify_core_imports.py
 
   full-validation:
     name: full correctness (ubuntu / py3.11)
@@ -74,19 +71,7 @@ jobs:
           python rdt_spatial_index/setup_cython.py build_ext --inplace
       - name: Verify compiled wrappers
         run: |
-          python - <<'PY'
-          import numpy as np
-          from rdt_spatial_index import RDTFastIndex, RDTCIndex, RDTCythonIndex
-          pts = np.random.default_rng(0).uniform(0, 1000, (2000, 2))
-          q = np.random.default_rng(1).uniform(0, 1000, (32, 2))
-          sums = []
-          for cls in (RDTFastIndex, RDTCIndex, RDTCythonIndex):
-              idx = cls(0, 0, 1000, 1000)
-              idx.build(pts)
-              sums.append(int(idx.query(q, 25.0).sum()))
-          assert len(set(sums)) == 1, sums
-          print("compiled wrappers OK", sums[0])
-          PY
+          python tests/ci/verify_compiled_wrappers.py
 
   benchmark-smoke:
     name: benchmark smoke (ubuntu / py3.11)
