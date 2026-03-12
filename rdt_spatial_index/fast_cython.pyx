@@ -18,9 +18,9 @@ def query_kernel_cython(
     double[::1] leaf_y0,
     double[::1] leaf_x1,
     double[::1] leaf_y1,
-    long[::1]   leaf_start,
-    long[::1]   leaf_end,
-    long[::1]   order,
+    cnp.int64_t[::1] leaf_start,
+    cnp.int64_t[::1] leaf_end,
+    cnp.int64_t[::1] order,
     double[::1] px,
     double[::1] py,
     double r2,
@@ -34,9 +34,10 @@ def query_kernel_cython(
     cdef cnp.ndarray[cnp.int32_t, ndim=1] out = np.zeros(M, dtype=np.int32)
     cdef int[::1] out_view = out
 
-    cdef int i, li, j
+    cdef int i, li
+    cdef Py_ssize_t j
     cdef double qxi, qyi, bx, by, dx, dy, pdx, pdy
-    cdef long s, e, idx
+    cdef cnp.int64_t s, e, idx
 
     # prange = OpenMP parallel for; nogil = release Python GIL
     for i in prange(M, nogil=True, schedule='dynamic'):
