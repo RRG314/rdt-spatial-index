@@ -1,0 +1,839 @@
+[
+  {
+    "dataset": "uniform",
+    "n": 1000,
+    "method": "rdt_fast",
+    "build_mean_ms": 0.9105876670219004,
+    "build_std_ms": 0.19242414738678504,
+    "query_mean_ms": 35.816279327264056,
+    "query_std_ms": 2.2078890103017277
+  },
+  {
+    "dataset": "uniform",
+    "n": 1000,
+    "method": "uniform_grid",
+    "build_mean_ms": 0.7031726612088581,
+    "build_std_ms": 0.03414573502386146,
+    "query_mean_ms": 41.43134398812739,
+    "query_std_ms": 1.7404753482812547
+  },
+  {
+    "dataset": "uniform",
+    "n": 1000,
+    "method": "quadtree",
+    "build_mean_ms": 0.1736510021146387,
+    "build_std_ms": 0.02188878424638361,
+    "query_mean_ms": 7.144061324652284,
+    "query_std_ms": 1.0676476460802171
+  },
+  {
+    "dataset": "uniform",
+    "n": 1000,
+    "method": "rtree",
+    "build_mean_ms": 2.9676066575727114,
+    "build_std_ms": 0.23019341701417464,
+    "query_mean_ms": 8.023816005637249,
+    "query_std_ms": 0.14442072408770215
+  },
+  {
+    "dataset": "uniform",
+    "n": 1000,
+    "method": "scipy_kd",
+    "build_mean_ms": 0.3780376670571665,
+    "build_std_ms": 0.20682922938432977,
+    "query_mean_ms": 1.4819976640865207,
+    "query_std_ms": 0.7317199575836433
+  },
+  {
+    "dataset": "uniform",
+    "n": 5000,
+    "method": "rdt_fast",
+    "build_mean_ms": 1.541469673005243,
+    "build_std_ms": 0.11357075852916197,
+    "query_mean_ms": 31.880086336362485,
+    "query_std_ms": 0.26024217490233004
+  },
+  {
+    "dataset": "uniform",
+    "n": 5000,
+    "method": "uniform_grid",
+    "build_mean_ms": 2.494404005119577,
+    "build_std_ms": 0.2774240013473536,
+    "query_mean_ms": 23.46956533923124,
+    "query_std_ms": 0.058042101422053446
+  },
+  {
+    "dataset": "uniform",
+    "n": 5000,
+    "method": "quadtree",
+    "build_mean_ms": 1.1525293327091883,
+    "build_std_ms": 0.013993431763961518,
+    "query_mean_ms": 17.60342099199382,
+    "query_std_ms": 0.11525684631795148
+  },
+  {
+    "dataset": "uniform",
+    "n": 5000,
+    "method": "rtree",
+    "build_mean_ms": 13.884293982603898,
+    "build_std_ms": 0.1554503434460922,
+    "query_mean_ms": 16.511682333657518,
+    "query_std_ms": 0.3220290254107492
+  },
+  {
+    "dataset": "uniform",
+    "n": 5000,
+    "method": "scipy_kd",
+    "build_mean_ms": 0.7144370077488323,
+    "build_std_ms": 0.05268248903099497,
+    "query_mean_ms": 1.9195903344855954,
+    "query_std_ms": 0.027894476576478113
+  },
+  {
+    "dataset": "uniform",
+    "n": 10000,
+    "method": "rdt_fast",
+    "build_mean_ms": 2.0385196645899364,
+    "build_std_ms": 0.060393075123971934,
+    "query_mean_ms": 22.50356199995925,
+    "query_std_ms": 0.14319056705421923
+  },
+  {
+    "dataset": "uniform",
+    "n": 10000,
+    "method": "uniform_grid",
+    "build_mean_ms": 4.426618669337283,
+    "build_std_ms": 0.12740176447349832,
+    "query_mean_ms": 13.424341004186621,
+    "query_std_ms": 0.3108900239370816
+  },
+  {
+    "dataset": "uniform",
+    "n": 10000,
+    "method": "quadtree",
+    "build_mean_ms": 1.516552991233766,
+    "build_std_ms": 0.010336854412712326,
+    "query_mean_ms": 11.61381866162022,
+    "query_std_ms": 0.26853580996665
+  },
+  {
+    "dataset": "uniform",
+    "n": 10000,
+    "method": "rtree",
+    "build_mean_ms": 28.021516336593777,
+    "build_std_ms": 0.3597591636040749,
+    "query_mean_ms": 16.71531900259045,
+    "query_std_ms": 0.18881076822402867
+  },
+  {
+    "dataset": "uniform",
+    "n": 10000,
+    "method": "scipy_kd",
+    "build_mean_ms": 1.6490236739628017,
+    "build_std_ms": 0.10437908552109533,
+    "query_mean_ms": 1.9798536571518828,
+    "query_std_ms": 0.1103509244266815
+  },
+  {
+    "dataset": "uniform",
+    "n": 50000,
+    "method": "rdt_fast",
+    "build_mean_ms": 5.6077450086983545,
+    "build_std_ms": 0.3734499665130557,
+    "query_mean_ms": 10.202015012813112,
+    "query_std_ms": 0.15874925583642274
+  },
+  {
+    "dataset": "uniform",
+    "n": 50000,
+    "method": "uniform_grid",
+    "build_mean_ms": 21.283339340394985,
+    "build_std_ms": 0.2886967709839097,
+    "query_mean_ms": 5.426899995654821,
+    "query_std_ms": 0.29756244786247293
+  },
+  {
+    "dataset": "uniform",
+    "n": 50000,
+    "method": "quadtree",
+    "build_mean_ms": 7.924553336730848,
+    "build_std_ms": 0.5720245481880886,
+    "query_mean_ms": 11.8803853498927,
+    "query_std_ms": 0.15039937375762363
+  },
+  {
+    "dataset": "uniform",
+    "n": 50000,
+    "method": "rtree",
+    "build_mean_ms": 140.97248599864542,
+    "build_std_ms": 2.4441498998350797,
+    "query_mean_ms": 17.997471994021907,
+    "query_std_ms": 0.34709958659087997
+  },
+  {
+    "dataset": "uniform",
+    "n": 50000,
+    "method": "scipy_kd",
+    "build_mean_ms": 10.326332684295872,
+    "build_std_ms": 0.033102802448351065,
+    "query_mean_ms": 2.1757820019653686,
+    "query_std_ms": 0.025365381032733593
+  },
+  {
+    "dataset": "uniform",
+    "n": 100000,
+    "method": "rdt_fast",
+    "build_mean_ms": 9.430162007144341,
+    "build_std_ms": 0.5063439554654774,
+    "query_mean_ms": 11.436306667746976,
+    "query_std_ms": 0.40600593121945094
+  },
+  {
+    "dataset": "uniform",
+    "n": 100000,
+    "method": "uniform_grid",
+    "build_mean_ms": 42.145349007720746,
+    "build_std_ms": 0.3171666858852929,
+    "query_mean_ms": 6.211807340150699,
+    "query_std_ms": 0.1817306152430024
+  },
+  {
+    "dataset": "uniform",
+    "n": 100000,
+    "method": "quadtree",
+    "build_mean_ms": 23.892087997713435,
+    "build_std_ms": 0.18429177170000458,
+    "query_mean_ms": 29.83220432846186,
+    "query_std_ms": 0.1617788586872909
+  },
+  {
+    "dataset": "uniform",
+    "n": 100000,
+    "method": "rtree",
+    "build_mean_ms": 286.83158032557304,
+    "build_std_ms": 2.9826903035098313,
+    "query_mean_ms": 34.02186665334739,
+    "query_std_ms": 0.21853995062506343
+  },
+  {
+    "dataset": "uniform",
+    "n": 100000,
+    "method": "scipy_kd",
+    "build_mean_ms": 22.941097665655736,
+    "build_std_ms": 0.09300872408635796,
+    "query_mean_ms": 4.386425338452682,
+    "query_std_ms": 0.0855609509600958
+  },
+  {
+    "dataset": "uniform",
+    "n": 500000,
+    "method": "rdt_fast",
+    "build_mean_ms": 847.1628543241726,
+    "build_std_ms": 282.8514075473081,
+    "query_mean_ms": 1019.3082166661043,
+    "query_std_ms": 11.01270439290069
+  },
+  {
+    "dataset": "uniform",
+    "n": 500000,
+    "method": "uniform_grid",
+    "build_mean_ms": 222.88306366923885,
+    "build_std_ms": 2.9085335982655383,
+    "query_mean_ms": 13.600808665311584,
+    "query_std_ms": 0.9210187016810418
+  },
+  {
+    "dataset": "uniform",
+    "n": 500000,
+    "method": "scipy_kd",
+    "build_mean_ms": 135.94687865891805,
+    "build_std_ms": 4.46473422036911,
+    "query_mean_ms": 27.128492986472946,
+    "query_std_ms": 0.4910627333337568
+  },
+  {
+    "dataset": "uniform",
+    "n": 1000000,
+    "method": "rdt_fast",
+    "build_mean_ms": 1202.9396383247029,
+    "build_std_ms": 205.8505113377279,
+    "query_mean_ms": 1544.615920992025,
+    "query_std_ms": 13.348199072566295
+  },
+  {
+    "dataset": "uniform",
+    "n": 1000000,
+    "method": "uniform_grid",
+    "build_mean_ms": 445.84713566776674,
+    "build_std_ms": 1.7964280450655519,
+    "query_mean_ms": 37.716758340441935,
+    "query_std_ms": 0.46004739419799384
+  },
+  {
+    "dataset": "uniform",
+    "n": 1000000,
+    "method": "scipy_kd",
+    "build_mean_ms": 309.1138523304835,
+    "build_std_ms": 2.149440227075059,
+    "query_mean_ms": 55.7549440030319,
+    "query_std_ms": 0.71094142932006
+  },
+  {
+    "dataset": "clustered",
+    "n": 1000,
+    "method": "rdt_fast",
+    "build_mean_ms": 0.3098579957926025,
+    "build_std_ms": 0.015789964536354253,
+    "query_mean_ms": 11.791075996976966,
+    "query_std_ms": 0.5579602526316033
+  },
+  {
+    "dataset": "clustered",
+    "n": 1000,
+    "method": "uniform_grid",
+    "build_mean_ms": 0.5413133379382392,
+    "build_std_ms": 0.008634716390940617,
+    "query_mean_ms": 13.837205682648346,
+    "query_std_ms": 0.17343832477010712
+  },
+  {
+    "dataset": "clustered",
+    "n": 1000,
+    "method": "quadtree",
+    "build_mean_ms": 0.21056733870257935,
+    "build_std_ms": 0.029483904757988216,
+    "query_mean_ms": 7.01989300432615,
+    "query_std_ms": 0.15707635771711495
+  },
+  {
+    "dataset": "clustered",
+    "n": 1000,
+    "method": "rtree",
+    "build_mean_ms": 2.841746337556591,
+    "build_std_ms": 0.01521485798137913,
+    "query_mean_ms": 7.9180640071475255,
+    "query_std_ms": 0.16906819362750394
+  },
+  {
+    "dataset": "clustered",
+    "n": 1000,
+    "method": "scipy_kd",
+    "build_mean_ms": 0.12466567568480968,
+    "build_std_ms": 0.007691105947077242,
+    "query_mean_ms": 0.731033340950186,
+    "query_std_ms": 0.008821089335311491
+  },
+  {
+    "dataset": "clustered",
+    "n": 5000,
+    "method": "rdt_fast",
+    "build_mean_ms": 1.454886330369239,
+    "build_std_ms": 0.06748009201996809,
+    "query_mean_ms": 27.169070002855733,
+    "query_std_ms": 0.05614932086270406
+  },
+  {
+    "dataset": "clustered",
+    "n": 5000,
+    "method": "uniform_grid",
+    "build_mean_ms": 2.161308996922647,
+    "build_std_ms": 0.03339859341443812,
+    "query_mean_ms": 11.847534003512314,
+    "query_std_ms": 0.030976592796222606
+  },
+  {
+    "dataset": "clustered",
+    "n": 5000,
+    "method": "quadtree",
+    "build_mean_ms": 0.9641696718366196,
+    "build_std_ms": 0.0073999721338139654,
+    "query_mean_ms": 14.769737327393765,
+    "query_std_ms": 0.056621374362007225
+  },
+  {
+    "dataset": "clustered",
+    "n": 5000,
+    "method": "rtree",
+    "build_mean_ms": 13.897024337590361,
+    "build_std_ms": 0.06748112828844857,
+    "query_mean_ms": 21.366148653517786,
+    "query_std_ms": 1.989414789626132
+  },
+  {
+    "dataset": "clustered",
+    "n": 5000,
+    "method": "scipy_kd",
+    "build_mean_ms": 0.766630342695862,
+    "build_std_ms": 0.06165401440540459,
+    "query_mean_ms": 2.9729250042388835,
+    "query_std_ms": 0.33832655303736275
+  },
+  {
+    "dataset": "clustered",
+    "n": 10000,
+    "method": "rdt_fast",
+    "build_mean_ms": 4.941513674566522,
+    "build_std_ms": 0.1386393803292198,
+    "query_mean_ms": 58.519383669287585,
+    "query_std_ms": 0.2981962610260201
+  },
+  {
+    "dataset": "clustered",
+    "n": 10000,
+    "method": "uniform_grid",
+    "build_mean_ms": 4.2799380025826395,
+    "build_std_ms": 0.11946089826884018,
+    "query_mean_ms": 8.33239265678761,
+    "query_std_ms": 0.1256580647744255
+  },
+  {
+    "dataset": "clustered",
+    "n": 10000,
+    "method": "quadtree",
+    "build_mean_ms": 2.0467406526828804,
+    "build_std_ms": 0.15180018014503585,
+    "query_mean_ms": 16.553355671931058,
+    "query_std_ms": 0.06222441275259072
+  },
+  {
+    "dataset": "clustered",
+    "n": 10000,
+    "method": "rtree",
+    "build_mean_ms": 27.887561668952305,
+    "build_std_ms": 0.09643702704351831,
+    "query_mean_ms": 21.319107996532694,
+    "query_std_ms": 0.11081021092889441
+  },
+  {
+    "dataset": "clustered",
+    "n": 10000,
+    "method": "scipy_kd",
+    "build_mean_ms": 1.5187746709367882,
+    "build_std_ms": 0.07604184286588189,
+    "query_mean_ms": 2.857426336656014,
+    "query_std_ms": 0.20984671811239983
+  },
+  {
+    "dataset": "clustered",
+    "n": 50000,
+    "method": "rdt_fast",
+    "build_mean_ms": 42.7030056695609,
+    "build_std_ms": 0.9839632833500712,
+    "query_mean_ms": 134.16024034571214,
+    "query_std_ms": 0.15219440746147372
+  },
+  {
+    "dataset": "clustered",
+    "n": 50000,
+    "method": "uniform_grid",
+    "build_mean_ms": 20.044218661496416,
+    "build_std_ms": 0.06493636841959173,
+    "query_mean_ms": 4.317867986780281,
+    "query_std_ms": 0.07641629294411313
+  },
+  {
+    "dataset": "clustered",
+    "n": 50000,
+    "method": "quadtree",
+    "build_mean_ms": 10.133900000558546,
+    "build_std_ms": 0.27178674208444253,
+    "query_mean_ms": 19.054535339819267,
+    "query_std_ms": 0.22696372674018567
+  },
+  {
+    "dataset": "clustered",
+    "n": 50000,
+    "method": "rtree",
+    "build_mean_ms": 140.56311099557206,
+    "build_std_ms": 1.42298157073922,
+    "query_mean_ms": 27.36467800180738,
+    "query_std_ms": 0.5371280003893049
+  },
+  {
+    "dataset": "clustered",
+    "n": 50000,
+    "method": "scipy_kd",
+    "build_mean_ms": 9.669141009605179,
+    "build_std_ms": 0.08812502539630691,
+    "query_mean_ms": 3.7834156634441265,
+    "query_std_ms": 0.11992998118294132
+  },
+  {
+    "dataset": "clustered",
+    "n": 100000,
+    "method": "rdt_fast",
+    "build_mean_ms": 95.21882866586868,
+    "build_std_ms": 2.96865346060257,
+    "query_mean_ms": 190.01263466392024,
+    "query_std_ms": 1.2543985997443345
+  },
+  {
+    "dataset": "clustered",
+    "n": 100000,
+    "method": "uniform_grid",
+    "build_mean_ms": 39.75345400006821,
+    "build_std_ms": 0.08004943005906559,
+    "query_mean_ms": 5.248843333295857,
+    "query_std_ms": 0.25464362244462896
+  },
+  {
+    "dataset": "clustered",
+    "n": 100000,
+    "method": "quadtree",
+    "build_mean_ms": 20.44154699736585,
+    "build_std_ms": 0.32001630304328027,
+    "query_mean_ms": 26.196593331405893,
+    "query_std_ms": 0.7337963269944213
+  },
+  {
+    "dataset": "clustered",
+    "n": 100000,
+    "method": "rtree",
+    "build_mean_ms": 284.10274734293733,
+    "build_std_ms": 1.2169079428357688,
+    "query_mean_ms": 40.998509008204564,
+    "query_std_ms": 0.23940067838106266
+  },
+  {
+    "dataset": "clustered",
+    "n": 100000,
+    "method": "scipy_kd",
+    "build_mean_ms": 20.94979100123358,
+    "build_std_ms": 0.1234399413413467,
+    "query_mean_ms": 5.863183682473998,
+    "query_std_ms": 0.2543087591086539
+  },
+  {
+    "dataset": "clustered",
+    "n": 500000,
+    "method": "rdt_fast",
+    "build_mean_ms": 315.88144567407045,
+    "build_std_ms": 20.5208913256114,
+    "query_mean_ms": 596.9275609919956,
+    "query_std_ms": 3.5516535862528853
+  },
+  {
+    "dataset": "clustered",
+    "n": 500000,
+    "method": "uniform_grid",
+    "build_mean_ms": 204.95622533295924,
+    "build_std_ms": 0.5938391704402395,
+    "query_mean_ms": 12.915408665624758,
+    "query_std_ms": 0.6897321555807345
+  },
+  {
+    "dataset": "clustered",
+    "n": 500000,
+    "method": "scipy_kd",
+    "build_mean_ms": 121.37495166583297,
+    "build_std_ms": 0.30205969127554855,
+    "query_mean_ms": 40.10357133423289,
+    "query_std_ms": 0.14669882298678671
+  },
+  {
+    "dataset": "clustered",
+    "n": 1000000,
+    "method": "rdt_fast",
+    "build_mean_ms": 476.4367776515428,
+    "build_std_ms": 20.861700671998392,
+    "query_mean_ms": 772.596151655307,
+    "query_std_ms": 10.848788650218854
+  },
+  {
+    "dataset": "clustered",
+    "n": 1000000,
+    "method": "uniform_grid",
+    "build_mean_ms": 418.8822206730644,
+    "build_std_ms": 16.178136401363165,
+    "query_mean_ms": 20.489834666174527,
+    "query_std_ms": 0.7744560550591527
+  },
+  {
+    "dataset": "clustered",
+    "n": 1000000,
+    "method": "scipy_kd",
+    "build_mean_ms": 265.4695730113114,
+    "build_std_ms": 1.5443492475149367,
+    "query_mean_ms": 84.61652700013171,
+    "query_std_ms": 0.4515136483632322
+  },
+  {
+    "dataset": "hotspot",
+    "n": 1000,
+    "method": "rdt_fast",
+    "build_mean_ms": 0.6453259945070992,
+    "build_std_ms": 0.06810514436029567,
+    "query_mean_ms": 12.677770990800733,
+    "query_std_ms": 0.1908142085845391
+  },
+  {
+    "dataset": "hotspot",
+    "n": 1000,
+    "method": "uniform_grid",
+    "build_mean_ms": 0.5171046650502831,
+    "build_std_ms": 0.05430080400414743,
+    "query_mean_ms": 6.804977330223967,
+    "query_std_ms": 0.2074323715605569
+  },
+  {
+    "dataset": "hotspot",
+    "n": 1000,
+    "method": "quadtree",
+    "build_mean_ms": 0.35535666393116117,
+    "build_std_ms": 0.03581964348567891,
+    "query_mean_ms": 6.9053093320690095,
+    "query_std_ms": 0.17387540425639333
+  },
+  {
+    "dataset": "hotspot",
+    "n": 1000,
+    "method": "rtree",
+    "build_mean_ms": 2.8753000078722835,
+    "build_std_ms": 0.10668394402116971,
+    "query_mean_ms": 5.664157011779025,
+    "query_std_ms": 0.13532848291666572
+  },
+  {
+    "dataset": "hotspot",
+    "n": 1000,
+    "method": "scipy_kd",
+    "build_mean_ms": 0.1184706634376198,
+    "build_std_ms": 0.008161768542666252,
+    "query_mean_ms": 0.5221326622025421,
+    "query_std_ms": 0.01469130325007195
+  },
+  {
+    "dataset": "hotspot",
+    "n": 5000,
+    "method": "rdt_fast",
+    "build_mean_ms": 2.223044003282363,
+    "build_std_ms": 0.09630715219293878,
+    "query_mean_ms": 10.962179667937258,
+    "query_std_ms": 0.1950649460543871
+  },
+  {
+    "dataset": "hotspot",
+    "n": 5000,
+    "method": "uniform_grid",
+    "build_mean_ms": 2.3082923338127634,
+    "build_std_ms": 0.13747797264219955,
+    "query_mean_ms": 6.139901670394465,
+    "query_std_ms": 0.05751304953146556
+  },
+  {
+    "dataset": "hotspot",
+    "n": 5000,
+    "method": "quadtree",
+    "build_mean_ms": 1.1264593340456486,
+    "build_std_ms": 0.01694611570947741,
+    "query_mean_ms": 3.4638349898159504,
+    "query_std_ms": 0.09817076003470346
+  },
+  {
+    "dataset": "hotspot",
+    "n": 5000,
+    "method": "rtree",
+    "build_mean_ms": 13.780091666073227,
+    "build_std_ms": 0.042615332277782206,
+    "query_mean_ms": 4.389754991279915,
+    "query_std_ms": 0.0609331689009858
+  },
+  {
+    "dataset": "hotspot",
+    "n": 5000,
+    "method": "scipy_kd",
+    "build_mean_ms": 0.7069223308159659,
+    "build_std_ms": 0.015357096674178826,
+    "query_mean_ms": 0.3967313192940007,
+    "query_std_ms": 0.006210007781910846
+  },
+  {
+    "dataset": "hotspot",
+    "n": 10000,
+    "method": "rdt_fast",
+    "build_mean_ms": 3.7147353286854923,
+    "build_std_ms": 0.1592296899336118,
+    "query_mean_ms": 7.8080210078042,
+    "query_std_ms": 0.1523993224088
+  },
+  {
+    "dataset": "hotspot",
+    "n": 10000,
+    "method": "uniform_grid",
+    "build_mean_ms": 4.179229668807238,
+    "build_std_ms": 0.06068935238526689,
+    "query_mean_ms": 4.665307331985484,
+    "query_std_ms": 0.028757956834624662
+  },
+  {
+    "dataset": "hotspot",
+    "n": 10000,
+    "method": "quadtree",
+    "build_mean_ms": 1.9850050060388942,
+    "build_std_ms": 0.009287031471748601,
+    "query_mean_ms": 2.42104166924643,
+    "query_std_ms": 0.043846333003901714
+  },
+  {
+    "dataset": "hotspot",
+    "n": 10000,
+    "method": "rtree",
+    "build_mean_ms": 27.816318683714297,
+    "build_std_ms": 0.2519569211110354,
+    "query_mean_ms": 2.993340662214905,
+    "query_std_ms": 0.06637738873863398
+  },
+  {
+    "dataset": "hotspot",
+    "n": 10000,
+    "method": "scipy_kd",
+    "build_mean_ms": 1.5557603328488767,
+    "build_std_ms": 0.04769986874576815,
+    "query_mean_ms": 0.16431732607694963,
+    "query_std_ms": 0.009111346394965709
+  },
+  {
+    "dataset": "hotspot",
+    "n": 50000,
+    "method": "rdt_fast",
+    "build_mean_ms": 10.891762998653576,
+    "build_std_ms": 0.059118985441126995,
+    "query_mean_ms": 9.356975662133967,
+    "query_std_ms": 0.03814563549799305
+  },
+  {
+    "dataset": "hotspot",
+    "n": 50000,
+    "method": "uniform_grid",
+    "build_mean_ms": 20.13447600378034,
+    "build_std_ms": 0.09345669564875707,
+    "query_mean_ms": 2.4186526619208357,
+    "query_std_ms": 0.03501520789089717
+  },
+  {
+    "dataset": "hotspot",
+    "n": 50000,
+    "method": "quadtree",
+    "build_mean_ms": 10.496975999558344,
+    "build_std_ms": 0.12792411502488385,
+    "query_mean_ms": 4.232854339837407,
+    "query_std_ms": 0.16679749727616303
+  },
+  {
+    "dataset": "hotspot",
+    "n": 50000,
+    "method": "rtree",
+    "build_mean_ms": 140.464007340294,
+    "build_std_ms": 0.342152149389605,
+    "query_mean_ms": 5.606754663555573,
+    "query_std_ms": 0.20976100212659363
+  },
+  {
+    "dataset": "hotspot",
+    "n": 50000,
+    "method": "scipy_kd",
+    "build_mean_ms": 10.414407656450445,
+    "build_std_ms": 0.11477710198470988,
+    "query_mean_ms": 0.5769100001392266,
+    "query_std_ms": 0.03510249764755327
+  },
+  {
+    "dataset": "hotspot",
+    "n": 100000,
+    "method": "rdt_fast",
+    "build_mean_ms": 35.241274328048654,
+    "build_std_ms": 5.862166621522607,
+    "query_mean_ms": 45.59827933553606,
+    "query_std_ms": 0.8769690181884884
+  },
+  {
+    "dataset": "hotspot",
+    "n": 100000,
+    "method": "uniform_grid",
+    "build_mean_ms": 40.46710299250359,
+    "build_std_ms": 0.2697117998864192,
+    "query_mean_ms": 2.717399339114005,
+    "query_std_ms": 0.05200826574695187
+  },
+  {
+    "dataset": "hotspot",
+    "n": 100000,
+    "method": "quadtree",
+    "build_mean_ms": 22.831820329884067,
+    "build_std_ms": 0.4398133986714113,
+    "query_mean_ms": 17.66625466795328,
+    "query_std_ms": 0.5097205245030035
+  },
+  {
+    "dataset": "hotspot",
+    "n": 100000,
+    "method": "rtree",
+    "build_mean_ms": 288.1532423198223,
+    "build_std_ms": 4.4705906593507105,
+    "query_mean_ms": 23.897182332196582,
+    "query_std_ms": 0.17329816207441487
+  },
+  {
+    "dataset": "hotspot",
+    "n": 100000,
+    "method": "scipy_kd",
+    "build_mean_ms": 22.795027995016426,
+    "build_std_ms": 0.15598221642806387,
+    "query_mean_ms": 4.950498327768098,
+    "query_std_ms": 0.10608986418113044
+  },
+  {
+    "dataset": "hotspot",
+    "n": 500000,
+    "method": "rdt_fast",
+    "build_mean_ms": 583.0049583358535,
+    "build_std_ms": 34.12594945185216,
+    "query_mean_ms": 73.3718723252726,
+    "query_std_ms": 0.7381489654933938
+  },
+  {
+    "dataset": "hotspot",
+    "n": 500000,
+    "method": "uniform_grid",
+    "build_mean_ms": 210.1958803347467,
+    "build_std_ms": 3.325320850384363,
+    "query_mean_ms": 5.033913660251225,
+    "query_std_ms": 0.283456601922534
+  },
+  {
+    "dataset": "hotspot",
+    "n": 500000,
+    "method": "scipy_kd",
+    "build_mean_ms": 129.5801066541268,
+    "build_std_ms": 0.35421486878335096,
+    "query_mean_ms": 0.9738773320956776,
+    "query_std_ms": 0.009474210473158318
+  },
+  {
+    "dataset": "hotspot",
+    "n": 1000000,
+    "method": "rdt_fast",
+    "build_mean_ms": 1107.3791316593997,
+    "build_std_ms": 42.53699156817895,
+    "query_mean_ms": 257.186137343524,
+    "query_std_ms": 7.000667440381997
+  },
+  {
+    "dataset": "hotspot",
+    "n": 1000000,
+    "method": "uniform_grid",
+    "build_mean_ms": 441.12601632756804,
+    "build_std_ms": 16.32540866604006,
+    "query_mean_ms": 6.963709990183513,
+    "query_std_ms": 0.5945138067885462
+  },
+  {
+    "dataset": "hotspot",
+    "n": 1000000,
+    "method": "scipy_kd",
+    "build_mean_ms": 305.0624226743821,
+    "build_std_ms": 2.719283779828752,
+    "query_mean_ms": 6.070372988081847,
+    "query_std_ms": 0.08617585097767548
+  }
+]

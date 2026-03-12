@@ -1,0 +1,15 @@
+{
+  "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+  "processor": "arm",
+  "python": "3.14.3",
+  "machine": "arm64",
+  "numpy_version": "2.4.3",
+  "scipy": "absent",
+  "numba_accel": false,
+  "cython_accel": true,
+  "c_accel": true,
+  "cpu_count": 8,
+  "timestamp": "2026-03-11T21:58:58",
+  "note": "Single-threaded. Results measured on one core.",
+  "max_rss_kb": 36257792
+}

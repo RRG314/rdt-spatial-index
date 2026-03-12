@@ -28,8 +28,12 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from rdt_spatial_index import RDTIndex
+from rdt_spatial_index import HAS_CYTHON_ACCEL, HAS_C_ACCEL, HAS_NUMBA_ACCEL
 from rdt_spatial_index.baselines import KDTreeIndex, UniformGridIndex
 from rdt_spatial_index.optimized import RDTOptimizedIndex
+from rdt_spatial_index.fast import RDTFastIndex
+from rdt_spatial_index.physics import EntropyRDTIndex
+from rdt_spatial_index import RDTNumbaIndex, RDTCythonIndex, RDTCIndex
 
 
 def make_uniform(seed: int, n: int):
@@ -106,6 +110,8 @@ def run(seed: int, n: int) -> dict[str, object]:
 
         systems = {
             "rdt": RDTIndex(alpha=1.5, max_leaf=96, max_depth=24, verbose=False),
+            "rdt_fast": RDTFastIndex(alpha=1.5, max_leaf=96, max_depth=24, verbose=False),
+            "rdt_entropy": EntropyRDTIndex(alpha=1.5, max_leaf=96, max_depth=24, entropy_weight=0.5, verbose=False),
             "rdt_optimized": RDTOptimizedIndex.from_tuning(
                 points,
                 queries[:64],
@@ -118,6 +124,12 @@ def run(seed: int, n: int) -> dict[str, object]:
             "uniform_grid": UniformGridIndex(target_buckets=256),
             "kd_tree": KDTreeIndex(max_leaf=48),
         }
+        if HAS_NUMBA_ACCEL:
+            systems["rdt_numba"] = RDTNumbaIndex(alpha=1.5, max_leaf=96, max_depth=24, verbose=False)
+        if HAS_CYTHON_ACCEL:
+            systems["rdt_cython"] = RDTCythonIndex(alpha=1.5, max_leaf=96, max_depth=24, verbose=False)
+        if HAS_C_ACCEL:
+            systems["rdt_c"] = RDTCIndex(alpha=1.5, max_leaf=96, max_depth=24, verbose=False)
 
         sres = {}
         for sname, idx in systems.items():

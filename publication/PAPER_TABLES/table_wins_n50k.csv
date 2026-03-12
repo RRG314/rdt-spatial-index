@@ -1,0 +1,10 @@
+dataset,rdt_fast_q,rdt_opt_q,grid_q,kd_q,query_winner,build_winner
+uniform,29.64,50.31,14.89,53.26,uniform_grid,rdt_fast
+clustered,357.92,50.95,12.13,61.57,uniform_grid,uniform_grid
+sparse_dense,122.62,40.69,15.40,56.02,uniform_grid,uniform_grid
+adversarial_line,19.88,9.32,2.43,53.29,uniform_grid,rdt_fast
+adversarial_hotspot,26.77,19.12,7.14,15.51,uniform_grid,rdt_fast
+fractal,22.56,41.10,11.30,40.53,uniform_grid,rdt_fast
+grid_regular,17.02,32.63,8.20,29.47,uniform_grid,rdt_fast
+taxi_like,115.88,37.08,8.54,38.55,uniform_grid,uniform_grid
+osm_like,17.26,30.16,8.77,29.50,uniform_grid,rdt_fast

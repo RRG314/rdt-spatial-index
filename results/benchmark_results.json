@@ -8,8 +8,8 @@
       "radius": 25.0,
       "systems": {
         "rdt": {
-          "build_ms": 4.7780419990886,
-          "query_ms": 113.97120798937976,
+          "build_ms": 5.0324160838499665,
+          "query_ms": 113.47912496421486,
           "summary": {
             "built": true,
             "points": 50000,
@@ -29,9 +29,58 @@
             "exact_match_rate": 1.0
           }
         },
+        "rdt_fast": {
+          "build_ms": 5.01412502489984,
+          "query_ms": 7.135292049497366,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 1025,
+            "leaves": 1024,
+            "max_depth": 1,
+            "leaf_size_mean": 48.828125,
+            "leaf_size_cv": 0.14348530238320578,
+            "depth_hist": {
+              "0": 1,
+              "1": 1024
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 1024
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
+        "rdt_entropy": {
+          "build_ms": 5.764500005170703,
+          "query_ms": 7.228625006973743,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 1025,
+            "leaves": 1024,
+            "max_depth": 1,
+            "leaf_size_mean": 48.828125,
+            "leaf_size_cv": 0.14348530238320578,
+            "depth_hist": {
+              "0": 1,
+              "1": 1024
+            },
+            "index_variant": "EntropyRDTIndex",
+            "cached_leaves": 1024,
+            "entropy_weight": 0.5
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
         "rdt_optimized": {
-          "build_ms": 6.996125011937693,
-          "query_ms": 10.391166986664757,
+          "build_ms": 7.092125015333295,
+          "query_ms": 10.224792058579624,
           "summary": {
             "built": true,
             "points": 50000,
@@ -53,8 +102,8 @@
                 "alpha": 0.8,
                 "max_leaf": 128,
                 "exact_match": 1.0,
-                "build_ms": 8.120125014102086,
-                "query_ms": 2.7322089881636202,
+                "build_ms": 7.513375021517277,
+                "query_ms": 2.5987919652834535,
                 "nodes": 613,
                 "max_depth": 2
               },
@@ -64,8 +113,8 @@
                   "alpha": 0.8,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 8.120125014102086,
-                  "query_ms": 2.7322089881636202,
+                  "build_ms": 7.513375021517277,
+                  "query_ms": 2.5987919652834535,
                   "nodes": 613,
                   "max_depth": 2
                 },
@@ -73,8 +122,8 @@
                   "alpha": 0.7,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 11.138333997223526,
-                  "query_ms": 3.3188329834956676,
+                  "build_ms": 11.833582888357341,
+                  "query_ms": 3.1712090130895376,
                   "nodes": 1839,
                   "max_depth": 3
                 },
@@ -82,28 +131,28 @@
                   "alpha": 0.8,
                   "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 11.033624992705882,
-                  "query_ms": 3.729666001163423,
+                  "build_ms": 9.563334053382277,
+                  "query_ms": 3.2979579409584403,
                   "nodes": 1459,
                   "max_depth": 3
                 },
                 {
-                  "alpha": 0.7,
+                  "alpha": 0.9,
                   "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 17.733291984768584,
-                  "query_ms": 4.634458018699661,
-                  "nodes": 3343,
-                  "max_depth": 3
-                },
-                {
-                  "alpha": 0.9,
-                  "max_leaf": 128,
-                  "exact_match": 1.0,
-                  "build_ms": 8.138207980664447,
-                  "query_ms": 4.662583000026643,
+                  "build_ms": 8.86541698127985,
+                  "query_ms": 4.403249942697585,
                   "nodes": 1665,
                   "max_depth": 2
+                },
+                {
+                  "alpha": 0.7,
+                  "max_leaf": 64,
+                  "exact_match": 1.0,
+                  "build_ms": 17.596791964024305,
+                  "query_ms": 4.55733307171613,
+                  "nodes": 3351,
+                  "max_depth": 3
                 }
               ]
             }
@@ -115,8 +164,8 @@
           }
         },
         "uniform_grid": {
-          "build_ms": 12.754499999573454,
-          "query_ms": 3.243250015657395,
+          "build_ms": 12.890083016827703,
+          "query_ms": 3.280541975982487,
           "summary": {
             "points": 50000,
             "nodes": 256,
@@ -135,8 +184,8 @@
           }
         },
         "kd_tree": {
-          "build_ms": 39.28016699501313,
-          "query_ms": 11.892167007317767,
+          "build_ms": 34.37470807693899,
+          "query_ms": 13.68833298329264,
           "summary": {
             "points": 50000,
             "nodes": 3743,
@@ -164,6 +213,54 @@
             "mean_abs_error": 0.0,
             "exact_match_rate": 1.0
           }
+        },
+        "rdt_cython": {
+          "build_ms": 5.027125007472932,
+          "query_ms": 0.7444169605150819,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 1025,
+            "leaves": 1024,
+            "max_depth": 1,
+            "leaf_size_mean": 48.828125,
+            "leaf_size_cv": 0.14348530238320578,
+            "depth_hist": {
+              "0": 1,
+              "1": 1024
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 1024
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
+        "rdt_c": {
+          "build_ms": 5.4446670692414045,
+          "query_ms": 0.4610419273376465,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 1025,
+            "leaves": 1024,
+            "max_depth": 1,
+            "leaf_size_mean": 48.828125,
+            "leaf_size_cv": 0.14348530238320578,
+            "depth_hist": {
+              "0": 1,
+              "1": 1024
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 1024
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
         }
       }
     },
@@ -173,8 +270,8 @@
       "radius": 40.0,
       "systems": {
         "rdt": {
-          "build_ms": 28.409833001205698,
-          "query_ms": 153.02445899578743,
+          "build_ms": 26.911875000223517,
+          "query_ms": 152.7864580275491,
           "summary": {
             "built": true,
             "points": 50000,
@@ -195,9 +292,60 @@
             "exact_match_rate": 1.0
           }
         },
+        "rdt_fast": {
+          "build_ms": 35.62329197302461,
+          "query_ms": 104.1312919696793,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 18689,
+            "leaves": 18564,
+            "max_depth": 2,
+            "leaf_size_mean": 2.693385046326223,
+            "leaf_size_cv": 1.3840475367558729,
+            "depth_hist": {
+              "0": 1,
+              "1": 402,
+              "2": 18286
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 18564
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
+        "rdt_entropy": {
+          "build_ms": 37.43262495845556,
+          "query_ms": 104.29633304011077,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 18689,
+            "leaves": 18564,
+            "max_depth": 2,
+            "leaf_size_mean": 2.693385046326223,
+            "leaf_size_cv": 1.3840475367558729,
+            "depth_hist": {
+              "0": 1,
+              "1": 402,
+              "2": 18286
+            },
+            "index_variant": "EntropyRDTIndex",
+            "cached_leaves": 18564,
+            "entropy_weight": 0.5
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
         "rdt_optimized": {
-          "build_ms": 11.053792026359588,
-          "query_ms": 14.405540976440534,
+          "build_ms": 11.232999968342483,
+          "query_ms": 14.131041010841727,
           "summary": {
             "built": true,
             "points": 50000,
@@ -221,8 +369,8 @@
                 "alpha": 0.7,
                 "max_leaf": 128,
                 "exact_match": 1.0,
-                "build_ms": 10.932999983197078,
-                "query_ms": 3.2983330020215362,
+                "build_ms": 11.515417019836605,
+                "query_ms": 3.344791941344738,
                 "nodes": 1448,
                 "max_depth": 4
               },
@@ -232,8 +380,8 @@
                   "alpha": 0.7,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 10.932999983197078,
-                  "query_ms": 3.2983330020215362,
+                  "build_ms": 11.515417019836605,
+                  "query_ms": 3.344791941344738,
                   "nodes": 1448,
                   "max_depth": 4
                 },
@@ -241,8 +389,8 @@
                   "alpha": 0.7,
                   "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 14.26066699787043,
-                  "query_ms": 4.149833024712279,
+                  "build_ms": 13.98137491196394,
+                  "query_ms": 4.223625059239566,
                   "nodes": 2125,
                   "max_depth": 4
                 },
@@ -250,8 +398,8 @@
                   "alpha": 0.8,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 10.503625002456829,
-                  "query_ms": 4.5103339944034815,
+                  "build_ms": 10.305166011676192,
+                  "query_ms": 4.85487503465265,
                   "nodes": 1656,
                   "max_depth": 3
                 },
@@ -259,8 +407,8 @@
                   "alpha": 0.8,
                   "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 11.092625005403534,
-                  "query_ms": 4.690790985478088,
+                  "build_ms": 10.953583987429738,
+                  "query_ms": 5.191540927626193,
                   "nodes": 1845,
                   "max_depth": 3
                 },
@@ -268,8 +416,8 @@
                   "alpha": 0.7,
                   "max_leaf": 64,
                   "exact_match": 1.0,
-                  "build_ms": 17.724165983963758,
-                  "query_ms": 4.935709002893418,
+                  "build_ms": 18.014792003668845,
+                  "query_ms": 5.351541098207235,
                   "nodes": 2840,
                   "max_depth": 4
                 }
@@ -283,8 +431,8 @@
           }
         },
         "uniform_grid": {
-          "build_ms": 12.818832998163998,
-          "query_ms": 3.7468750088009983,
+          "build_ms": 12.463417020626366,
+          "query_ms": 3.657582914456725,
           "summary": {
             "points": 50000,
             "nodes": 256,
@@ -303,8 +451,8 @@
           }
         },
         "kd_tree": {
-          "build_ms": 36.50858401670121,
-          "query_ms": 18.57191600720398,
+          "build_ms": 32.070624991320074,
+          "query_ms": 18.11924995854497,
           "summary": {
             "points": 50000,
             "nodes": 3743,
@@ -332,6 +480,56 @@
             "mean_abs_error": 0.0,
             "exact_match_rate": 1.0
           }
+        },
+        "rdt_cython": {
+          "build_ms": 34.251625067554414,
+          "query_ms": 6.729834014549851,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 18689,
+            "leaves": 18564,
+            "max_depth": 2,
+            "leaf_size_mean": 2.693385046326223,
+            "leaf_size_cv": 1.3840475367558729,
+            "depth_hist": {
+              "0": 1,
+              "1": 402,
+              "2": 18286
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 18564
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
+        "rdt_c": {
+          "build_ms": 40.972915943711996,
+          "query_ms": 5.1345000974833965,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 18689,
+            "leaves": 18564,
+            "max_depth": 2,
+            "leaf_size_mean": 2.693385046326223,
+            "leaf_size_cv": 1.3840475367558729,
+            "depth_hist": {
+              "0": 1,
+              "1": 402,
+              "2": 18286
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 18564
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
         }
       }
     },
@@ -341,8 +539,8 @@
       "radius": 20.0,
       "systems": {
         "rdt": {
-          "build_ms": 7.669832993997261,
-          "query_ms": 131.61645899526775,
+          "build_ms": 8.312540943734348,
+          "query_ms": 129.33925003744662,
           "summary": {
             "built": true,
             "points": 50000,
@@ -363,9 +561,60 @@
             "exact_match_rate": 1.0
           }
         },
+        "rdt_fast": {
+          "build_ms": 8.372958051040769,
+          "query_ms": 106.3483749749139,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 3531,
+            "leaves": 3466,
+            "max_depth": 2,
+            "leaf_size_mean": 14.425851125216388,
+            "leaf_size_cv": 0.8153035017709662,
+            "depth_hist": {
+              "0": 1,
+              "1": 64,
+              "2": 3466
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 3466
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
+        "rdt_entropy": {
+          "build_ms": 11.385333957150578,
+          "query_ms": 114.33058301918209,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 3886,
+            "leaves": 3821,
+            "max_depth": 2,
+            "leaf_size_mean": 13.08557969118032,
+            "leaf_size_cv": 0.8067201056128451,
+            "depth_hist": {
+              "0": 1,
+              "1": 64,
+              "2": 3821
+            },
+            "index_variant": "EntropyRDTIndex",
+            "cached_leaves": 3821,
+            "entropy_weight": 0.5
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
         "rdt_optimized": {
-          "build_ms": 6.3085409929044545,
-          "query_ms": 39.94929199689068,
+          "build_ms": 10.882541071623564,
+          "query_ms": 43.096208944916725,
           "summary": {
             "built": true,
             "points": 50000,
@@ -388,8 +637,8 @@
                 "alpha": 0.9,
                 "max_leaf": 128,
                 "exact_match": 1.0,
-                "build_ms": 6.044999987352639,
-                "query_ms": 9.70766699174419,
+                "build_ms": 6.049915915355086,
+                "query_ms": 9.842250030487776,
                 "nodes": 1067,
                 "max_depth": 3
               },
@@ -399,8 +648,8 @@
                   "alpha": 0.9,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 6.044999987352639,
-                  "query_ms": 9.70766699174419,
+                  "build_ms": 6.049915915355086,
+                  "query_ms": 9.842250030487776,
                   "nodes": 1067,
                   "max_depth": 3
                 },
@@ -408,8 +657,8 @@
                   "alpha": 1.0,
                   "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 7.767125003738329,
-                  "query_ms": 14.757625001948327,
+                  "build_ms": 7.684041978791356,
+                  "query_ms": 14.262625016272068,
                   "nodes": 1745,
                   "max_depth": 3
                 },
@@ -417,26 +666,26 @@
                   "alpha": 1.0,
                   "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 7.268667017342523,
-                  "query_ms": 14.779499993892387,
+                  "build_ms": 7.19887507148087,
+                  "query_ms": 14.473957940936089,
                   "nodes": 1745,
                   "max_depth": 3
                 },
                 {
                   "alpha": 0.8,
-                  "max_leaf": 128,
+                  "max_leaf": 96,
                   "exact_match": 1.0,
-                  "build_ms": 10.716916003730148,
-                  "query_ms": 15.276458987500519,
+                  "build_ms": 10.95066696871072,
+                  "query_ms": 15.692958026193082,
                   "nodes": 1986,
                   "max_depth": 4
                 },
                 {
                   "alpha": 0.8,
-                  "max_leaf": 96,
+                  "max_leaf": 128,
                   "exact_match": 1.0,
-                  "build_ms": 10.225707985227928,
-                  "query_ms": 15.29137502075173,
+                  "build_ms": 10.568375000730157,
+                  "query_ms": 16.21754199732095,
                   "nodes": 1986,
                   "max_depth": 4
                 }
@@ -450,8 +699,8 @@
           }
         },
         "uniform_grid": {
-          "build_ms": 12.384959001792595,
-          "query_ms": 6.543916009832174,
+          "build_ms": 12.613583006896079,
+          "query_ms": 7.116292021237314,
           "summary": {
             "points": 50000,
             "nodes": 256,
@@ -470,8 +719,8 @@
           }
         },
         "kd_tree": {
-          "build_ms": 19.066582986852154,
-          "query_ms": 71.80079200770706,
+          "build_ms": 18.14179099164903,
+          "query_ms": 70.36254194099456,
           "summary": {
             "points": 50000,
             "nodes": 3743,
@@ -493,6 +742,56 @@
               "10": 1024,
               "11": 1696
             }
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
+        "rdt_cython": {
+          "build_ms": 8.625917020253837,
+          "query_ms": 2.2714579245075583,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 3531,
+            "leaves": 3466,
+            "max_depth": 2,
+            "leaf_size_mean": 14.425851125216388,
+            "leaf_size_cv": 0.8153035017709662,
+            "depth_hist": {
+              "0": 1,
+              "1": 64,
+              "2": 3466
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 3466
+          },
+          "errors": {
+            "max_abs_error": 0,
+            "mean_abs_error": 0.0,
+            "exact_match_rate": 1.0
+          }
+        },
+        "rdt_c": {
+          "build_ms": 8.354291901923716,
+          "query_ms": 1.6098330961540341,
+          "summary": {
+            "built": true,
+            "points": 50000,
+            "nodes": 3531,
+            "leaves": 3466,
+            "max_depth": 2,
+            "leaf_size_mean": 14.425851125216388,
+            "leaf_size_cv": 0.8153035017709662,
+            "depth_hist": {
+              "0": 1,
+              "1": 64,
+              "2": 3466
+            },
+            "index_variant": "RDTFastIndex",
+            "cached_leaves": 3466
           },
           "errors": {
             "max_abs_error": 0,

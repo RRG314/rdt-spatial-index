@@ -1,4 +1,16 @@
 include README.md
 include LICENSE
+include CHANGELOG.md
+include CITATION.cff
+include DOCUMENTATION_INDEX.md
 include requirements.txt
+include requirements-bench.txt
+include requirements-bench-full.txt
+include requirements-accel.txt
+include pyproject.toml
+recursive-include rdt_spatial_index *.c *.pyx
 recursive-include examples *.py
+recursive-include benchmarks *.py
+recursive-include tests *.py
+recursive-include publication *.md *.json *.csv *.png *.pdf *.npy
+recursive-include legacy *.md *.py *.docx

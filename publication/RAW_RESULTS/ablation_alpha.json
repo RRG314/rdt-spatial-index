@@ -1,0 +1,218 @@
+[
+  {
+    "dataset": "uniform",
+    "alpha": 0.5,
+    "max_leaf": 48,
+    "query_mean_ms": 36.74688233877532
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 0.5,
+    "max_leaf": 96,
+    "query_mean_ms": 18.16470134266031
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 0.5,
+    "max_leaf": 128,
+    "query_mean_ms": 14.967260338986913
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 0.7,
+    "max_leaf": 48,
+    "query_mean_ms": 42.495648007995136
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 0.7,
+    "max_leaf": 96,
+    "query_mean_ms": 43.503009005992986
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 0.7,
+    "max_leaf": 128,
+    "query_mean_ms": 27.22186434160297
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 0.9,
+    "max_leaf": 48,
+    "query_mean_ms": 27.910076663829386
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 0.9,
+    "max_leaf": 96,
+    "query_mean_ms": 27.79873100613865
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 0.9,
+    "max_leaf": 128,
+    "query_mean_ms": 27.555665340817843
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.1,
+    "max_leaf": 48,
+    "query_mean_ms": 77.84316066924173
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.1,
+    "max_leaf": 96,
+    "query_mean_ms": 79.07565665664151
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.1,
+    "max_leaf": 128,
+    "query_mean_ms": 76.64257967068504
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.3,
+    "max_leaf": 48,
+    "query_mean_ms": 224.07087699199715
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.3,
+    "max_leaf": 96,
+    "query_mean_ms": 178.10922233426632
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.3,
+    "max_leaf": 128,
+    "query_mean_ms": 15.798872996432086
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.5,
+    "max_leaf": 48,
+    "query_mean_ms": 200.6653449983181
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.5,
+    "max_leaf": 96,
+    "query_mean_ms": 20.317114326947678
+  },
+  {
+    "dataset": "uniform",
+    "alpha": 1.5,
+    "max_leaf": 128,
+    "query_mean_ms": 20.421987671094637
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.5,
+    "max_leaf": 48,
+    "query_mean_ms": 40.960931995262705
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.5,
+    "max_leaf": 96,
+    "query_mean_ms": 24.172489987298224
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.5,
+    "max_leaf": 128,
+    "query_mean_ms": 20.95266032847576
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.7,
+    "max_leaf": 48,
+    "query_mean_ms": 44.82118233378666
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.7,
+    "max_leaf": 96,
+    "query_mean_ms": 61.92975866724737
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.7,
+    "max_leaf": 128,
+    "query_mean_ms": 29.599940336386982
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.9,
+    "max_leaf": 48,
+    "query_mean_ms": 70.74532767486137
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.9,
+    "max_leaf": 96,
+    "query_mean_ms": 56.875927664805204
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 0.9,
+    "max_leaf": 128,
+    "query_mean_ms": 49.16517567471601
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.1,
+    "max_leaf": 48,
+    "query_mean_ms": 73.91472666252714
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.1,
+    "max_leaf": 96,
+    "query_mean_ms": 43.97820799689119
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.1,
+    "max_leaf": 128,
+    "query_mean_ms": 45.75862700585276
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.3,
+    "max_leaf": 48,
+    "query_mean_ms": 132.318186321451
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.3,
+    "max_leaf": 96,
+    "query_mean_ms": 125.12069167375255
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.3,
+    "max_leaf": 128,
+    "query_mean_ms": 120.76075333364618
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.5,
+    "max_leaf": 48,
+    "query_mean_ms": 287.91655200378347
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.5,
+    "max_leaf": 96,
+    "query_mean_ms": 262.41770466246334
+  },
+  {
+    "dataset": "clustered",
+    "alpha": 1.5,
+    "max_leaf": 128,
+    "query_mean_ms": 242.4878333307182
+  }
+]
