@@ -44,6 +44,22 @@ pip install -e ".[accel]"      # optional acceleration dependencies
 pip install -e ".[bench_full]" # includes rtree (needs libspatialindex on many systems)
 ```
 
+## Node.js Package
+
+A publishable npm package is included at `packages/rdt-spatial-index`.
+
+```bash
+cd packages/rdt-spatial-index
+npm install
+npm test
+```
+
+Target package name:
+
+```text
+@rrg314/rdt-spatial-index
+```
+
 ## Quick Start
 
 ```python

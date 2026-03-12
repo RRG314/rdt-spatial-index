@@ -6,6 +6,7 @@
 |---|---|---|---|
 | Reference 2D | `RDTIndex` | Maintained | Ground truth/reference behavior |
 | Fast Python 2D | `RDTFastIndex` | Maintained (recommended default) | Practical CPU use without compiled build |
+| Fast Node.js 2D | `RDTFastIndex` (`@rrg314/rdt-spatial-index`) | Maintained | JavaScript/Node integration path |
 | Auto-tuned 2D | `RDTOptimizedIndex` | Maintained | Parameter search for a target workload |
 | N-dimensional | `RDTNdIndex` | Maintained (advanced) | Higher-dimensional research experiments |
 | Entropy-adaptive | `EntropyRDTIndex` | Maintained (advanced) | Structured-density experiments |
@@ -30,6 +31,9 @@
 - `RDTFastIndex`
   - Same RDT tree logic with faster query strategy in Python.
   - Recommended default implementation.
+- `@rrg314/rdt-spatial-index` (`packages/rdt-spatial-index/`)
+  - JavaScript/Node implementation path with reference + fast variants.
+  - Intended for Node ecosystems; compiled Python backends are separate.
 - `RDTOptimizedIndex`
   - Parameter-tuned variant built on the same core behavior.
 - `RDTCIndex` / `RDTCythonIndex` / `RDTNumbaIndex`

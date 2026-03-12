@@ -12,6 +12,7 @@ This index is the fastest way to navigate the repository as a new visitor.
 
 - [README.md](README.md#install)
 - [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md#compiled-implementations)
+- [packages/rdt-spatial-index/README.md](packages/rdt-spatial-index/README.md): Node.js/npm package usage.
 
 ## Testing
 

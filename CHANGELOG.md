@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- Node.js/npm package scaffold at `packages/rdt-spatial-index`:
+  - `RDTIndex` and `RDTFastIndex` JavaScript implementations,
+  - TypeScript type definitions,
+  - CLI (`rdt-spatial-index`) for smoke and JSON query workflows,
+  - package-level test suite.
+- Cross-platform CI job for npm package install/test/pack checks.
+
+### Changed
+- Top-level docs now link to npm package usage and integration path.
+- Contributing guide now includes npm package validation steps.
+
 ## 0.1.0 - 2026-03-12
 
 ### Added

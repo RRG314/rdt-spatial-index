@@ -26,11 +26,17 @@ pip install -e ".[bench]"
    ```bash
    python3 tests/run_tests.py
    ```
-2. Run publication correctness suite when touching algorithms:
+2. If JavaScript package files were changed, run npm package tests:
+   ```bash
+   cd packages/rdt-spatial-index
+   npm ci
+   npm test
+   ```
+3. Run publication correctness suite when touching algorithms:
    ```bash
    python3 tests/test_pub_correctness.py
    ```
-3. If benchmark logic changed, regenerate and inspect benchmark outputs:
+4. If benchmark logic changed, regenerate and inspect benchmark outputs:
    ```bash
    python3 benchmarks/compare_indexes.py --n 50000
    ```

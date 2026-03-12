@@ -39,6 +39,10 @@ ENV/
 .coverage
 htmlcov/
 
+# Node.js
+node_modules/
+*.tgz
+
 # OS
 .DS_Store
 Thumbs.db

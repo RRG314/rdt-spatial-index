@@ -1,0 +1,41 @@
+{
+  "name": "@rrg314/rdt-spatial-index",
+  "version": "0.1.0",
+  "description": "RDT Spatial Index for Node.js: reference and fast 2D adaptive spatial indexing",
+  "main": "./src/index.cjs",
+  "types": "./index.d.ts",
+  "bin": {
+    "rdt-spatial-index": "./src/cli.cjs"
+  },
+  "files": [
+    "src",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "smoke": "node ./src/cli.cjs smoke",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "spatial-index",
+    "radius-query",
+    "adaptive-grid",
+    "rdt",
+    "research"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RRG314/rdt-spatial-index.git",
+    "directory": "packages/rdt-spatial-index"
+  },
+  "bugs": {
+    "url": "https://github.com/RRG314/rdt-spatial-index/issues"
+  },
+  "homepage": "https://github.com/RRG314/rdt-spatial-index/tree/main/packages/rdt-spatial-index"
+}
