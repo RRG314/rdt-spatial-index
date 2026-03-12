@@ -1,11 +1,11 @@
 {
-  "name": "@rrg314/rdt-spatial-index",
+  "name": "@sreid90/rdt-spatial-index",
   "version": "0.1.0",
   "description": "RDT Spatial Index for Node.js: reference and fast 2D adaptive spatial indexing",
   "main": "./src/index.cjs",
   "types": "./index.d.ts",
   "bin": {
-    "rdt-spatial-index": "./src/cli.cjs"
+    "rdt-spatial-index": "src/cli.cjs"
   },
   "files": [
     "src",

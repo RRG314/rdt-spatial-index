@@ -1,4 +1,4 @@
-# @rrg314/rdt-spatial-index
+# @sreid90/rdt-spatial-index
 
 Node.js package for RDT Spatial Index (2D radius queries).
 
@@ -11,13 +11,13 @@ This package provides:
 ## Install
 
 ```bash
-npm install @rrg314/rdt-spatial-index
+npm install @sreid90/rdt-spatial-index
 ```
 
 ## API Quick Start
 
 ```js
-const { RDTFastIndex } = require("@rrg314/rdt-spatial-index");
+const { RDTFastIndex } = require("@sreid90/rdt-spatial-index");
 
 const points = [
   [0, 0],
@@ -40,13 +40,13 @@ console.log(Array.from(counts));
 Smoke check:
 
 ```bash
-npx @rrg314/rdt-spatial-index smoke
+npx @sreid90/rdt-spatial-index smoke
 ```
 
 Run query from JSON files:
 
 ```bash
-npx @rrg314/rdt-spatial-index query \
+npx @sreid90/rdt-spatial-index query \
   --points points.json \
   --queries queries.json \
   --radius 30 \

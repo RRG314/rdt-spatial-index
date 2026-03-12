@@ -57,7 +57,7 @@ npm test
 Target package name:
 
 ```text
-@rrg314/rdt-spatial-index
+@sreid90/rdt-spatial-index
 ```
 
 ## Quick Start
