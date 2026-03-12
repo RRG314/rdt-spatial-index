@@ -62,6 +62,19 @@ rdt_query_c(PyObject *self, PyObject *args)
         &r2))
         return NULL;
 
+    if (PyArray_TYPE(aqx) != NPY_FLOAT64 || PyArray_TYPE(aqy) != NPY_FLOAT64 ||
+        PyArray_TYPE(alx0) != NPY_FLOAT64 || PyArray_TYPE(aly0) != NPY_FLOAT64 ||
+        PyArray_TYPE(alx1) != NPY_FLOAT64 || PyArray_TYPE(aly1) != NPY_FLOAT64 ||
+        PyArray_TYPE(apx) != NPY_FLOAT64 || PyArray_TYPE(apy) != NPY_FLOAT64) {
+        PyErr_SetString(PyExc_TypeError, "qx/qy/leaf bounds/px/py must be float64 arrays");
+        return NULL;
+    }
+    if (PyArray_TYPE(alstart) != NPY_INT64 || PyArray_TYPE(alend) != NPY_INT64 ||
+        PyArray_TYPE(aorder) != NPY_INT64) {
+        PyErr_SetString(PyExc_TypeError, "leaf_start/leaf_end/order must be int64 arrays");
+        return NULL;
+    }
+
     /* Raw C pointer access — zero Python overhead in hot loop */
     const double *qx       = (const double *)PyArray_DATA(aqx);
     const double *qy       = (const double *)PyArray_DATA(aqy);
@@ -69,9 +82,9 @@ rdt_query_c(PyObject *self, PyObject *args)
     const double *leaf_y0  = (const double *)PyArray_DATA(aly0);
     const double *leaf_x1  = (const double *)PyArray_DATA(alx1);
     const double *leaf_y1  = (const double *)PyArray_DATA(aly1);
-    const long   *l_start  = (const long   *)PyArray_DATA(alstart);
-    const long   *l_end    = (const long   *)PyArray_DATA(alend);
-    const long   *order    = (const long   *)PyArray_DATA(aorder);
+    const npy_int64 *l_start = (const npy_int64 *)PyArray_DATA(alstart);
+    const npy_int64 *l_end   = (const npy_int64 *)PyArray_DATA(alend);
+    const npy_int64 *order   = (const npy_int64 *)PyArray_DATA(aorder);
     const double *px       = (const double *)PyArray_DATA(apx);
     const double *py       = (const double *)PyArray_DATA(apy);
 
@@ -107,10 +120,10 @@ rdt_query_c(PyObject *self, PyObject *args)
             if (dx*dx + dy*dy > r2) continue;
 
             /* Exact point check inside this leaf */
-            long s = l_start[li];
-            long e = l_end[li];
-            for (long j = s; j < e; j++) {
-                long idx = order[j];
+            npy_int64 s = l_start[li];
+            npy_int64 e = l_end[li];
+            for (npy_int64 j = s; j < e; j++) {
+                npy_int64 idx = order[j];
                 double pdx = px[idx] - qxi;
                 double pdy = py[idx] - qyi;
                 if (pdx*pdx + pdy*pdy <= r2) hits++;
