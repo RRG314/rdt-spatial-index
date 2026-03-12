@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/RRG314/rdt-spatial-index/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/RRG314/rdt-spatial-index/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/RRG314/rdt-spatial-index?display_name=tag)](https://github.com/RRG314/rdt-spatial-index/releases)
+[![npm version](https://img.shields.io/npm/v/%40sreid90%2Frdt-spatial-index)](https://www.npmjs.com/package/@sreid90/rdt-spatial-index)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](setup.py)
 
