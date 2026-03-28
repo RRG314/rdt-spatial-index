@@ -1,0 +1,842 @@
+{
+  "timestamp": "2026-03-12 09:48:54",
+  "test_cases": [
+    {
+      "size": 1000,
+      "distribution": "uniform",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "uniform",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "uniform",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "clustered",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "clustered",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "clustered",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "shell",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "shell",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "shell",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "uniform",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "uniform",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "uniform",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "clustered",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "clustered",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "clustered",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "shell",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "shell",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 5000,
+      "distribution": "shell",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "uniform",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "uniform",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "uniform",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "clustered",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "clustered",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "clustered",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "shell",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "shell",
+      "radius": 25,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 10000,
+      "distribution": "shell",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "scipy-KDTree",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-C",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

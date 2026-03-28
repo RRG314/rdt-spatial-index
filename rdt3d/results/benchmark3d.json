@@ -1,0 +1,380 @@
+{
+  "timestamp": "2026-03-12 01:55:32",
+  "parameters": {
+    "scales": [
+      10000,
+      50000,
+      100000
+    ],
+    "distributions": [
+      "uniform",
+      "clustered",
+      "shell"
+    ],
+    "radius": 30,
+    "n_queries": 100,
+    "n_reps": 3
+  },
+  "benchmarks": [
+    {
+      "scale": 10000,
+      "distribution": "uniform",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 2.8331153347001723,
+      "build_std_ms": 1.2599110471632033,
+      "query_mean_ms": 67.91030099460234,
+      "query_std_ms": 2.349394403840694,
+      "mean_hits": 1.2
+    },
+    {
+      "scale": 10000,
+      "distribution": "uniform",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 3.5193496732972562,
+      "build_std_ms": 2.192971605439727,
+      "query_mean_ms": 3.5198500069479146,
+      "query_std_ms": 0.27634122832770847,
+      "mean_hits": 1.2
+    },
+    {
+      "scale": 10000,
+      "distribution": "uniform",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 2.288058332245176,
+      "build_std_ms": 0.11917487494433725,
+      "query_mean_ms": 0.6237776639560858,
+      "query_std_ms": 0.03198157812622332,
+      "mean_hits": 1.2
+    },
+    {
+      "scale": 10000,
+      "distribution": "uniform",
+      "method": "UniformGrid",
+      "build_mean_ms": 6.011584327400972,
+      "build_std_ms": 0.33460696060771494,
+      "query_mean_ms": 1.9041646737605333,
+      "query_std_ms": 0.03274130845712195,
+      "mean_hits": 1.2
+    },
+    {
+      "scale": 10000,
+      "distribution": "clustered",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 8.64312100263002,
+      "build_std_ms": 0.3864419317808953,
+      "query_mean_ms": 16.64629831793718,
+      "query_std_ms": 0.06175145948087734,
+      "mean_hits": 3.78
+    },
+    {
+      "scale": 10000,
+      "distribution": "clustered",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 9.693666002325093,
+      "build_std_ms": 0.0439412899576211,
+      "query_mean_ms": 4.597866995027289,
+      "query_std_ms": 0.030159549341833524,
+      "mean_hits": 3.78
+    },
+    {
+      "scale": 10000,
+      "distribution": "clustered",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 2.210643326786036,
+      "build_std_ms": 0.11978413495841675,
+      "query_mean_ms": 0.6040833347166578,
+      "query_std_ms": 0.016976914724434713,
+      "mean_hits": 3.78
+    },
+    {
+      "scale": 10000,
+      "distribution": "clustered",
+      "method": "UniformGrid",
+      "build_mean_ms": 5.686730321031064,
+      "build_std_ms": 0.11921799699120368,
+      "query_mean_ms": 1.076835993444547,
+      "query_std_ms": 0.022456088798874247,
+      "mean_hits": 3.78
+    },
+    {
+      "scale": 10000,
+      "distribution": "shell",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 12.91077266796492,
+      "build_std_ms": 2.83921478266372,
+      "query_mean_ms": 31.86950365973947,
+      "query_std_ms": 0.04639259625830788,
+      "mean_hits": 0.83
+    },
+    {
+      "scale": 10000,
+      "distribution": "shell",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 13.231668330263346,
+      "build_std_ms": 0.2842101545141273,
+      "query_mean_ms": 4.41630066294844,
+      "query_std_ms": 0.03975711904329094,
+      "mean_hits": 0.83
+    },
+    {
+      "scale": 10000,
+      "distribution": "shell",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 2.360640006372705,
+      "build_std_ms": 0.13568287350457517,
+      "query_mean_ms": 0.6074583410130193,
+      "query_std_ms": 0.009913299419583538,
+      "mean_hits": 0.83
+    },
+    {
+      "scale": 10000,
+      "distribution": "shell",
+      "method": "UniformGrid",
+      "build_mean_ms": 5.73838201429074,
+      "build_std_ms": 0.03401592657483676,
+      "query_mean_ms": 1.410912343999371,
+      "query_std_ms": 0.014039122412722618,
+      "mean_hits": 0.83
+    },
+    {
+      "scale": 50000,
+      "distribution": "uniform",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 118.15900867804885,
+      "build_std_ms": 4.09324686328694,
+      "query_mean_ms": 102.49154900278275,
+      "query_std_ms": 3.974932670927373,
+      "mean_hits": 5.67
+    },
+    {
+      "scale": 50000,
+      "distribution": "uniform",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 149.208725662902,
+      "build_std_ms": 4.664928578935858,
+      "query_mean_ms": 31.203963667697582,
+      "query_std_ms": 0.5457480697510128,
+      "mean_hits": 5.67
+    },
+    {
+      "scale": 50000,
+      "distribution": "uniform",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 16.509315338529024,
+      "build_std_ms": 1.7929764385343712,
+      "query_mean_ms": 0.7688016727721939,
+      "query_std_ms": 0.030415080711278245,
+      "mean_hits": 5.67
+    },
+    {
+      "scale": 50000,
+      "distribution": "uniform",
+      "method": "UniformGrid",
+      "build_mean_ms": 29.41521333802181,
+      "build_std_ms": 0.09514260292374146,
+      "query_mean_ms": 2.065702671340356,
+      "query_std_ms": 0.00783226183624542,
+      "mean_hits": 5.67
+    },
+    {
+      "scale": 50000,
+      "distribution": "clustered",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 20.762828333924215,
+      "build_std_ms": 0.38755501861755154,
+      "query_mean_ms": 21.482548327185214,
+      "query_std_ms": 2.5208279268463065,
+      "mean_hits": 6.74
+    },
+    {
+      "scale": 50000,
+      "distribution": "clustered",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 26.60780566899727,
+      "build_std_ms": 2.7560816335472205,
+      "query_mean_ms": 6.2738003228635835,
+      "query_std_ms": 0.05952733038543242,
+      "mean_hits": 6.74
+    },
+    {
+      "scale": 50000,
+      "distribution": "clustered",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 13.836042994322876,
+      "build_std_ms": 0.3300506580682197,
+      "query_mean_ms": 0.7121780072338879,
+      "query_std_ms": 0.054599044995747525,
+      "mean_hits": 6.74
+    },
+    {
+      "scale": 50000,
+      "distribution": "clustered",
+      "method": "UniformGrid",
+      "build_mean_ms": 28.023717342875898,
+      "build_std_ms": 0.13779246021425506,
+      "query_mean_ms": 1.0547400161158293,
+      "query_std_ms": 0.025035072899481266,
+      "mean_hits": 6.74
+    },
+    {
+      "scale": 50000,
+      "distribution": "shell",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 55.24371734160619,
+      "build_std_ms": 3.964235752343969,
+      "query_mean_ms": 46.286562321862824,
+      "query_std_ms": 1.7625717702179662,
+      "mean_hits": 5.44
+    },
+    {
+      "scale": 50000,
+      "distribution": "shell",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 62.526327334732436,
+      "build_std_ms": 3.0936967577575616,
+      "query_mean_ms": 13.617729331599548,
+      "query_std_ms": 0.13767863993358734,
+      "mean_hits": 5.44
+    },
+    {
+      "scale": 50000,
+      "distribution": "shell",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 14.8912556663466,
+      "build_std_ms": 0.8927278289078463,
+      "query_mean_ms": 0.8277170030244937,
+      "query_std_ms": 0.16141412917870562,
+      "mean_hits": 5.44
+    },
+    {
+      "scale": 50000,
+      "distribution": "shell",
+      "method": "UniformGrid",
+      "build_mean_ms": 28.8826280060069,
+      "build_std_ms": 0.16939946710989537,
+      "query_mean_ms": 1.8233743321616203,
+      "query_std_ms": 0.008273024873423056,
+      "mean_hits": 5.44
+    },
+    {
+      "scale": 100000,
+      "distribution": "uniform",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 231.6934013312372,
+      "build_std_ms": 11.492498328170658,
+      "query_mean_ms": 128.83627699920908,
+      "query_std_ms": 0.34009659112360197,
+      "mean_hits": 10.14
+    },
+    {
+      "scale": 100000,
+      "distribution": "uniform",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 285.2064223358563,
+      "build_std_ms": 19.49866431319098,
+      "query_mean_ms": 53.58306099272644,
+      "query_std_ms": 0.8039226693939292,
+      "mean_hits": 10.14
+    },
+    {
+      "scale": 100000,
+      "distribution": "uniform",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 34.3976543226745,
+      "build_std_ms": 3.357130119037798,
+      "query_mean_ms": 0.8409253399198254,
+      "query_std_ms": 0.013078335784841733,
+      "mean_hits": 10.14
+    },
+    {
+      "scale": 100000,
+      "distribution": "uniform",
+      "method": "UniformGrid",
+      "build_mean_ms": 59.07089333049953,
+      "build_std_ms": 0.6962331355164095,
+      "query_mean_ms": 2.7376176537169763,
+      "query_std_ms": 0.014940078548178552,
+      "mean_hits": 10.14
+    },
+    {
+      "scale": 100000,
+      "distribution": "clustered",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 54.30023900892896,
+      "build_std_ms": 3.291269481536325,
+      "query_mean_ms": 32.10406799917109,
+      "query_std_ms": 0.10119595608300791,
+      "mean_hits": 33.21
+    },
+    {
+      "scale": 100000,
+      "distribution": "clustered",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 65.47139933293995,
+      "build_std_ms": 3.416442824079456,
+      "query_mean_ms": 17.137439999108512,
+      "query_std_ms": 0.09442291292623148,
+      "mean_hits": 33.21
+    },
+    {
+      "scale": 100000,
+      "distribution": "clustered",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 29.312312670905765,
+      "build_std_ms": 0.6660177437945533,
+      "query_mean_ms": 0.852731008005018,
+      "query_std_ms": 0.011555583946245434,
+      "mean_hits": 33.21
+    },
+    {
+      "scale": 100000,
+      "distribution": "clustered",
+      "method": "UniformGrid",
+      "build_mean_ms": 56.63401932300379,
+      "build_std_ms": 0.30658010074302544,
+      "query_mean_ms": 1.831208016180123,
+      "query_std_ms": 0.008132964511063401,
+      "mean_hits": 33.21
+    },
+    {
+      "scale": 100000,
+      "distribution": "shell",
+      "method": "RDT3D-Python",
+      "build_mean_ms": 75.67488733911887,
+      "build_std_ms": 2.625518593525039,
+      "query_mean_ms": 59.57238201517612,
+      "query_std_ms": 1.389951439194875,
+      "mean_hits": 9.14
+    },
+    {
+      "scale": 100000,
+      "distribution": "shell",
+      "method": "RDT3D-Vectorized",
+      "build_mean_ms": 92.63580365222879,
+      "build_std_ms": 0.3673746817048905,
+      "query_mean_ms": 16.655951001060505,
+      "query_std_ms": 0.2233328785447342,
+      "mean_hits": 9.14
+    },
+    {
+      "scale": 100000,
+      "distribution": "shell",
+      "method": "scipy-KDTree",
+      "build_mean_ms": 31.49672134895809,
+      "build_std_ms": 1.0196883288485248,
+      "query_mean_ms": 0.8826743384512762,
+      "query_std_ms": 0.09943555136288908,
+      "mean_hits": 9.14
+    },
+    {
+      "scale": 100000,
+      "distribution": "shell",
+      "method": "UniformGrid",
+      "build_mean_ms": 57.00874667187842,
+      "build_std_ms": 0.16507217909197416,
+      "query_mean_ms": 2.1617836706961193,
+      "query_std_ms": 0.01732082685658567,
+      "mean_hits": 9.14
+    }
+  ]
+}

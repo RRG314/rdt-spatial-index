@@ -1,0 +1,170 @@
+{
+  "timestamp": "2026-03-12 01:55:15",
+  "parameters": {
+    "n_points": 50000,
+    "n_queries": 100,
+    "radius": 30
+  },
+  "tests": [
+    {
+      "name": "all_same",
+      "n_points": 50000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 7.6591160031966865,
+          "query_ms": 31.708479014923796,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": 1.7108769970946014,
+          "query_ms": 0.6105689972173423,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "x_axis",
+      "n_points": 50000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 39.47854999569245,
+          "query_ms": 2.5819830188993365,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": 12.164054001914337,
+          "query_ms": 0.5971110076643527,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "xy_plane",
+      "n_points": 50000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 17.4956819973886,
+          "query_ms": 3.692706988658756,
+          "mean_hits": 6.69,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": 14.796075993217528,
+          "query_ms": 0.6516930006910115,
+          "mean_hits": 6.69,
+          "bailed": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "hotspot_extreme",
+      "n_points": 50000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 5.015301983803511,
+          "query_ms": 2.3893199977464974,
+          "mean_hits": 0.01,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": 14.879074995405972,
+          "query_ms": 0.6906920170877129,
+          "mean_hits": 0.01,
+          "bailed": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "random_walk",
+      "n_points": 50000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 21.223845018539578,
+          "query_ms": 4.811098013306037,
+          "mean_hits": 3.8,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": 12.63000100152567,
+          "query_ms": 0.7953149906825274,
+          "mean_hits": 3.8,
+          "bailed": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "large_radius",
+      "n_points": 50000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 149.7306419769302,
+          "query_ms": 7594.903770979727,
+          "mean_hits": 14148.64,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": 23.852785991039127,
+          "query_ms": 27.155251009389758,
+          "mean_hits": 14148.64,
+          "bailed": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "small_radius",
+      "n_points": 50000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 151.31202299380675,
+          "query_ms": 20.983435009839013,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": 18.675737985176966,
+          "query_ms": 0.6429019849747419,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        }
+      }
+    },
+    {
+      "name": "grid_lattice",
+      "n_points": 50000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 166.6876700182911,
+          "query_ms": 35.1566500030458,
+          "mean_hits": 5.11,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": 17.360018013278022,
+          "query_ms": 0.7356500136666,
+          "mean_hits": 5.11,
+          "bailed": false,
+          "error": null
+        }
+      }
+    }
+  ]
+}
