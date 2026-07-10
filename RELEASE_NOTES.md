@@ -2,14 +2,20 @@
 
 ## v0.1.1 (Draft) - 2026-07-10
 
-This draft release is a focused package-quality update for the existing
-`rdt_spatial_index` project. It improves reviewer navigation, strengthens
-3D validation, and keeps the PyPI-facing API limited to implementations with
-clear roles and reproducible evidence.
+This GitHub/source draft release is a focused source-tree update for the
+existing `rdt_spatial_index` project. It improves reviewer navigation,
+strengthens 3D validation, and keeps the public Python API limited to
+implementations with clear roles and reproducible evidence.
+
+Registry status checked 2026-07-10: the Python package is not published on
+PyPI. The scoped npm package `@sreid90/rdt-spatial-index` exists at `0.1.0`,
+but these draft `0.1.1` source changes have not been published to npm.
+These notes are for a future GitHub release/tag and for reviewers using a
+cloned checkout.
 
 ### What This Release Adds
 
-- Node.js/npm package path at `packages/rdt-spatial-index`:
+- Node.js package source updates at `packages/rdt-spatial-index`:
   - JavaScript `RDTIndex` and `RDTFastIndex` implementations,
   - TypeScript definitions,
   - CLI smoke/query workflow,
@@ -25,9 +31,12 @@ clear roles and reproducible evidence.
 
 ### What Is Not Included
 
-- No new phase-index API is included in the PyPI package in this release.
+- No PyPI distribution is published for this release draft.
+- No npm publication for draft `0.1.1` has been performed. The latest npm
+  registry version remains `@sreid90/rdt-spatial-index@0.1.0`.
+- No new phase-index API is included in the public Python API for this draft.
   The local phase-index prototype did not yet meet the usefulness threshold
-  for a package release, so it is intentionally kept out of the public API.
+  for release, so it is intentionally kept out of the public API.
 - No unrelated optimizer or non-spatial-index material is part of this release.
 
 ### Recommended Starting Path
@@ -35,13 +44,19 @@ clear roles and reproducible evidence.
 For Python users:
 
 ```bash
-pip install .
-python tests/run_tests.py
-python tests/ci/verify_core_imports.py
+PYTHONPATH=. python tests/run_tests.py
+PYTHONPATH=. python tests/ci/verify_core_imports.py
 PYTHONPATH=. python tests/test_3d_correctness.py
 ```
 
-For Node.js users:
+Optional local editable setup from a cloned checkout:
+
+```bash
+python -m pip install -e .
+python tests/run_tests.py
+```
+
+For Node.js users validating the current source checkout:
 
 ```bash
 cd packages/rdt-spatial-index
@@ -63,7 +78,9 @@ base validation path.
 
 ### Scope and Limitations
 
-- This remains a spatial-index package release, not a broad research dump.
+- This remains a focused spatial-index source release draft, not a broad
+  research dump, not a PyPI publication, and not yet an npm `0.1.1`
+  publication.
 - The recommended Python path remains `RDTFastIndex` for practical use and
   `RDTIndex` for readable correctness checks.
 - v2-v4 research variants remain included for reproducibility, but should be
@@ -74,7 +91,9 @@ base validation path.
 ### Compatibility
 
 - Python: `3.9+`
-- Package version target: `0.1.1`
+- Source metadata version target: `0.1.1`
+- Node package source version target: `0.1.1`; latest npm registry release:
+  `0.1.0`.
 
 ## v0.1.0 (2026-03-12) - Initial Public Release
 
@@ -99,7 +118,7 @@ evaluation, and reproducible benchmarking across Linux, macOS, and Windows.
 1. Install base package:
 
 ```bash
-pip install .
+python -m pip install -e .
 ```
 
 2. Validate local environment:

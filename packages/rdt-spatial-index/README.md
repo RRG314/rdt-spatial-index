@@ -1,6 +1,10 @@
-# @sreid90/rdt-spatial-index
+# RDT Spatial Index Node.js Package Source
 
-Node.js package for RDT Spatial Index (2D radius queries).
+Node.js package source for RDT Spatial Index (2D radius queries).
+
+Registry status checked 2026-07-10: `@sreid90/rdt-spatial-index` is published
+on npm at `0.1.0`. This checkout targets draft source version `0.1.1`; those
+changes are not available from npm until a separate publish step is performed.
 
 This package provides:
 - `RDTIndex`: readable reference implementation.
@@ -8,7 +12,16 @@ This package provides:
 - `rdtGridSize`: RDT local subdivision rule utility.
 - `rdt-spatial-index` CLI for smoke/query workflows.
 
-## Install
+## Validate Current Source
+
+```bash
+npm install
+npm test
+```
+
+## Published npm Package
+
+Use the npm package only when you want the previous registry release:
 
 ```bash
 npm install @sreid90/rdt-spatial-index
@@ -17,7 +30,7 @@ npm install @sreid90/rdt-spatial-index
 ## API Quick Start
 
 ```js
-const { RDTFastIndex } = require("@sreid90/rdt-spatial-index");
+const { RDTFastIndex } = require("./src/index.cjs");
 
 const points = [
   [0, 0],
@@ -40,13 +53,13 @@ console.log(Array.from(counts));
 Smoke check:
 
 ```bash
-npx @sreid90/rdt-spatial-index smoke
+node ./src/cli.cjs smoke
 ```
 
 Run query from JSON files:
 
 ```bash
-npx @sreid90/rdt-spatial-index query \
+node ./src/cli.cjs query \
   --points points.json \
   --queries queries.json \
   --radius 30 \

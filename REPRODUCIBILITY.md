@@ -2,8 +2,12 @@
 
 ## Minimal Reproduction Commands
 
+The Python package is not published on PyPI yet. Run these commands from a
+cloned checkout. The scoped npm package exists at `0.1.0`, but draft `0.1.1`
+source changes should be validated from the checkout until they are published.
+
 ```bash
-pip install -e ".[bench]"
+python -m pip install -e ".[bench]"
 python3 tests/test_pub_correctness.py
 python3 benchmarks/pub_benchmark.py --fast
 python3 benchmarks/generate_figures.py

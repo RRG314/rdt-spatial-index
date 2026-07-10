@@ -11,13 +11,13 @@ Contributions should improve:
 ## Development Setup
 
 ```bash
-pip install -e ".[dev]"
+python -m pip install -e ".[dev]"
 ```
 
 Optional benchmark stack:
 
 ```bash
-pip install -e ".[bench]"
+python -m pip install -e ".[bench]"
 ```
 
 ## Before Opening a PR

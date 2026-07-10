@@ -1,14 +1,18 @@
 # RDT Spatial Index
 
 [![CI](https://github.com/RRG314/rdt-spatial-index/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/RRG314/rdt-spatial-index/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/RRG314/rdt-spatial-index?display_name=tag)](https://github.com/RRG314/rdt-spatial-index/releases)
-[![npm version](https://img.shields.io/npm/v/%40sreid90%2Frdt-spatial-index)](https://www.npmjs.com/package/@sreid90/rdt-spatial-index)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](setup.py)
 
 RDT Spatial Index is a research-grade repository for adaptive spatial indexing.
 It includes readable reference implementations, practical fast paths, optional
 compiled query backends, baseline comparisons, and reproducibility artifacts.
+
+**Registry status checked 2026-07-10:** the Python package is not published on
+PyPI. Use the Python code from a cloned checkout; do not expect
+`pip install rdt-spatial-index` to work. The scoped npm package
+`@sreid90/rdt-spatial-index` exists at version `0.1.0`, while this source tree
+targets draft version `0.1.1`.
 
 The project is organized for external review: tests, benchmarks, limitations,
 and publication-oriented outputs are part of the repository.
@@ -35,23 +39,37 @@ and publication-oriented outputs are part of the repository.
 4. Add `RDTCIndex`, `RDTCythonIndex`, or `RDTNumbaIndex` only when compiled
    acceleration is needed and your environment supports it.
 
-## Install
+## Use From Source
+
+From a cloned checkout, either run commands with `PYTHONPATH=.` or create a
+local editable install for development:
 
 ```bash
-pip install -e .
+PYTHONPATH=. python tests/run_tests.py
 ```
 
-Optional extras:
+Optional local editable install:
 
 ```bash
-pip install -e ".[bench]"      # benchmark dependencies
-pip install -e ".[accel]"      # optional acceleration dependencies
-pip install -e ".[bench_full]" # includes rtree (needs libspatialindex on many systems)
+python -m pip install -e .
+```
+
+Optional local extras, also from the cloned checkout:
+
+```bash
+python -m pip install -e ".[bench]"      # benchmark dependencies
+python -m pip install -e ".[accel]"      # optional acceleration dependencies
+python -m pip install -e ".[bench_full]" # includes rtree (needs libspatialindex on many systems)
 ```
 
 ## Node.js Package
 
-A publishable npm package is included at `packages/rdt-spatial-index`.
+A Node.js package source tree is included at `packages/rdt-spatial-index`.
+The npm registry currently contains `@sreid90/rdt-spatial-index@0.1.0`; this
+checkout contains draft `0.1.1` source changes that have not been published to
+npm yet.
+
+Validate the current checkout locally:
 
 ```bash
 cd packages/rdt-spatial-index
@@ -59,10 +77,10 @@ npm install
 npm test
 ```
 
-Target package name:
+Install from npm only when you want the previously published Node release:
 
-```text
-@sreid90/rdt-spatial-index
+```bash
+npm install @sreid90/rdt-spatial-index
 ```
 
 ## Quick Start

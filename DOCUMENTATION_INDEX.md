@@ -11,9 +11,9 @@ This index is the fastest way to navigate the repository as a new visitor.
 
 ## Installation and Usage
 
-- [README.md](README.md#install)
+- [README.md](README.md#use-from-source)
 - [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md#compiled-implementations)
-- [packages/rdt-spatial-index/README.md](packages/rdt-spatial-index/README.md): Node.js/npm package usage.
+- [packages/rdt-spatial-index/README.md](packages/rdt-spatial-index/README.md): Node.js package source and npm status.
 
 ## Testing
 

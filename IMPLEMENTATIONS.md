@@ -9,7 +9,7 @@
 | Adaptive 2D v2 | `RDTAdaptiveIndex` | Experimental, tested | Self-tuned build+query workloads |
 | Self-sizing 2D v3 | `RDTv3Index` | Research, tested | Declared radius/query-count workloads |
 | Analytic 2D v4 | `RDTv4Index` | Research, tested | Pre-build self-configuration experiments |
-| Fast Node.js 2D | `RDTFastIndex` (`@sreid90/rdt-spatial-index`) | Maintained | JavaScript/Node integration path |
+| Fast Node.js 2D | `packages/rdt-spatial-index` | Package source, tested locally | JavaScript/Node integration path |
 | Auto-tuned 2D | `RDTOptimizedIndex` | Maintained | Parameter search for a target workload |
 | N-dimensional | `RDTNdIndex` | Maintained (advanced) | Higher-dimensional research experiments |
 | Entropy-adaptive | `EntropyRDTIndex` | Maintained (advanced) | Structured-density experiments |
@@ -48,9 +48,12 @@
 - `RDTv4Index`
   - v4 analytic self-configuration framework.
   - Useful for latest research on pre-build configuration and regret studies.
-- `@sreid90/rdt-spatial-index` (`packages/rdt-spatial-index/`)
+- `packages/rdt-spatial-index/`
   - JavaScript/Node implementation path with reference + fast variants.
-  - Intended for Node ecosystems; compiled Python backends are separate.
+  - Published npm release is `@sreid90/rdt-spatial-index@0.1.0`; current
+    draft `0.1.1` source changes require local checkout validation until
+    published.
+  - Compiled Python backends are separate.
 - `RDTOptimizedIndex`
   - Parameter-tuned variant built on the same core behavior.
 - `RDTCIndex` / `RDTCythonIndex` / `RDTNumbaIndex`

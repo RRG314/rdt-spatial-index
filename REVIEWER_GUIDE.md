@@ -15,7 +15,7 @@ negative results.
 | Declared radius/query-count workloads | `RDTv3Index` | v3 cost-model path when the workload can be stated up front. |
 | Analytic self-configuration research | `RDTv4Index` | v4 framework for solving configuration before building the index. |
 | 3D point-cloud/sphere queries | `rdt3d/` | Separate 3D implementation and baseline comparison path. |
-| JavaScript/Node usage | `packages/rdt-spatial-index/` | Separate npm package implementation path. |
+| JavaScript/Node usage | `packages/rdt-spatial-index/` | Node package source, tested locally; npm currently has `@sreid90/rdt-spatial-index@0.1.0`. |
 
 ## Version Map
 
@@ -53,8 +53,11 @@ negative results.
 
 ## Minimal Review Commands
 
+Run from a cloned checkout. The Python package is not published on PyPI yet.
+The scoped npm package exists at `0.1.0`; use the checkout when reviewing
+draft `0.1.1` Node changes.
+
 ```bash
-python3 -m pip install -e .
 python3 tests/run_tests.py
 PYTHONPATH=. python3 tests/test_adaptive.py
 PYTHONPATH=. python3 tests/test_v3.py
@@ -79,7 +82,10 @@ PYTHONPATH=. python3 benchmarks/v3_benchmark.py --out results/v3_review_smoke.js
 
 ## Review Scope
 
-This repository should be reviewed as a spatial-index package plus its
-spatial-index research variants. The PyPI package path remains
-`rdt_spatial_index`; research variants are included so reviewers can reproduce
-the comparisons and understand why each default is or is not recommended.
+This repository should be reviewed as a source-available spatial-index project
+plus its spatial-index research variants. The import package path is
+`rdt_spatial_index`, but there is no PyPI publication yet. The Node package
+name is `@sreid90/rdt-spatial-index`; the registry release remains `0.1.0`
+until a separate npm publish step is performed. Research variants are included
+so reviewers can reproduce the comparisons and understand why each default is
+or is not recommended.
