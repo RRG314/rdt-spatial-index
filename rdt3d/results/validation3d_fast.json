@@ -1,0 +1,125 @@
+{
+  "timestamp": "2026-07-10 11:35:04",
+  "mode": "fast",
+  "environment": {
+    "python": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.2"
+  },
+  "test_cases": [
+    {
+      "size": 1000,
+      "distribution": "uniform",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "uniform",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "clustered",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "clustered",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "shell",
+      "radius": 10,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    },
+    {
+      "size": 1000,
+      "distribution": "shell",
+      "radius": 50,
+      "indices": [
+        {
+          "index": "RDT3D-Python",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        },
+        {
+          "index": "RDT3D-Vectorized",
+          "passed": true,
+          "match_rate": 1.0,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -10,6 +10,29 @@ The RDT3D extends the successful 2D RDT to 3 dimensions using:
 - C+OpenMP kernel for acceleration
 - Comprehensive validation and benchmarking
 
+## Current Status Note
+
+The historical report in this directory is preserved, but the current runnable
+entry points now support dependency-light smoke runs:
+
+```bash
+PYTHONPATH=. python3 tests/test_3d_correctness.py
+PYTHONPATH=. python3 rdt3d/validate3d.py --fast
+PYTHONPATH=. python3 rdt3d/benchmark3d.py --fast
+PYTHONPATH=. python3 rdt3d/stress3d.py --fast
+```
+
+On the current local run:
+
+- `tests/test_3d_correctness.py`: 50/50 exact checks passed.
+- `validate3d.py --fast`: 12/12 checks passed.
+- `benchmark3d.py --fast`: wrote 40 rows and recorded unavailable optional
+  baselines (`R-tree`, `scipy-KDTree`, `BallTree`) as metadata.
+- `stress3d.py --fast`: ran 8 pathological cases.
+
+The checked-in compiled shared libraries are platform-specific artifacts and
+may not load on every machine. Rebuild and report compiled results separately.
+
 **Important Note**: While RDT3D is fully implemented and correct, evaluation shows it does NOT outperform scipy's KDTree on typical 3D sphere queries. See EVALUATION_REPORT.md for detailed findings.
 
 ## Directory Structure

@@ -25,9 +25,12 @@ This index is the fastest way to navigate the repository as a new visitor.
 - [BENCHMARKS.md](BENCHMARKS.md)
 - [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md)
 - [results/README.md](results/README.md)
+- [rdt3d/README.md](rdt3d/README.md): 3D implementation and evaluation entry points.
+- [rdt3d/EVALUATION_REPORT.md](rdt3d/EVALUATION_REPORT.md): 3D baseline comparison and caveats.
 - [V2_RESULTS.md](V2_RESULTS.md): adaptive v2 results, ablations, and limitations.
 - [V3_RESULTS.md](V3_RESULTS.md): workload-aware v3 results and negative findings.
 - [V4_RESULTS.md](V4_RESULTS.md): analytic v4 configuration results and caveats.
+- [results/phase_index_report.md](results/phase_index_report.md): local phase-index 2D+3D smoke results.
 
 ## Reproducibility
 

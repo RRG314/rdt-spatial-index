@@ -19,6 +19,11 @@ except ImportError:
     from rdt3d_core import RDT3DCIndex
 
 # ── Level-1 kernel (single-level flat scan) ───────────────────────────────────
+_WARN_ON_LOAD_FAILURE = os.environ.get("RDT3D_WARN_COMPILED_LOAD", "").lower() in {
+    "1",
+    "true",
+    "yes",
+}
 _kernel_path = os.path.join(os.path.dirname(__file__), "rdt3d_kernel.so")
 HAS_C_EXT = False
 _c_lib = None
@@ -50,7 +55,8 @@ if os.path.exists(_kernel_path):
         _c_lib.rdt3d_query_batch.restype = None
         HAS_C_EXT = True
     except Exception as e:
-        print(f"Warning: could not load C kernel from {_kernel_path}: {e}")
+        if _WARN_ON_LOAD_FAILURE:
+            print(f"Warning: could not load C kernel from {_kernel_path}: {e}")
         HAS_C_EXT = False
 
 # ── Level-2 kernel (two-level: super-cells → leaves → points) ─────────────────
@@ -98,7 +104,8 @@ if os.path.exists(_kernel_v2_path):
         _c_lib_v2.rdt3d_query_2level.restype = None
         HAS_C_EXT_V2 = True
     except Exception as e:
-        print(f"Warning: could not load 2LFL kernel from {_kernel_v2_path}: {e}")
+        if _WARN_ON_LOAD_FAILURE:
+            print(f"Warning: could not load 2LFL kernel from {_kernel_v2_path}: {e}")
         HAS_C_EXT_V2 = False
 
 

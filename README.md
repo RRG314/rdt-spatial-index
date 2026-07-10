@@ -32,7 +32,9 @@ and publication-oriented outputs are part of the repository.
 3. Use `RDTAdaptiveIndex`, `RDTv3Index`, and `RDTv4Index` when you are
    evaluating the v2-v4 research variants and can reproduce their workload
    assumptions.
-4. Add `RDTCIndex`, `RDTCythonIndex`, or `RDTNumbaIndex` only when compiled
+4. Use `RDTLocalPhaseIndex` only for the current novelty track: exact 2D/3D
+   local phase selection optimized for rebuild-heavy build+query workloads.
+5. Add `RDTCIndex`, `RDTCythonIndex`, or `RDTNumbaIndex` only when compiled
    acceleration is needed and your environment supports it.
 
 ## Install
@@ -85,6 +87,7 @@ print(counts[:5])
 ```bash
 python tests/run_tests.py
 python tests/ci/verify_core_imports.py
+PYTHONPATH=. python tests/test_3d_correctness.py
 ```
 
 Optional compiled verification:
@@ -100,6 +103,7 @@ python tests/ci/verify_compiled_wrappers.py
 ```bash
 python benchmarks/compare_indexes.py --n 50000
 python benchmarks/pub_benchmark.py --fast
+PYTHONPATH=. python benchmarks/phase_index_benchmark.py --fast --dims 2,3
 python benchmarks/generate_figures.py
 ```
 
@@ -112,6 +116,8 @@ Or run:
 ## Results Snapshot
 
 - Correctness: RDT variants are exact on the included brute-force checks.
+- Local phase index: exact on the included 2D+3D brute-force checks; current
+  evidence is strongest for build+query total cost, not static query latency.
 - Performance: workload-dependent, not universally dominant.
 - Compiled backends: can materially improve query time and should be reported
   separately from pure-Python comparisons.
@@ -128,6 +134,7 @@ See [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md) and
 | v2/adaptive | `RDTAdaptiveIndex` | Tested research variant for adaptive build+query workloads. |
 | v3/self-sizing | `RDTv3Index` | Tested research variant for declared radius/query-count workloads. |
 | v4/framework | `RDTv4Index` | Latest research variant for analytic pre-build configuration. |
+| phase/local | `RDTLocalPhaseIndex` | Prototype 2D/3D phase-selection index; optimize for rebuild-heavy total cost, not static query-only workloads. |
 
 See [REVIEWER_GUIDE.md](REVIEWER_GUIDE.md) for the honest comparison,
 negative results, and which files to inspect.
@@ -145,6 +152,7 @@ See [LIMITATIONS.md](LIMITATIONS.md).
 ## Repository Layout
 
 - Source package: `rdt_spatial_index/`
+- 3D implementation and evaluation: `rdt3d/`
 - Benchmarks: `benchmarks/`
 - Tests: `tests/`
 - Reproducibility package: `publication/`

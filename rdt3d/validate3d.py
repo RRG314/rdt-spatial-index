@@ -6,27 +6,35 @@ exact correctness of hit counts.
 """
 
 import json
+from pathlib import Path
+import platform
+import sys
 import time
 from typing import Callable
 import numpy as np
-from scipy.spatial.distance import cdist
 
 try:
     from .rdt3d_core import RDT3DIndex, RDT3DCIndex
     from .rdt3d_c_wrapper import RDT3DCExtIndex, HAS_C_EXT
-    from .baselines3d import ScipyKDTree3D
+    from .baselines3d import HAS_SCIPY, ScipyKDTree3D
 except ImportError:
     from rdt3d_core import RDT3DIndex, RDT3DCIndex
     from rdt3d_c_wrapper import RDT3DCExtIndex, HAS_C_EXT
-    from baselines3d import ScipyKDTree3D
+    from baselines3d import HAS_SCIPY, ScipyKDTree3D
 
 
 def brute_force_sphere_query(points, queries, radius):
     """Brute force: compute all pairwise distances."""
     if len(points) == 0:
         return np.zeros(len(queries), dtype=np.int32)
-    dist = cdist(queries, points, metric='euclidean')
-    return np.count_nonzero(dist <= radius, axis=1).astype(np.int32)
+    pts = np.asarray(points, dtype=np.float64)
+    q = np.asarray(queries, dtype=np.float64)
+    r2 = radius * radius
+    out = np.zeros(q.shape[0], dtype=np.int32)
+    for i in range(q.shape[0]):
+        d = pts - q[i]
+        out[i] = int(np.count_nonzero(np.einsum("ij,ij->i", d, d) <= r2))
+    return out
 
 
 def validate_index(
@@ -59,17 +67,23 @@ def validate_index(
         }
 
 
-def run_validation_suite():
+def run_validation_suite(fast: bool = False):
     """Run full validation suite."""
     rng = np.random.RandomState(42)
     results = {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "mode": "fast" if fast else "full",
+        "environment": {
+            "python": sys.version.split()[0],
+            "platform": platform.platform(),
+            "numpy": np.__version__,
+        },
         "test_cases": [],
     }
 
-    test_sizes = [1000, 5000, 10000]
+    test_sizes = [1000] if fast else [1000, 5000, 10000]
     distributions = ["uniform", "clustered", "shell"]
-    radii = [10, 25, 50]
+    radii = [10, 50] if fast else [10, 25, 50]
 
     for n in test_sizes:
         for dist_name in distributions:
@@ -110,8 +124,10 @@ def run_validation_suite():
                 indices_to_test = [
                     (RDT3DIndex, "RDT3D-Python"),
                     (RDT3DCIndex, "RDT3D-Vectorized"),
-                    (ScipyKDTree3D, "scipy-KDTree"),
                 ]
+
+                if HAS_SCIPY:
+                    indices_to_test.append((ScipyKDTree3D, "scipy-KDTree"))
 
                 if HAS_C_EXT:
                     indices_to_test.append((RDT3DCExtIndex, "RDT3D-C"))
@@ -142,9 +158,24 @@ def run_validation_suite():
     return results
 
 
+def _resolve_output_path(output: str) -> Path:
+    path = Path(output)
+    if not path.is_absolute():
+        path = Path(__file__).resolve().parent / "results" / path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return path
+
+
 if __name__ == "__main__":
-    results = run_validation_suite()
-    output_path = "/sessions/eloquent-vigilant-fermat/mnt/rdt-spatial-index/rdt3d/results/validation3d.json"
-    with open(output_path, "w") as f:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Validate 3D sphere-query correctness.")
+    parser.add_argument("--fast", action="store_true", help="Run a smaller smoke-validation matrix.")
+    parser.add_argument("--output", default="validation3d.json", help="Output JSON path or filename under rdt3d/results.")
+    args = parser.parse_args()
+
+    results = run_validation_suite(fast=args.fast)
+    output_path = _resolve_output_path(args.output)
+    with output_path.open("w") as f:
         json.dump(results, f, indent=2)
     print(f"Results saved to {output_path}")

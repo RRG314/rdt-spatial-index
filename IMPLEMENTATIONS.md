@@ -9,6 +9,7 @@
 | Adaptive 2D v2 | `RDTAdaptiveIndex` | Experimental, tested | Self-tuned build+query workloads |
 | Self-sizing 2D v3 | `RDTv3Index` | Research, tested | Declared radius/query-count workloads |
 | Analytic 2D v4 | `RDTv4Index` | Research, tested | Pre-build self-configuration experiments |
+| Local phase 2D/3D | `RDTLocalPhaseIndex` | Prototype, tested | Local scan/grid/KD-tree phase-selection experiments |
 | Fast Node.js 2D | `RDTFastIndex` (`@sreid90/rdt-spatial-index`) | Maintained | JavaScript/Node integration path |
 | Auto-tuned 2D | `RDTOptimizedIndex` | Maintained | Parameter search for a target workload |
 | N-dimensional | `RDTNdIndex` | Maintained (advanced) | Higher-dimensional research experiments |
@@ -28,7 +29,9 @@
    rebuild-heavy workloads.
 4. Use `RDTv3Index` or `RDTv4Index` only when the workload assumptions are
    explicit and the corresponding result files are part of the comparison.
-5. Add a compiled wrapper only after correctness is verified.
+5. Use `RDTLocalPhaseIndex` when evaluating the phase-index prototype in both
+   2D and 3D; do not present it as the fastest default based on current data.
+6. Add a compiled wrapper only after correctness is verified.
 
 ## How The Variants Relate
 
@@ -48,6 +51,11 @@
 - `RDTv4Index`
   - v4 analytic self-configuration framework.
   - Useful for latest research on pre-build configuration and regret studies.
+- `RDTLocalPhaseIndex`
+  - Prototype local phase index with exact scan, grid, and optional KD-tree
+    phases selected per coarse region.
+  - Useful for testing the phase-index idea across 2D and 3D; current results
+    show exactness but not a broad query-speed win over grid/KD/BVH baselines.
 - `@sreid90/rdt-spatial-index` (`packages/rdt-spatial-index/`)
   - JavaScript/Node implementation path with reference + fast variants.
   - Intended for Node ecosystems; compiled Python backends are separate.

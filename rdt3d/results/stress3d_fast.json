@@ -1,0 +1,176 @@
+{
+  "timestamp": "2026-07-10 11:35:04",
+  "mode": "fast",
+  "environment": {
+    "python": "3.14.3",
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.4.2"
+  },
+  "parameters": {
+    "n_points": 10000,
+    "n_queries": 25,
+    "radius": 30
+  },
+  "tests": [
+    {
+      "name": "all_same",
+      "n_points": 10000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 1.1018749792128801,
+          "query_ms": 3.0596249271184206,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": null,
+          "query_ms": null,
+          "mean_hits": null,
+          "bailed": true,
+          "error": "scipy is not installed; install scipy to run the ScipyKDTree3D baseline"
+        }
+      }
+    },
+    {
+      "name": "x_axis",
+      "n_points": 10000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 6.5833330154418945,
+          "query_ms": 0.515041989274323,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": null,
+          "query_ms": null,
+          "mean_hits": null,
+          "bailed": true,
+          "error": "scipy is not installed; install scipy to run the ScipyKDTree3D baseline"
+        }
+      }
+    },
+    {
+      "name": "xy_plane",
+      "n_points": 10000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 10.482875048182905,
+          "query_ms": 0.8754580048844218,
+          "mean_hits": 2.4,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": null,
+          "query_ms": null,
+          "mean_hits": null,
+          "bailed": true,
+          "error": "scipy is not installed; install scipy to run the ScipyKDTree3D baseline"
+        }
+      }
+    },
+    {
+      "name": "hotspot_extreme",
+      "n_points": 10000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 1.501042046584189,
+          "query_ms": 0.36325003020465374,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": null,
+          "query_ms": null,
+          "mean_hits": null,
+          "bailed": true,
+          "error": "scipy is not installed; install scipy to run the ScipyKDTree3D baseline"
+        }
+      }
+    },
+    {
+      "name": "random_walk",
+      "n_points": 10000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 15.69154195021838,
+          "query_ms": 0.970749999396503,
+          "mean_hits": 1.6,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": null,
+          "query_ms": null,
+          "mean_hits": null,
+          "bailed": true,
+          "error": "scipy is not installed; install scipy to run the ScipyKDTree3D baseline"
+        }
+      }
+    },
+    {
+      "name": "large_radius",
+      "n_points": 10000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 2.186290919780731,
+          "query_ms": 63.23270802386105,
+          "mean_hits": 2849.48,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": null,
+          "query_ms": null,
+          "mean_hits": null,
+          "bailed": true,
+          "error": "scipy is not installed; install scipy to run the ScipyKDTree3D baseline"
+        }
+      }
+    },
+    {
+      "name": "small_radius",
+      "n_points": 10000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 3.568249987438321,
+          "query_ms": 0.612791976891458,
+          "mean_hits": 0.0,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": null,
+          "query_ms": null,
+          "mean_hits": null,
+          "bailed": true,
+          "error": "scipy is not installed; install scipy to run the ScipyKDTree3D baseline"
+        }
+      }
+    },
+    {
+      "name": "grid_lattice",
+      "n_points": 10000,
+      "methods": {
+        "RDT3D-Vectorized": {
+          "build_ms": 6.735041970387101,
+          "query_ms": 1.3534999452531338,
+          "mean_hits": 0.96,
+          "bailed": false,
+          "error": null
+        },
+        "scipy-KDTree": {
+          "build_ms": null,
+          "query_ms": null,
+          "mean_hits": null,
+          "bailed": true,
+          "error": "scipy is not installed; install scipy to run the ScipyKDTree3D baseline"
+        }
+      }
+    }
+  ]
+}

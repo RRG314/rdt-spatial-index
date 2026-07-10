@@ -3,6 +3,9 @@ Stress tests for RDT3D: pathological cases.
 """
 
 import json
+from pathlib import Path
+import platform
+import sys
 import time
 import numpy as np
 
@@ -52,17 +55,28 @@ def stress_test_case(name, points, queries, radius):
     return result
 
 
-def run_stress_tests():
+def _format_rdt_query_ms(result):
+    value = result["methods"]["RDT3D-Vectorized"]["query_ms"]
+    return f"{value:.2f}ms" if value is not None else "failed"
+
+
+def run_stress_tests(fast: bool = False):
     """Run all stress test cases."""
     rng = np.random.RandomState(54321)
-    n = 50000
-    q = 100
+    n = 10000 if fast else 50000
+    q = 25 if fast else 100
     radius = 30
 
     queries = rng.uniform(0, 1000, (q, 3))
 
     results = {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "mode": "fast" if fast else "full",
+        "environment": {
+            "python": sys.version.split()[0],
+            "platform": platform.platform(),
+            "numpy": np.__version__,
+        },
         "parameters": {
             "n_points": n,
             "n_queries": q,
@@ -76,21 +90,21 @@ def run_stress_tests():
     points = np.full((n, 3), [500.0, 500.0, 500.0])
     result = stress_test_case("all_same", points, queries, radius)
     results["tests"].append(result)
-    print(f"OK (RDT3D: {result['methods']['RDT3D-Vectorized']['query_ms']:.2f}ms)")
+    print(f"OK (RDT3D: {_format_rdt_query_ms(result)})")
 
     # Test 2: All points on x-axis
     print("2. All points on x-axis (y=z=500)...", end=" ", flush=True)
     points = np.column_stack([rng.uniform(0, 1000, n), np.full(n, 500), np.full(n, 500)])
     result = stress_test_case("x_axis", points, queries, radius)
     results["tests"].append(result)
-    print(f"OK (RDT3D: {result['methods']['RDT3D-Vectorized']['query_ms']:.2f}ms)")
+    print(f"OK (RDT3D: {_format_rdt_query_ms(result)})")
 
     # Test 3: All points on xy-plane
     print("3. All points on xy-plane (z=500)...", end=" ", flush=True)
     points = np.column_stack([rng.uniform(0, 1000, n), rng.uniform(0, 1000, n), np.full(n, 500)])
     result = stress_test_case("xy_plane", points, queries, radius)
     results["tests"].append(result)
-    print(f"OK (RDT3D: {result['methods']['RDT3D-Vectorized']['query_ms']:.2f}ms)")
+    print(f"OK (RDT3D: {_format_rdt_query_ms(result)})")
 
     # Test 4: Extreme hotspot (99% in 1-unit cube)
     print("4. Extreme hotspot (99% in 1×1×1 cube)...", end=" ", flush=True)
@@ -101,7 +115,7 @@ def run_stress_tests():
     points = np.clip(pts, 0, 1000)
     result = stress_test_case("hotspot_extreme", points, queries, radius)
     results["tests"].append(result)
-    print(f"OK (RDT3D: {result['methods']['RDT3D-Vectorized']['query_ms']:.2f}ms)")
+    print(f"OK (RDT3D: {_format_rdt_query_ms(result)})")
 
     # Test 5: Random walk
     print("5. Random walk in 3D...", end=" ", flush=True)
@@ -110,7 +124,7 @@ def run_stress_tests():
     points = (points - points.min(0)) / (points.max(0) - points.min(0)) * 950 + 25
     result = stress_test_case("random_walk", points, queries, radius)
     results["tests"].append(result)
-    print(f"OK (RDT3D: {result['methods']['RDT3D-Vectorized']['query_ms']:.2f}ms)")
+    print(f"OK (RDT3D: {_format_rdt_query_ms(result)})")
 
     # Test 6: Very large radius (covers ~65% of volume)
     print("6. Very large radius (r=500)...", end=" ", flush=True)
@@ -118,14 +132,14 @@ def run_stress_tests():
     queries_test = rng.uniform(0, 1000, (q, 3))
     result = stress_test_case("large_radius", points, queries_test, 500)
     results["tests"].append(result)
-    print(f"OK (RDT3D: {result['methods']['RDT3D-Vectorized']['query_ms']:.2f}ms)")
+    print(f"OK (RDT3D: {_format_rdt_query_ms(result)})")
 
     # Test 7: Very small radius (covers tiny fraction)
     print("7. Very small radius (r=1)...", end=" ", flush=True)
     points = rng.uniform(0, 1000, (n, 3))
     result = stress_test_case("small_radius", points, queries, 1)
     results["tests"].append(result)
-    print(f"OK (RDT3D: {result['methods']['RDT3D-Vectorized']['query_ms']:.2f}ms)")
+    print(f"OK (RDT3D: {_format_rdt_query_ms(result)})")
 
     # Test 8: Grid-aligned points
     print("8. Grid-aligned points (regular lattice)...", end=" ", flush=True)
@@ -136,15 +150,25 @@ def run_stress_tests():
     points = np.column_stack([xx.ravel(), yy.ravel(), zz.ravel()])[:n]
     result = stress_test_case("grid_lattice", points, queries, radius)
     results["tests"].append(result)
-    print(f"OK (RDT3D: {result['methods']['RDT3D-Vectorized']['query_ms']:.2f}ms)")
+    print(f"OK (RDT3D: {_format_rdt_query_ms(result)})")
 
     return results
 
 
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Run pathological 3D spatial-index stress tests.")
+    parser.add_argument("--fast", action="store_true", help="Run the same cases with fewer points and queries.")
+    parser.add_argument("--output", default="stress3d.json", help="Output JSON path or filename under rdt3d/results.")
+    args = parser.parse_args()
+
     print("Running stress tests...")
-    results = run_stress_tests()
-    output_path = "/sessions/eloquent-vigilant-fermat/mnt/rdt-spatial-index/rdt3d/results/stress3d.json"
-    with open(output_path, "w") as f:
+    results = run_stress_tests(fast=args.fast)
+    output_path = Path(args.output)
+    if not output_path.is_absolute():
+        output_path = Path(__file__).resolve().parent / "results" / output_path
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w") as f:
         json.dump(results, f, indent=2)
     print(f"\nResults saved to {output_path}")

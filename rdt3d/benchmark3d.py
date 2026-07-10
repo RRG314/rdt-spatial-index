@@ -5,6 +5,10 @@ Tests multiple datasets, scales, and baselines with proper timing.
 """
 
 import json
+import importlib.util
+from pathlib import Path
+import platform
+import sys
 import time
 import tracemalloc
 from typing import Callable, Any, Dict, List
@@ -13,11 +17,14 @@ import numpy as np
 try:
     from .rdt3d_core import RDT3DIndex, RDT3DCIndex
     from .rdt3d_c_wrapper import RDT3DCExtIndex, HAS_C_EXT
-    from .baselines3d import ScipyKDTree3D, RTree3D, UniformGrid3D, Octree3D
+    from .baselines3d import ScipyKDTree3D, RTree3D, UniformGrid3D, Octree3D, BallTree3D, BVH3D, HAS_RTREE, HAS_SCIPY
 except ImportError:
     from rdt3d_core import RDT3DIndex, RDT3DCIndex
     from rdt3d_c_wrapper import RDT3DCExtIndex, HAS_C_EXT
-    from baselines3d import ScipyKDTree3D, RTree3D, UniformGrid3D, Octree3D
+    from baselines3d import ScipyKDTree3D, RTree3D, UniformGrid3D, Octree3D, BallTree3D, BVH3D, HAS_RTREE, HAS_SCIPY
+
+
+HAS_SKLEARN = importlib.util.find_spec("sklearn") is not None
 
 
 # ============================================================================
@@ -164,35 +171,53 @@ def benchmark_index(
     return result
 
 
-def run_benchmark_suite():
+def run_benchmark_suite(fast: bool = False):
     """Run full benchmark suite."""
     rng = np.random.RandomState(12345)
 
-    scales = [10_000, 50_000, 100_000, 500_000, 1_000_000]
-    distributions = list(DATASET_GENERATORS.keys())
+    scales = [1_000, 5_000] if fast else [10_000, 50_000, 100_000, 500_000, 1_000_000]
+    distributions = ["uniform", "clustered", "shell", "filament"] if fast else list(DATASET_GENERATORS.keys())
     radius = 30
-    q_count = 100
+    q_count = 25 if fast else 100
+    n_reps = 2 if fast else 5
+
+    unavailable = []
+    if not HAS_RTREE:
+        unavailable.append("R-tree")
+    if not HAS_SCIPY:
+        unavailable.append("scipy-KDTree")
+    if not HAS_SKLEARN:
+        unavailable.append("BallTree")
 
     results = {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "mode": "fast" if fast else "full",
+        "environment": {
+            "python": sys.version.split()[0],
+            "platform": platform.platform(),
+            "numpy": np.__version__,
+        },
         "parameters": {
             "scales": scales,
             "distributions": distributions,
             "radius": radius,
             "n_queries": q_count,
-            "n_reps": 5,
+            "n_reps": n_reps,
         },
         "benchmarks": [],
+        "unavailable_baselines": unavailable,
     }
 
     method_names = [
         "RDT3D-Python",
         "RDT3D-Vectorized",
         "RDT3D-C" if HAS_C_EXT else None,
-        "scipy-KDTree",
-        "R-tree",
+        "scipy-KDTree" if HAS_SCIPY else None,
+        "R-tree" if HAS_RTREE else None,
+        "BallTree" if HAS_SKLEARN else None,
         "UniformGrid",
-        "Octree" if True else None,
+        "Octree",
+        "BVH",
     ]
     method_names = [m for m in method_names if m is not None]
 
@@ -202,8 +227,10 @@ def run_benchmark_suite():
         "RDT3D-C": RDT3DCExtIndex if HAS_C_EXT else None,
         "scipy-KDTree": ScipyKDTree3D,
         "R-tree": RTree3D,
+        "BallTree": BallTree3D,
         "UniformGrid": UniformGrid3D,
         "Octree": Octree3D,
+        "BVH": BVH3D,
     }
 
     for scale in scales:
@@ -223,13 +250,31 @@ def run_benchmark_suite():
                     continue
 
                 # Skip slow methods for large scales
-                if scale > 100_000 and method_name in ["Octree", "RDT3D-Python"]:
-                    print(f"    {method_name:20s} SKIPPED (too slow for this scale)")
+                skip_reason = ""
+                if scale > 100_000 and method_name in ["Octree", "BVH", "R-tree", "RDT3D-Python"]:
+                    skip_reason = "too slow for this scale"
+                if skip_reason:
+                    print(f"    {method_name:20s} SKIPPED ({skip_reason})")
+                    results["benchmarks"].append({
+                        "scale": scale,
+                        "distribution": dist_name,
+                        "method": method_name,
+                        "build_mean_ms": None,
+                        "build_std_ms": 0.0,
+                        "query_mean_ms": None,
+                        "query_std_ms": 0.0,
+                        "mean_hits": None,
+                        "peak_kb": None,
+                        "bailed": False,
+                        "skipped": True,
+                        "skip_reason": skip_reason,
+                        "error": None,
+                    })
                     continue
 
                 print(f"    {method_name:20s} ", end="", flush=True)
 
-                result = benchmark_index(method_class, points, queries, radius)
+                result = benchmark_index(method_class, points, queries, radius, n_reps=n_reps)
 
                 if result.error:
                     print(f"ERROR: {result.error}")
@@ -258,6 +303,8 @@ def run_benchmark_suite():
                     "mean_hits": result.mean_hits,
                     "peak_kb": result.peak_memory_kb,
                     "bailed": result.bailed,
+                    "skipped": False,
+                    "skip_reason": None,
                     "error": result.error if result.error else None,
                 }
                 results["benchmarks"].append(benchmark_record)
@@ -266,9 +313,22 @@ def run_benchmark_suite():
 
 
 if __name__ == "__main__":
-    print("Starting benchmark suite (this will take 10-20 minutes)...")
-    results = run_benchmark_suite()
-    output_path = "/sessions/eloquent-vigilant-fermat/mnt/rdt-spatial-index/rdt3d/results/benchmark3d.json"
-    with open(output_path, "w") as f:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Benchmark RDT3D against 3D spatial-index baselines.")
+    parser.add_argument("--fast", action="store_true", help="Run a smaller reviewer smoke benchmark.")
+    parser.add_argument("--output", default="benchmark3d.json", help="Output JSON path or filename under rdt3d/results.")
+    args = parser.parse_args()
+
+    if args.fast:
+        print("Starting fast benchmark suite...")
+    else:
+        print("Starting benchmark suite (this will take 10-20 minutes)...")
+    results = run_benchmark_suite(fast=args.fast)
+    output_path = Path(args.output)
+    if not output_path.is_absolute():
+        output_path = Path(__file__).resolve().parent / "results" / output_path
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w") as f:
         json.dump(results, f, indent=2)
     print(f"\n\nResults saved to {output_path}")

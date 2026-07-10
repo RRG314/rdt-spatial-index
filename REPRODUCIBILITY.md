@@ -44,6 +44,7 @@ PY
 | `benchmarks/v2_benchmark.py`, `dynamic_benchmark.py`, `schedule_ablation.py` | `results/v2_*.json` |
 | `benchmarks/v3_benchmark.py`, `v3_dynamic.py` | `results/v3_*.json` |
 | `experiments/v4_*.py` | `results/v4_*.json` |
+| `benchmarks/phase_index_benchmark.py` | `results/phase_index_benchmark.json`, `results/phase_index_report.md` |
 
 ## v2-v4 Reproduction Commands
 
@@ -51,9 +52,23 @@ PY
 PYTHONPATH=. python3 tests/test_adaptive.py
 PYTHONPATH=. python3 tests/test_v3.py
 PYTHONPATH=. python3 tests/test_v4.py
+PYTHONPATH=. python3 tests/test_phase_index.py
+PYTHONPATH=. python3 tests/test_3d_correctness.py
 PYTHONPATH=. python3 benchmarks/v2_benchmark.py --quick
 PYTHONPATH=. python3 benchmarks/v3_benchmark.py --out results/v3_reproduction.json
+PYTHONPATH=. python3 benchmarks/phase_index_benchmark.py --fast --dims 2,3
 ```
+
+## 3D Reproduction Commands
+
+```bash
+PYTHONPATH=. python3 tests/test_3d_correctness.py
+PYTHONPATH=. python3 rdt3d/validate3d.py
+PYTHONPATH=. python3 rdt3d/stress3d.py
+```
+
+For platform-specific compiled 3D results, rebuild the local shared libraries
+before benchmarking and record the compiler/toolchain in machine metadata.
 
 The full v4 regret/ablation/sensitivity scripts are more expensive and are
 kept under `experiments/`:

@@ -8,8 +8,20 @@ from __future__ import annotations
 
 import math
 import numpy as np
-from scipy.spatial import KDTree
-from rtree import index as rtree_index
+
+try:
+    from scipy.spatial import KDTree
+    HAS_SCIPY = True
+except ImportError:
+    KDTree = None
+    HAS_SCIPY = False
+
+try:
+    from rtree import index as rtree_index
+    HAS_RTREE = True
+except ImportError:
+    rtree_index = None
+    HAS_RTREE = False
 
 
 class ScipyKDTree3D:
@@ -22,6 +34,9 @@ class ScipyKDTree3D:
 
     def build(self, points):
         """Build KD-tree from points."""
+        if KDTree is None:
+            raise ImportError("scipy is not installed; install scipy to run the ScipyKDTree3D baseline")
+
         arr = np.asarray(points, dtype=np.float64)
         if arr.ndim != 2 or arr.shape[1] != 3:
             raise ValueError("points must be shape (N,3)")
@@ -65,6 +80,9 @@ class RTree3D:
 
     def build(self, points):
         """Build R-tree from points."""
+        if rtree_index is None:
+            raise ImportError("rtree is not installed; install rtree to run the RTree3D baseline")
+
         arr = np.asarray(points, dtype=np.float64)
         if arr.ndim != 2 or arr.shape[1] != 3:
             raise ValueError("points must be shape (N,3)")
@@ -504,4 +522,4 @@ class BVH3D:
 
 
 __all__ = ["ScipyKDTree3D", "RTree3D", "UniformGrid3D", "Octree3D",
-           "BallTree3D", "BVH3D"]
+           "BallTree3D", "BVH3D", "HAS_SCIPY", "HAS_RTREE"]

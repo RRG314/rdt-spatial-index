@@ -7,17 +7,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+
+BASE_DIR = Path(__file__).resolve().parent
+RESULTS_DIR = BASE_DIR / "results"
+
+
+def load_result(filename):
+    path = RESULTS_DIR / filename
+    if not path.exists():
+        raise SystemExit(f"Missing {path}. Run validate3d.py, benchmark3d.py, and stress3d.py first.")
+    with path.open() as f:
+        return json.load(f)
+
+
 # Load data
-with open('/sessions/eloquent-vigilant-fermat/mnt/rdt-spatial-index/rdt3d/results/benchmark3d.json') as f:
-    bench_data = json.load(f)
+bench_data = load_result("benchmark3d.json")
+stress_data = load_result("stress3d.json")
+valid_data = load_result("validation3d.json")
 
-with open('/sessions/eloquent-vigilant-fermat/mnt/rdt-spatial-index/rdt3d/results/stress3d.json') as f:
-    stress_data = json.load(f)
-
-with open('/sessions/eloquent-vigilant-fermat/mnt/rdt-spatial-index/rdt3d/results/validation3d.json') as f:
-    valid_data = json.load(f)
-
-fig_dir = Path('/sessions/eloquent-vigilant-fermat/mnt/rdt-spatial-index/rdt3d/figures')
+fig_dir = BASE_DIR / "figures"
 fig_dir.mkdir(exist_ok=True)
 
 # Color scheme
