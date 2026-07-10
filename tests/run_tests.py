@@ -12,7 +12,6 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from rdt_spatial_index import RDTIndex
-from rdt_spatial_index import RDTLocalPhase2DIndex
 from rdt_spatial_index.baselines import KDTreeIndex, UniformGridIndex
 
 
@@ -70,25 +69,11 @@ def test_baselines_exact_counts_small() -> None:
     assert np.array_equal(pred_kd, truth), "KDTree query mismatch"
 
 
-def test_local_phase_exact_counts_small() -> None:
-    rng = np.random.default_rng(19)
-    points = rng.uniform(0.0, 1000.0, size=(500, 2))
-    queries = rng.uniform(0.0, 1000.0, size=(24, 2))
-    radius = 35.0
-
-    truth = brute_counts(points, queries, radius)
-    idx = RDTLocalPhase2DIndex(target_radius=radius, target_region_points=128, scan_max_points=32)
-    idx.build(points)
-    pred = idx.query(queries, radius)
-    assert np.array_equal(pred, truth), "RDTLocalPhase2D query mismatch"
-
-
 def main() -> None:
     tests = [
         test_rdt_exact_counts_random,
         test_rdt_keeps_all_points_in_leaves,
         test_baselines_exact_counts_small,
-        test_local_phase_exact_counts_small,
     ]
     for t in tests:
         t()

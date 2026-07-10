@@ -7,8 +7,8 @@ authors:
     given-names: "Steven"
 repository-code: "https://github.com/RRG314/rdt-spatial-index"
 license: "MIT"
-version: "0.1.0"
-date-released: "2026-03-12"
+version: "0.1.1"
+date-released: "2026-07-10"
 keywords:
   - spatial indexing
   - adaptive indexing

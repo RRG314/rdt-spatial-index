@@ -14,7 +14,6 @@ negative results.
 | Rebuild-heavy 2D workloads | `RDTAdaptiveIndex` | v2 self-tuning path designed for build+query frame cost. |
 | Declared radius/query-count workloads | `RDTv3Index` | v3 cost-model path when the workload can be stated up front. |
 | Analytic self-configuration research | `RDTv4Index` | v4 framework for solving configuration before building the index. |
-| Phase-index prototype | `RDTLocalPhaseIndex` | Exact 2D/3D local scan/grid/KD-tree phase selection; current target is rebuild-heavy build+query total cost. |
 | 3D point-cloud/sphere queries | `rdt3d/` | Separate 3D implementation and baseline comparison path. |
 | JavaScript/Node usage | `packages/rdt-spatial-index/` | Separate npm package implementation path. |
 
@@ -26,7 +25,6 @@ negative results.
 | v2/adaptive | `RDTAdaptiveIndex` in `adaptive.py` | Experimental but tested | Auto-tuned parameters, occupancy-capped subdivision, leaf-directory queries. | Rebuild-per-frame or build+query workloads where total frame cost matters. | That the raw `log(n)^alpha` fan-out is the sole performance driver; ablations show the systems layout matters more. |
 | v3/self-sizing | `RDTv3Index` in `v3.py` | Research variant | Workload-aware `max_leaf` selection from declared radius and queries per build. | Radius and query/build ratio are known before build. | That clump-inflated fan-out or anisotropic fan-out were wins; both are documented negative results. |
 | v4/framework | `RDTv4Index` in `v4.py` | Research variant | Analytic configuration from density moments, workload declaration, and machine constants. | You are studying pre-build self-configuration or want the latest solver experiments. | That all residual error is solved; heavy-tailed datasets still expose calibration limits. |
-| phase/local | `RDTLocalPhaseIndex` in `phase.py` | Prototype | Local regions choose exact scan, grid, or optional KD-tree phases by estimated cost with rebuild hysteresis. | You are evaluating rebuild-heavy 2D/3D workloads where build+query total cost matters. | That it currently wins static query-only benchmarks. |
 
 ## Evidence Map
 
@@ -36,7 +34,6 @@ negative results.
 | What should a new user run? | `README.md`, `examples/basic_usage.py` |
 | Are counts exact? | `tests/run_tests.py`, `tests/test_adaptive.py`, `tests/test_v3.py`, `tests/test_v4.py` |
 | Are 3D sphere counts exact? | `tests/test_3d_correctness.py`, `rdt3d/validate3d.py` |
-| Is the phase index exact and benchmarked? | `tests/test_phase_index.py`, `benchmarks/phase_index_benchmark.py`, `results/phase_index_report.md` |
 | What benchmark commands reproduce the claims? | `BENCHMARKS.md`, `REPRODUCIBILITY.md` |
 | What are the headline results? | `RESULTS_SUMMARY.md`, `V2_RESULTS.md`, `V3_RESULTS.md`, `V4_RESULTS.md` |
 | What failed or should be interpreted carefully? | `LIMITATIONS.md`, `V2_RESULTS.md`, `V3_RESULTS.md`, `V4_RESULTS.md` |
@@ -53,8 +50,6 @@ negative results.
 | v3 failures | Clump-inflated subdivision and anisotropic fan-out are retained as ablation flags, not recommended defaults. |
 | v4 success | Analytic self-configuration greatly reduces measured regret in the included sweeps. |
 | v4 caveat | Calibration can still be wrong on heavy-tailed distributions; results are one-machine evidence until reproduced elsewhere. |
-| phase-index success | `RDTLocalPhaseIndex` passed 64/64 exact 2D+3D brute-force checks and has at least one build+query total-cost win in the current smoke report. |
-| phase-index caveat | It did not win static query latency; optimize next around rebuild-heavy/local-update workloads. |
 
 ## Minimal Review Commands
 
@@ -64,7 +59,6 @@ python3 tests/run_tests.py
 PYTHONPATH=. python3 tests/test_adaptive.py
 PYTHONPATH=. python3 tests/test_v3.py
 PYTHONPATH=. python3 tests/test_v4.py
-PYTHONPATH=. python3 tests/test_phase_index.py
 PYTHONPATH=. python3 tests/test_3d_correctness.py
 ```
 
@@ -81,7 +75,6 @@ Benchmark smoke:
 python3 benchmarks/compare_indexes.py --n 5000
 PYTHONPATH=. python3 benchmarks/v2_benchmark.py --quick
 PYTHONPATH=. python3 benchmarks/v3_benchmark.py --out results/v3_review_smoke.json
-PYTHONPATH=. python3 benchmarks/phase_index_benchmark.py --fast --dims 2,3
 ```
 
 ## Review Scope

@@ -6,7 +6,6 @@
 - `test_adaptive.py`: v2 `RDTAdaptiveIndex` brute-force correctness checks.
 - `test_v3.py`: v3 workload-aware solver and correctness checks.
 - `test_v4.py`: v4 analytic solver, scan identity, and correctness checks.
-- `test_phase_index.py`: local phase-index exactness checks across 2D and 3D.
 - `test_3d_correctness.py`: 3D exact sphere-count checks across point-cloud-like distributions.
 
 Run from repository root:
@@ -17,6 +16,5 @@ python3 tests/test_pub_correctness.py
 PYTHONPATH=. python3 tests/test_adaptive.py
 PYTHONPATH=. python3 tests/test_v3.py
 PYTHONPATH=. python3 tests/test_v4.py
-PYTHONPATH=. python3 tests/test_phase_index.py
 PYTHONPATH=. python3 tests/test_3d_correctness.py
 ```

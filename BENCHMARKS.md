@@ -64,22 +64,6 @@ Read the matching reports before quoting numbers:
 - `V3_RESULTS.md`
 - `V4_RESULTS.md`
 
-## Local Phase-Index Benchmark
-
-```bash
-PYTHONPATH=. python3 tests/test_phase_index.py
-PYTHONPATH=. python3 benchmarks/phase_index_benchmark.py --fast --dims 2,3
-```
-
-Outputs:
-- `results/phase_index_benchmark.json`
-- `results/phase_index_report.md`
-
-Current smoke result: exactness passed for all records. The local phase
-prototype has at least one build+query total-cost win in the generated report,
-but does not win query-only latency. Treat rebuild-heavy/local-update workloads
-as the optimization target.
-
 ## 3D Benchmarks
 
 The `rdt3d/` directory covers exact sphere-count queries for point-cloud-like

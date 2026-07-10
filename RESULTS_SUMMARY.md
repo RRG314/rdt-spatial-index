@@ -18,7 +18,6 @@ included in this repository.
 | Python vs compiled | Compiled query backends can significantly reduce query latency relative to pure Python paths. |
 | Interpretability | Claims should be tied to specific datasets and benchmark settings, not broad superiority statements. |
 | v2-v4 status | v2-v4 are research variants with tests, benchmark scripts, raw JSON outputs, and documented failures. |
-| Local phase index | New 2D/3D prototype is exact; current niche is build+query total cost, not query-only speed. |
 
 ## v2-v4 Snapshot
 
@@ -27,7 +26,6 @@ included in this repository.
 | v2 `RDTAdaptiveIndex` | Fixes high-leaf-count failures and performs well on rebuild-heavy build+query workloads. | Schedule ablation shows the original fan-out formula is not the sole source of performance. |
 | v3 `RDTv3Index` | Workload-aware leaf sizing can reduce total cost substantially versus fixed defaults. | Clump-inflated and anisotropic fan-out are documented negative results. |
 | v4 `RDTv4Index` | Analytic configuration lowers regret in the included sweeps. | Heavy-tailed data still exposes calibration error; reproduce on target hardware. |
-| phase `RDTLocalPhaseIndex` | Passed 64/64 exact 2D+3D brute-force checks and has at least one build+query total-cost win in the current smoke report. | Uniform grid, KD-tree, or BVH were faster for query-only latency in the current smoke benchmark. |
 
 ## Where RDT Tends To Perform Strongly
 
@@ -39,8 +37,6 @@ included in this repository.
 
 - Some query-heavy workloads where conventional baselines (grid/KD-tree family)
   can be faster in pure Python configurations.
-- The local phase-index prototype is not a static query-time winner; optimize
-  it for rebuild-heavy/local-update workloads or do not claim it as useful.
 - Mis-tuned parameter settings (for example, unsuitable `alpha`) can degrade
   query performance.
 - Large-scale behavior depends strongly on backend choice (pure Python vs
@@ -60,7 +56,5 @@ optimized baselines and reported separately from pure-Python results.
 - v2 adaptive report: `V2_RESULTS.md`
 - v3 self-sizing report: `V3_RESULTS.md`
 - v4 analytic framework report: `V4_RESULTS.md`
-- Local phase-index report: `results/phase_index_report.md`
-- Local phase-index raw data: `results/phase_index_benchmark.json`
 - Full limitations: `publication/LIMITATIONS.md`
 - Compiled-kernel analysis: `publication/C_IMPLEMENTATION_RESULTS.md`

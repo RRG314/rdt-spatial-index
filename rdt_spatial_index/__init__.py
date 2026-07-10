@@ -6,11 +6,10 @@ from .baselines import UniformGridIndex, KDTreeIndex
 from .adaptive import RDTAdaptiveIndex, estimate_params, rdt_grid_size_capped
 from .v3 import RDTv3Index, probe_statistics, effective_occupancy_grid, solve_max_leaf, calibrate
 from .v4 import RDTv4Index, DataProfile, calibrate_v4, solve_max_leaf_v4
-from .phase import RDTLocalPhaseIndex, RDTLocalPhase2DIndex, RDTLocalPhase3DIndex
 from .core import RDTIndex, rdt_grid_size
 from .fast import RDTFastIndex
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Steven Reid"
 
 _LAZY_EXPORTS = {
@@ -62,9 +61,6 @@ __all__ = [
     "DataProfile",
     "calibrate_v4",
     "solve_max_leaf_v4",
-    "RDTLocalPhaseIndex",
-    "RDTLocalPhase2DIndex",
-    "RDTLocalPhase3DIndex",
     "RDTOptimizedIndex",
     "RDTNdIndex",
     "rdt_grid_size_nd",

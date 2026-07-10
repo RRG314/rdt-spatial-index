@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-10 11:35:04",
+  "timestamp": "2026-07-10 11:55:37",
   "mode": "fast",
   "environment": {
     "python": "3.14.3",
@@ -17,8 +17,8 @@
       "n_points": 10000,
       "methods": {
         "RDT3D-Vectorized": {
-          "build_ms": 1.1018749792128801,
-          "query_ms": 3.0596249271184206,
+          "build_ms": 0.7232079515233636,
+          "query_ms": 2.17037508264184,
           "mean_hits": 0.0,
           "bailed": false,
           "error": null
@@ -37,8 +37,8 @@
       "n_points": 10000,
       "methods": {
         "RDT3D-Vectorized": {
-          "build_ms": 6.5833330154418945,
-          "query_ms": 0.515041989274323,
+          "build_ms": 7.630500011146069,
+          "query_ms": 0.3572080750018358,
           "mean_hits": 0.0,
           "bailed": false,
           "error": null
@@ -57,8 +57,8 @@
       "n_points": 10000,
       "methods": {
         "RDT3D-Vectorized": {
-          "build_ms": 10.482875048182905,
-          "query_ms": 0.8754580048844218,
+          "build_ms": 11.410375009290874,
+          "query_ms": 1.9872499397024512,
           "mean_hits": 2.4,
           "bailed": false,
           "error": null
@@ -77,8 +77,8 @@
       "n_points": 10000,
       "methods": {
         "RDT3D-Vectorized": {
-          "build_ms": 1.501042046584189,
-          "query_ms": 0.36325003020465374,
+          "build_ms": 1.5344159910455346,
+          "query_ms": 0.380166107788682,
           "mean_hits": 0.0,
           "bailed": false,
           "error": null
@@ -97,8 +97,8 @@
       "n_points": 10000,
       "methods": {
         "RDT3D-Vectorized": {
-          "build_ms": 15.69154195021838,
-          "query_ms": 0.970749999396503,
+          "build_ms": 11.269500013440847,
+          "query_ms": 1.158291008323431,
           "mean_hits": 1.6,
           "bailed": false,
           "error": null
@@ -117,8 +117,8 @@
       "n_points": 10000,
       "methods": {
         "RDT3D-Vectorized": {
-          "build_ms": 2.186290919780731,
-          "query_ms": 63.23270802386105,
+          "build_ms": 1.9325839821249247,
+          "query_ms": 90.7552499556914,
           "mean_hits": 2849.48,
           "bailed": false,
           "error": null
@@ -137,8 +137,8 @@
       "n_points": 10000,
       "methods": {
         "RDT3D-Vectorized": {
-          "build_ms": 3.568249987438321,
-          "query_ms": 0.612791976891458,
+          "build_ms": 2.367209061048925,
+          "query_ms": 0.6074999691918492,
           "mean_hits": 0.0,
           "bailed": false,
           "error": null
@@ -157,8 +157,8 @@
       "n_points": 10000,
       "methods": {
         "RDT3D-Vectorized": {
-          "build_ms": 6.735041970387101,
-          "query_ms": 1.3534999452531338,
+          "build_ms": 1.743959030136466,
+          "query_ms": 0.6809579208493233,
           "mean_hits": 0.96,
           "bailed": false,
           "error": null

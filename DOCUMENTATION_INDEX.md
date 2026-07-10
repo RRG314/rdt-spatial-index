@@ -30,7 +30,6 @@ This index is the fastest way to navigate the repository as a new visitor.
 - [V2_RESULTS.md](V2_RESULTS.md): adaptive v2 results, ablations, and limitations.
 - [V3_RESULTS.md](V3_RESULTS.md): workload-aware v3 results and negative findings.
 - [V4_RESULTS.md](V4_RESULTS.md): analytic v4 configuration results and caveats.
-- [results/phase_index_report.md](results/phase_index_report.md): local phase-index 2D+3D smoke results.
 
 ## Reproducibility
 

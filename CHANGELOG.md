@@ -9,11 +9,23 @@
   - CLI (`rdt-spatial-index`) for smoke and JSON query workflows,
   - package-level test suite.
 - Cross-platform CI job for npm package install/test/pack checks.
+- 3D exactness and smoke-validation entry points:
+  - `tests/test_3d_correctness.py`,
+  - `rdt3d/validate3d.py --fast`,
+  - `rdt3d/benchmark3d.py --fast`,
+  - `rdt3d/stress3d.py --fast`.
+- Draft `v0.1.1` release notes.
 
 ### Changed
 - Top-level docs now link to npm package usage and integration path.
 - Contributing guide now includes npm package validation steps.
 - GitHub Actions toolchain updated to current major actions (`v6`) for Node 24 readiness.
+- 3D scripts now write outputs relative to `rdt3d/results/` instead of
+  machine-specific absolute paths.
+- 3D optional baselines are reported as unavailable when dependencies are
+  missing instead of breaking dependency-light runs.
+- Experimental phase-index prototype work is not exported as package API for
+  this release.
 
 ## 0.1.0 - 2026-03-12
 
