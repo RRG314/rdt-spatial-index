@@ -7,15 +7,16 @@ from typing import Sequence
 
 import numpy as np
 
-from .core import RDTIndex
+from .fast import RDTFastIndex
 
 
-class RDTOptimizedIndex(RDTIndex):
+class RDTOptimizedIndex(RDTFastIndex):
     """
     Tuned RDT index.
 
     Uses the same RDT rule but auto-selects parameters from a candidate grid
-    using a small holdout query set (known method: parameter tuning).
+    using a small holdout query set (known method: parameter tuning). Query
+    execution uses the same vectorized flat-leaf path as ``RDTFastIndex``.
     """
 
     def __init__(

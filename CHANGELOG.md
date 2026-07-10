@@ -15,8 +15,11 @@
   - `rdt3d/benchmark3d.py --fast`,
   - `rdt3d/stress3d.py --fast`.
 - Draft `v0.1.1` release notes.
+- Regression test for `RDTOptimizedIndex` exactness and fast-path inheritance.
 
 ### Changed
+- `RDTOptimizedIndex` now inherits the `RDTFastIndex` vectorized query path
+  after holdout tuning, reducing query overhead without changing counts.
 - Top-level docs now link to the Node.js package source and integration path.
 - Contributing guide now includes npm package validation steps.
 - GitHub Actions toolchain updated to current major actions (`v6`) for Node 24 readiness.
@@ -29,6 +32,9 @@
 - Public docs now state that Python is not published on PyPI, while the scoped
   npm package exists at `0.1.0` and the draft `0.1.1` Node source is not yet
   published.
+- Docs now state that local phase/hysteresis controller work belongs in the
+  companion adaptive-hierarchies package until it becomes a measured spatial
+  query backend.
 
 ## 0.1.0 - 2026-03-12
 

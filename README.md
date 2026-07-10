@@ -17,6 +17,13 @@ targets draft version `0.1.1`.
 The project is organized for external review: tests, benchmarks, limitations,
 and publication-oriented outputs are part of the repository.
 
+## Boundary With Adaptive Hierarchies
+
+The companion `RDT-Adaptive-Hierarchies` project is the home for stable
+partitioning, deterministic coverage, and experimental local phase/hysteresis
+controllers. This repository should only receive phase-style work after it
+becomes an exact spatial query backend with benchmark evidence.
+
 ## Start Here
 
 - [REVIEWER_GUIDE.md](REVIEWER_GUIDE.md): shortest path through v1-v4, evidence, and caveats.
@@ -36,7 +43,9 @@ and publication-oriented outputs are part of the repository.
 3. Use `RDTAdaptiveIndex`, `RDTv3Index`, and `RDTv4Index` when you are
    evaluating the v2-v4 research variants and can reproduce their workload
    assumptions.
-4. Add `RDTCIndex`, `RDTCythonIndex`, or `RDTNumbaIndex` only when compiled
+4. Use `RDTOptimizedIndex` when you can spend a small tuning pass on a known
+   radius/query sample and want the tuned parameters on the fast query path.
+5. Add `RDTCIndex`, `RDTCythonIndex`, or `RDTNumbaIndex` only when compiled
    acceleration is needed and your environment supports it.
 
 ## Use From Source

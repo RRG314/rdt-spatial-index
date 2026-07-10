@@ -10,7 +10,7 @@
 | Self-sizing 2D v3 | `RDTv3Index` | Research, tested | Declared radius/query-count workloads |
 | Analytic 2D v4 | `RDTv4Index` | Research, tested | Pre-build self-configuration experiments |
 | Fast Node.js 2D | `packages/rdt-spatial-index` | Package source, tested locally | JavaScript/Node integration path |
-| Auto-tuned 2D | `RDTOptimizedIndex` | Maintained | Parameter search for a target workload |
+| Auto-tuned 2D | `RDTOptimizedIndex` | Maintained | Parameter search for a target workload, executed on the fast query path |
 | N-dimensional | `RDTNdIndex` | Maintained (advanced) | Higher-dimensional research experiments |
 | Entropy-adaptive | `EntropyRDTIndex` | Maintained (advanced) | Structured-density experiments |
 | Game broadphase | `RDTGameIndex` | Maintained (advanced) | Static+dynamic broadphase experiments |
@@ -56,6 +56,7 @@
   - Compiled Python backends are separate.
 - `RDTOptimizedIndex`
   - Parameter-tuned variant built on the same core behavior.
+  - Uses the `RDTFastIndex` vectorized leaf-query path after tuning.
 - `RDTCIndex` / `RDTCythonIndex` / `RDTNumbaIndex`
   - Compiled query execution paths intended to accelerate query-heavy workloads.
 - `RDTNdIndex`, `EntropyRDTIndex`, `RDTGameIndex`

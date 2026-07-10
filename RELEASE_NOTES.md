@@ -28,6 +28,8 @@ cloned checkout.
   - fast-mode JSON outputs under `rdt3d/results/`.
 - Cleaner public reviewer path across README, implementation map, benchmark
   notes, reproducibility notes, and results summaries.
+- `RDTOptimizedIndex` now runs tuned configurations through the same vectorized
+  fast leaf-query path as `RDTFastIndex`.
 
 ### What Is Not Included
 
@@ -36,7 +38,9 @@ cloned checkout.
   registry version remains `@sreid90/rdt-spatial-index@0.1.0`.
 - No new phase-index API is included in the public Python API for this draft.
   The local phase-index prototype did not yet meet the usefulness threshold
-  for release, so it is intentionally kept out of the public API.
+  for release, so it is intentionally kept out of the public API. Phase and
+  hysteresis controller work belongs in `RDT-Adaptive-Hierarchies` until it is
+  proven as an exact spatial query backend.
 - No unrelated optimizer or non-spatial-index material is part of this release.
 
 ### Recommended Starting Path

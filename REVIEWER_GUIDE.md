@@ -10,6 +10,7 @@ negative results.
 | Need | Recommended entry point | Why |
 |---|---|---|
 | Stable package usage | `RDTFastIndex` | Practical pure-Python default with the same tree behavior as the reference path. |
+| Tuned known-workload usage | `RDTOptimizedIndex` | Parameter search over the same RDT family, now using the fast vectorized query path. |
 | Correctness baseline | `RDTIndex` | Slowest but easiest to audit and compare against brute force. |
 | Rebuild-heavy 2D workloads | `RDTAdaptiveIndex` | v2 self-tuning path designed for build+query frame cost. |
 | Declared radius/query-count workloads | `RDTv3Index` | v3 cost-model path when the workload can be stated up front. |
@@ -50,6 +51,7 @@ negative results.
 | v3 failures | Clump-inflated subdivision and anisotropic fan-out are retained as ablation flags, not recommended defaults. |
 | v4 success | Analytic self-configuration greatly reduces measured regret in the included sweeps. |
 | v4 caveat | Calibration can still be wrong on heavy-tailed distributions; results are one-machine evidence until reproduced elsewhere. |
+| tuned-index update | `RDTOptimizedIndex` now combines holdout tuning with the `RDTFastIndex` query path; quick 5k checks improved query time while preserving exact counts. |
 
 ## Minimal Review Commands
 
@@ -89,3 +91,7 @@ name is `@sreid90/rdt-spatial-index`; the registry release remains `0.1.0`
 until a separate npm publish step is performed. Research variants are included
 so reviewers can reproduce the comparisons and understand why each default is
 or is not recommended.
+
+Stable resize partitioning, deterministic coverage, and local phase-controller
+work belong in `RDT-Adaptive-Hierarchies` until they become exact spatial query
+backends with this repository's benchmark evidence.

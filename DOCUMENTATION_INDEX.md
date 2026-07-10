@@ -8,6 +8,7 @@ This index is the fastest way to navigate the repository as a new visitor.
 - [REVIEWER_GUIDE.md](REVIEWER_GUIDE.md): v1-v4 map, evidence map, and caveats.
 - [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md): reference vs fast vs compiled vs legacy.
 - [LIMITATIONS.md](LIMITATIONS.md): public-facing constraints and caveats.
+- [ECOSYSTEM_ROLE.md](ECOSYSTEM_ROLE.md): boundary with companion hierarchy work.
 
 ## Installation and Usage
 
