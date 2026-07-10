@@ -41,6 +41,28 @@ PY
 | `benchmarks/compare_indexes.py` | `results/benchmark_results.json`, `results/benchmark_report.md` |
 | `benchmarks/pub_benchmark.py` | `publication/RAW_RESULTS/*.json` |
 | `benchmarks/generate_figures.py` | `publication/PAPER_FIGURES/*`, `publication/PAPER_TABLES/*` |
+| `benchmarks/v2_benchmark.py`, `dynamic_benchmark.py`, `schedule_ablation.py` | `results/v2_*.json` |
+| `benchmarks/v3_benchmark.py`, `v3_dynamic.py` | `results/v3_*.json` |
+| `experiments/v4_*.py` | `results/v4_*.json` |
+
+## v2-v4 Reproduction Commands
+
+```bash
+PYTHONPATH=. python3 tests/test_adaptive.py
+PYTHONPATH=. python3 tests/test_v3.py
+PYTHONPATH=. python3 tests/test_v4.py
+PYTHONPATH=. python3 benchmarks/v2_benchmark.py --quick
+PYTHONPATH=. python3 benchmarks/v3_benchmark.py --out results/v3_reproduction.json
+```
+
+The full v4 regret/ablation/sensitivity scripts are more expensive and are
+kept under `experiments/`:
+
+```bash
+PYTHONPATH=. python3 experiments/v4_regret.py
+PYTHONPATH=. python3 experiments/v4_ablation.py
+PYTHONPATH=. python3 experiments/v4_sensitivity.py
+```
 
 ## Hardware/Software Assumptions
 

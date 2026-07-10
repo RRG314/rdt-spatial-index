@@ -3,19 +3,36 @@ from __future__ import annotations
 import numpy as np
 from .fast import RDTFastIndex
 
-try:
-    from .fast_cython_ext import query_kernel_cython
+query_kernel_cython = None
+HAS_CYTHON = False
+_CYTHON_IMPORT_ERROR: Exception | None = None
+
+
+def _load_cython_kernel():
+    """Import the optional Cython extension only when it is explicitly used."""
+    global query_kernel_cython, HAS_CYTHON, _CYTHON_IMPORT_ERROR
+    if query_kernel_cython is not None:
+        return query_kernel_cython
+    try:
+        from .fast_cython_ext import query_kernel_cython as kernel
+    except Exception as exc:
+        HAS_CYTHON = False
+        _CYTHON_IMPORT_ERROR = exc
+        raise ImportError(
+            "Cython extension not available. Run: "
+            "python rdt_spatial_index/setup_cython.py build_ext --inplace"
+        ) from exc
+    query_kernel_cython = kernel
     HAS_CYTHON = True
-except ImportError:
-    HAS_CYTHON = False
+    _CYTHON_IMPORT_ERROR = None
+    return kernel
 
 
 class RDTCythonIndex(RDTFastIndex):
     """RDTFastIndex with Cython+OpenMP-accelerated query."""
 
     def __init__(self, *args, **kwargs):
-        if not HAS_CYTHON:
-            raise ImportError("Cython extension not built. Run: python rdt_spatial_index/setup_cython.py build_ext --inplace")
+        _load_cython_kernel()
         super().__init__(*args, **kwargs)
 
     def query(self, queries, radius, timing=False):
@@ -27,7 +44,8 @@ class RDTCythonIndex(RDTFastIndex):
         if self._leaf_x0.size == 0:
             return np.zeros(q.shape[0], dtype=np.int32)
 
-        return query_kernel_cython(
+        kernel = _load_cython_kernel()
+        return kernel(
             np.ascontiguousarray(q[:, 0]),
             np.ascontiguousarray(q[:, 1]),
             self._leaf_x0,

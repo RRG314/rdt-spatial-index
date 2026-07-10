@@ -17,6 +17,15 @@ included in this repository.
 | Performance | No universal winner; outcomes depend on workload and implementation/backend. |
 | Python vs compiled | Compiled query backends can significantly reduce query latency relative to pure Python paths. |
 | Interpretability | Claims should be tied to specific datasets and benchmark settings, not broad superiority statements. |
+| v2-v4 status | v2-v4 are research variants with tests, benchmark scripts, raw JSON outputs, and documented failures. |
+
+## v2-v4 Snapshot
+
+| Variant | Positive result | Negative or caveat |
+|---|---|---|
+| v2 `RDTAdaptiveIndex` | Fixes high-leaf-count failures and performs well on rebuild-heavy build+query workloads. | Schedule ablation shows the original fan-out formula is not the sole source of performance. |
+| v3 `RDTv3Index` | Workload-aware leaf sizing can reduce total cost substantially versus fixed defaults. | Clump-inflated and anisotropic fan-out are documented negative results. |
+| v4 `RDTv4Index` | Analytic configuration lowers regret in the included sweeps. | Heavy-tailed data still exposes calibration error; reproduce on target hardware. |
 
 ## Where RDT Tends To Perform Strongly
 
@@ -44,5 +53,8 @@ optimized baselines and reported separately from pure-Python results.
 - Quick report: `results/benchmark_report.md`
 - Raw quick data: `results/benchmark_results.json`
 - Full research summary: `publication/RESULTS_SUMMARY.md`
+- v2 adaptive report: `V2_RESULTS.md`
+- v3 self-sizing report: `V3_RESULTS.md`
+- v4 analytic framework report: `V4_RESULTS.md`
 - Full limitations: `publication/LIMITATIONS.md`
 - Compiled-kernel analysis: `publication/C_IMPLEMENTATION_RESULTS.md`

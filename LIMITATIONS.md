@@ -39,7 +39,17 @@ evaluation, not blanket performance claims.
 - `experiments/` scripts are exploratory by design.
 - They are preserved and documented but are not part of stable API guarantees.
 
-## 7) Legacy Material
+## 7) v2-v4 Research Variants
+
+- `RDTAdaptiveIndex`, `RDTv3Index`, and `RDTv4Index` are included for
+  reproducible spatial-index research and review.
+- Their result claims should be read with the matching workload assumptions in
+  `V2_RESULTS.md`, `V3_RESULTS.md`, and `V4_RESULTS.md`.
+- Negative results are part of the record: v2 schedule ablations reduce the
+  claim about the original fan-out formula; v3 clump/aniso mechanisms are not
+  recommended defaults; v4 still has calibration limits on heavy-tailed data.
+
+## 8) Legacy Material
 
 - Legacy scripts and historical reports are preserved in `legacy/` for context.
 - They are not the recommended implementation path for new users.

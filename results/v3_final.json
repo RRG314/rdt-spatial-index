@@ -1,0 +1,578 @@
+{
+  "uniform_50000": {
+    "classic-32": {
+      "build_ms": 4.99,
+      "query_ms": 0.345,
+      "total_ms": 5.34,
+      "leaves": 400,
+      "depth": 1,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "classic-free": {
+      "build_ms": 4.68,
+      "query_ms": 0.345,
+      "total_ms": 5.02,
+      "leaves": 400,
+      "depth": 1,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-auto": {
+      "build_ms": 3.26,
+      "query_ms": 0.517,
+      "total_ms": 3.77,
+      "leaves": 81,
+      "depth": 1,
+      "root_D": 1.0,
+      "max_leaf": 1355,
+      "correct": true
+    },
+    "v3-auto-qheavy": {
+      "build_ms": 4.26,
+      "query_ms": 0.353,
+      "total_ms": 4.61,
+      "leaves": 441,
+      "depth": 1,
+      "root_D": 1.0,
+      "max_leaf": 241,
+      "correct": true
+    },
+    "v3-clump": {
+      "build_ms": 4.25,
+      "query_ms": 0.326,
+      "total_ms": 4.57,
+      "leaves": 400,
+      "depth": 1,
+      "root_D": 1.0,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-aniso": {
+      "build_ms": 4.54,
+      "query_ms": 0.339,
+      "total_ms": 4.88,
+      "leaves": 400,
+      "depth": 1,
+      "root_D": 1.0,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "scipy-kd": {
+      "build_ms": 11.87,
+      "query_ms": 1.933,
+      "total_ms": 13.8,
+      "leaves": null,
+      "depth": null,
+      "root_D": null,
+      "max_leaf": null,
+      "correct": true
+    }
+  },
+  "uniform_1000000": {
+    "classic-32": {
+      "build_ms": 215.27,
+      "query_ms": 8.335,
+      "total_ms": 223.6,
+      "leaves": 9216,
+      "depth": 2,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "classic-free": {
+      "build_ms": 124.65,
+      "query_ms": 9.284,
+      "total_ms": 133.93,
+      "leaves": 7921,
+      "depth": 1,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-auto": {
+      "build_ms": 79.08,
+      "query_ms": 12.182,
+      "total_ms": 91.27,
+      "leaves": 400,
+      "depth": 1,
+      "root_D": 1.0,
+      "max_leaf": 5110,
+      "correct": true
+    },
+    "v3-auto-qheavy": {
+      "build_ms": 94.24,
+      "query_ms": 15.011,
+      "total_ms": 109.25,
+      "leaves": 2601,
+      "depth": 1,
+      "root_D": 1.0,
+      "max_leaf": 797,
+      "correct": true
+    },
+    "v3-clump": {
+      "build_ms": 134.06,
+      "query_ms": 8.981,
+      "total_ms": 143.04,
+      "leaves": 7921,
+      "depth": 1,
+      "root_D": 1.0,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-aniso": {
+      "build_ms": 125.0,
+      "query_ms": 8.258,
+      "total_ms": 133.26,
+      "leaves": 7921,
+      "depth": 1,
+      "root_D": 1.0,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "scipy-kd": {
+      "build_ms": 332.47,
+      "query_ms": 41.568,
+      "total_ms": 374.04,
+      "leaves": null,
+      "depth": null,
+      "root_D": null,
+      "max_leaf": null,
+      "correct": true
+    }
+  },
+  "clustered_50000": {
+    "classic-32": {
+      "build_ms": 6.36,
+      "query_ms": 0.298,
+      "total_ms": 6.66,
+      "leaves": 659,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "classic-free": {
+      "build_ms": 6.26,
+      "query_ms": 0.297,
+      "total_ms": 6.55,
+      "leaves": 659,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-auto": {
+      "build_ms": 1.72,
+      "query_ms": 0.328,
+      "total_ms": 2.04,
+      "leaves": 36,
+      "depth": 2,
+      "root_D": 8.53,
+      "max_leaf": 3432,
+      "correct": true
+    },
+    "v3-auto-qheavy": {
+      "build_ms": 4.96,
+      "query_ms": 0.204,
+      "total_ms": 5.16,
+      "leaves": 348,
+      "depth": 3,
+      "root_D": 8.53,
+      "max_leaf": 535,
+      "correct": true
+    },
+    "v3-clump": {
+      "build_ms": 5.96,
+      "query_ms": 0.345,
+      "total_ms": 6.31,
+      "leaves": 867,
+      "depth": 2,
+      "root_D": 8.53,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-aniso": {
+      "build_ms": 6.41,
+      "query_ms": 0.297,
+      "total_ms": 6.71,
+      "leaves": 658,
+      "depth": 3,
+      "root_D": 8.53,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "scipy-kd": {
+      "build_ms": 10.43,
+      "query_ms": 2.07,
+      "total_ms": 12.5,
+      "leaves": null,
+      "depth": null,
+      "root_D": null,
+      "max_leaf": null,
+      "correct": true
+    }
+  },
+  "clustered_200000": {
+    "classic-32": {
+      "build_ms": 22.75,
+      "query_ms": 0.941,
+      "total_ms": 23.69,
+      "leaves": 2288,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "classic-free": {
+      "build_ms": 21.91,
+      "query_ms": 0.949,
+      "total_ms": 22.86,
+      "leaves": 2267,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-auto": {
+      "build_ms": 12.54,
+      "query_ms": 0.628,
+      "total_ms": 13.17,
+      "leaves": 148,
+      "depth": 3,
+      "root_D": 8.59,
+      "max_leaf": 6664,
+      "correct": true
+    },
+    "v3-auto-qheavy": {
+      "build_ms": 16.34,
+      "query_ms": 0.629,
+      "total_ms": 16.97,
+      "leaves": 662,
+      "depth": 3,
+      "root_D": 8.59,
+      "max_leaf": 1039,
+      "correct": true
+    },
+    "v3-clump": {
+      "build_ms": 25.59,
+      "query_ms": 1.459,
+      "total_ms": 27.05,
+      "leaves": 3340,
+      "depth": 2,
+      "root_D": 8.59,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-aniso": {
+      "build_ms": 24.6,
+      "query_ms": 1.044,
+      "total_ms": 25.64,
+      "leaves": 2284,
+      "depth": 3,
+      "root_D": 8.59,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "scipy-kd": {
+      "build_ms": 49.95,
+      "query_ms": 8.661,
+      "total_ms": 58.61,
+      "leaves": null,
+      "depth": null,
+      "root_D": null,
+      "max_leaf": null,
+      "correct": true
+    }
+  },
+  "clustered_1000000": {
+    "classic-32": {
+      "build_ms": 129.95,
+      "query_ms": 5.121,
+      "total_ms": 135.07,
+      "leaves": 10490,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "classic-free": {
+      "build_ms": 121.42,
+      "query_ms": 5.922,
+      "total_ms": 127.34,
+      "leaves": 10652,
+      "depth": 2,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-auto": {
+      "build_ms": 75.44,
+      "query_ms": 3.473,
+      "total_ms": 78.91,
+      "leaves": 332,
+      "depth": 3,
+      "root_D": 8.54,
+      "max_leaf": 12940,
+      "correct": true
+    },
+    "v3-auto-qheavy": {
+      "build_ms": 83.9,
+      "query_ms": 3.297,
+      "total_ms": 87.2,
+      "leaves": 1706,
+      "depth": 3,
+      "root_D": 8.54,
+      "max_leaf": 1767,
+      "correct": true
+    },
+    "v3-clump": {
+      "build_ms": 159.83,
+      "query_ms": 8.246,
+      "total_ms": 168.08,
+      "leaves": 16659,
+      "depth": 2,
+      "root_D": 8.54,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-aniso": {
+      "build_ms": 138.57,
+      "query_ms": 5.6,
+      "total_ms": 144.17,
+      "leaves": 10677,
+      "depth": 2,
+      "root_D": 8.54,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "scipy-kd": {
+      "build_ms": 293.81,
+      "query_ms": 49.132,
+      "total_ms": 342.94,
+      "leaves": null,
+      "depth": null,
+      "root_D": null,
+      "max_leaf": null,
+      "correct": true
+    }
+  },
+  "taxi_like_200000": {
+    "classic-32": {
+      "build_ms": 25.9,
+      "query_ms": 1.243,
+      "total_ms": 27.14,
+      "leaves": 2446,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "classic-free": {
+      "build_ms": 25.92,
+      "query_ms": 1.326,
+      "total_ms": 27.25,
+      "leaves": 2725,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-auto": {
+      "build_ms": 10.79,
+      "query_ms": 0.926,
+      "total_ms": 11.72,
+      "leaves": 140,
+      "depth": 3,
+      "root_D": 7.91,
+      "max_leaf": 5835,
+      "correct": true
+    },
+    "v3-auto-qheavy": {
+      "build_ms": 16.85,
+      "query_ms": 0.675,
+      "total_ms": 17.52,
+      "leaves": 875,
+      "depth": 3,
+      "root_D": 7.91,
+      "max_leaf": 910,
+      "correct": true
+    },
+    "v3-clump": {
+      "build_ms": 42.57,
+      "query_ms": 2.977,
+      "total_ms": 45.55,
+      "leaves": 8062,
+      "depth": 2,
+      "root_D": 7.91,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-aniso": {
+      "build_ms": 26.18,
+      "query_ms": 1.181,
+      "total_ms": 27.36,
+      "leaves": 2723,
+      "depth": 3,
+      "root_D": 7.91,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "scipy-kd": {
+      "build_ms": 49.74,
+      "query_ms": 5.817,
+      "total_ms": 55.56,
+      "leaves": null,
+      "depth": null,
+      "root_D": null,
+      "max_leaf": null,
+      "correct": true
+    }
+  },
+  "taxi_like_1000000": {
+    "classic-32": {
+      "build_ms": 139.03,
+      "query_ms": 5.324,
+      "total_ms": 144.35,
+      "leaves": 10780,
+      "depth": 4,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "classic-free": {
+      "build_ms": 151.69,
+      "query_ms": 5.658,
+      "total_ms": 157.35,
+      "leaves": 13885,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-auto": {
+      "build_ms": 70.73,
+      "query_ms": 4.837,
+      "total_ms": 75.56,
+      "leaves": 252,
+      "depth": 4,
+      "root_D": 19.51,
+      "max_leaf": 16874,
+      "correct": true
+    },
+    "v3-auto-qheavy": {
+      "build_ms": 87.78,
+      "query_ms": 3.146,
+      "total_ms": 90.92,
+      "leaves": 1720,
+      "depth": 3,
+      "root_D": 19.51,
+      "max_leaf": 2304,
+      "correct": true
+    },
+    "v3-clump": {
+      "build_ms": 363.94,
+      "query_ms": 24.591,
+      "total_ms": 388.53,
+      "leaves": 75070,
+      "depth": 2,
+      "root_D": 19.51,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-aniso": {
+      "build_ms": 154.35,
+      "query_ms": 5.705,
+      "total_ms": 160.06,
+      "leaves": 13900,
+      "depth": 3,
+      "root_D": 19.51,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "scipy-kd": {
+      "build_ms": 296.74,
+      "query_ms": 26.908,
+      "total_ms": 323.64,
+      "leaves": null,
+      "depth": null,
+      "root_D": null,
+      "max_leaf": null,
+      "correct": true
+    }
+  },
+  "streets_200000": {
+    "classic-32": {
+      "build_ms": 28.4,
+      "query_ms": 1.133,
+      "total_ms": 29.54,
+      "leaves": 1882,
+      "depth": 3,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "classic-free": {
+      "build_ms": 21.33,
+      "query_ms": 1.025,
+      "total_ms": 22.35,
+      "leaves": 1538,
+      "depth": 2,
+      "root_D": null,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-auto": {
+      "build_ms": 11.01,
+      "query_ms": 1.402,
+      "total_ms": 12.41,
+      "leaves": 169,
+      "depth": 1,
+      "root_D": 1.12,
+      "max_leaf": 2632,
+      "correct": true
+    },
+    "v3-auto-qheavy": {
+      "build_ms": 19.51,
+      "query_ms": 0.914,
+      "total_ms": 20.42,
+      "leaves": 1108,
+      "depth": 2,
+      "root_D": 1.12,
+      "max_leaf": 410,
+      "correct": true
+    },
+    "v3-clump": {
+      "build_ms": 20.54,
+      "query_ms": 1.045,
+      "total_ms": 21.58,
+      "leaves": 1544,
+      "depth": 2,
+      "root_D": 1.12,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "v3-aniso": {
+      "build_ms": 21.87,
+      "query_ms": 1.044,
+      "total_ms": 22.91,
+      "leaves": 1538,
+      "depth": 2,
+      "root_D": 1.12,
+      "max_leaf": 256,
+      "correct": true
+    },
+    "scipy-kd": {
+      "build_ms": 52.57,
+      "query_ms": 7.77,
+      "total_ms": 60.34,
+      "leaves": null,
+      "depth": null,
+      "root_D": null,
+      "max_leaf": null,
+      "correct": true
+    }
+  }
+}

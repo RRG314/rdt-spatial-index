@@ -1,0 +1,134 @@
+{
+  "n_20000": {
+    "ScipyKD": {
+      "build_ms": 4.22,
+      "query_ms": 0.868,
+      "frame_ms": 5.09,
+      "fps_equiv": 196.6
+    },
+    "UniformGrid": {
+      "build_ms": 9.67,
+      "query_ms": 8.226,
+      "frame_ms": 17.89,
+      "fps_equiv": 55.9
+    },
+    "Quadtree": {
+      "build_ms": 5.36,
+      "query_ms": 10.842,
+      "frame_ms": 16.2,
+      "fps_equiv": 61.7
+    },
+    "RDTFast-v1(auto)": {
+      "build_ms": 1.77,
+      "query_ms": 7.35,
+      "frame_ms": 9.12,
+      "fps_equiv": 109.6
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 1.99,
+      "query_ms": 11.157,
+      "frame_ms": 13.15,
+      "fps_equiv": 76.1
+    },
+    "RDT-v2-C": {
+      "build_ms": 1.81,
+      "query_ms": 0.145,
+      "frame_ms": 1.95,
+      "fps_equiv": 511.8
+    },
+    "R-tree(libspatial)": {
+      "build_ms": 56.6,
+      "query_ms": 8.883,
+      "frame_ms": 65.49,
+      "fps_equiv": 15.3
+    }
+  },
+  "n_100000": {
+    "ScipyKD": {
+      "build_ms": 23.7,
+      "query_ms": 2.574,
+      "frame_ms": 26.28,
+      "fps_equiv": 38.1
+    },
+    "UniformGrid": {
+      "build_ms": 46.66,
+      "query_ms": 8.922,
+      "frame_ms": 55.58,
+      "fps_equiv": 18.0
+    },
+    "Quadtree": {
+      "build_ms": 25.15,
+      "query_ms": 25.763,
+      "frame_ms": 50.91,
+      "fps_equiv": 19.6
+    },
+    "RDTFast-v1(auto)": {
+      "build_ms": 101.98,
+      "query_ms": 130.779,
+      "frame_ms": 232.75,
+      "fps_equiv": 4.3
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 8.29,
+      "query_ms": 13.977,
+      "frame_ms": 22.27,
+      "fps_equiv": 44.9
+    },
+    "RDT-v2-C": {
+      "build_ms": 8.18,
+      "query_ms": 0.527,
+      "frame_ms": 8.7,
+      "fps_equiv": 114.9
+    },
+    "R-tree(libspatial)": {
+      "build_ms": 277.66,
+      "query_ms": 23.255,
+      "frame_ms": 300.92,
+      "fps_equiv": 3.3
+    }
+  },
+  "n_500000": {
+    "ScipyKD": {
+      "build_ms": 137.62,
+      "query_ms": 13.393,
+      "frame_ms": 151.01,
+      "fps_equiv": 6.6
+    },
+    "UniformGrid": {
+      "build_ms": 236.8,
+      "query_ms": 14.623,
+      "frame_ms": 251.43,
+      "fps_equiv": 4.0
+    },
+    "Quadtree": {
+      "build_ms": 121.39,
+      "query_ms": 70.075,
+      "frame_ms": 191.46,
+      "fps_equiv": 5.2
+    },
+    "RDTFast-v1(auto)": {
+      "build_ms": 486.67,
+      "query_ms": 526.248,
+      "frame_ms": 1012.92,
+      "fps_equiv": 1.0
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 89.96,
+      "query_ms": 36.829,
+      "frame_ms": 126.79,
+      "fps_equiv": 7.9
+    },
+    "RDT-v2-C": {
+      "build_ms": 93.38,
+      "query_ms": 3.154,
+      "frame_ms": 96.54,
+      "fps_equiv": 10.4
+    },
+    "R-tree(libspatial)": {
+      "build_ms": 1484.81,
+      "query_ms": 95.932,
+      "frame_ms": 1580.74,
+      "fps_equiv": 0.6
+    }
+  }
+}

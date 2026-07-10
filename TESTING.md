@@ -28,6 +28,19 @@ Covers:
 - large-scale smoke checks,
 - optional advanced modules.
 
+### 3) v2-v4 research-variant suites
+
+```bash
+PYTHONPATH=. python3 tests/test_adaptive.py
+PYTHONPATH=. python3 tests/test_v3.py
+PYTHONPATH=. python3 tests/test_v4.py
+```
+
+Covers:
+- v2 adaptive correctness against brute force across distributions,
+- v3 workload-aware solver/statistic sanity and exact counts,
+- v4 analytic configuration correctness, scan identities, and solver checks.
+
 ## Optional Dependency Behavior
 
 The publication suite includes optional-baseline checks (`RTree`, `ScipyKD`).

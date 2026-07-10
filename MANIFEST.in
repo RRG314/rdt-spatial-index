@@ -3,6 +3,16 @@ include LICENSE
 include CHANGELOG.md
 include CITATION.cff
 include DOCUMENTATION_INDEX.md
+include REVIEWER_GUIDE.md
+include IMPLEMENTATIONS.md
+include TESTING.md
+include BENCHMARKS.md
+include REPRODUCIBILITY.md
+include RESULTS_SUMMARY.md
+include LIMITATIONS.md
+include V2_RESULTS.md
+include V3_RESULTS.md
+include V4_RESULTS.md
 include requirements.txt
 include requirements-bench.txt
 include requirements-bench-full.txt

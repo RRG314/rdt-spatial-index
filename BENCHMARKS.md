@@ -41,6 +41,29 @@ Core publication workloads include:
 - taxi-like,
 - OSM-like.
 
+## v2-v4 Research Benchmarks
+
+```bash
+PYTHONPATH=. python3 benchmarks/v2_benchmark.py --quick
+PYTHONPATH=. python3 benchmarks/dynamic_benchmark.py
+PYTHONPATH=. python3 benchmarks/schedule_ablation.py
+PYTHONPATH=. python3 benchmarks/v3_benchmark.py --out results/v3_reproduction.json
+PYTHONPATH=. python3 benchmarks/v3_dynamic.py
+PYTHONPATH=. python3 experiments/v4_regret.py
+PYTHONPATH=. python3 experiments/v4_ablation.py
+PYTHONPATH=. python3 experiments/v4_sensitivity.py
+```
+
+Primary outputs:
+- `results/v2_*.json`
+- `results/v3_*.json`
+- `results/v4_*.json`
+
+Read the matching reports before quoting numbers:
+- `V2_RESULTS.md`
+- `V3_RESULTS.md`
+- `V4_RESULTS.md`
+
 ## Figure and Table Generation
 
 ```bash

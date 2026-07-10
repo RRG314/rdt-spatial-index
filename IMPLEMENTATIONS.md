@@ -6,6 +6,9 @@
 |---|---|---|---|
 | Reference 2D | `RDTIndex` | Maintained | Ground truth/reference behavior |
 | Fast Python 2D | `RDTFastIndex` | Maintained (recommended default) | Practical CPU use without compiled build |
+| Adaptive 2D v2 | `RDTAdaptiveIndex` | Experimental, tested | Self-tuned build+query workloads |
+| Self-sizing 2D v3 | `RDTv3Index` | Research, tested | Declared radius/query-count workloads |
+| Analytic 2D v4 | `RDTv4Index` | Research, tested | Pre-build self-configuration experiments |
 | Fast Node.js 2D | `RDTFastIndex` (`@sreid90/rdt-spatial-index`) | Maintained | JavaScript/Node integration path |
 | Auto-tuned 2D | `RDTOptimizedIndex` | Maintained | Parameter search for a target workload |
 | N-dimensional | `RDTNdIndex` | Maintained (advanced) | Higher-dimensional research experiments |
@@ -21,7 +24,11 @@
 
 1. Start with `RDTFastIndex`.
 2. Keep `RDTIndex` in regression tests for reference correctness.
-3. Add a compiled wrapper only after correctness is verified.
+3. Use `RDTAdaptiveIndex` when evaluating the v2 adaptive path for
+   rebuild-heavy workloads.
+4. Use `RDTv3Index` or `RDTv4Index` only when the workload assumptions are
+   explicit and the corresponding result files are part of the comparison.
+5. Add a compiled wrapper only after correctness is verified.
 
 ## How The Variants Relate
 
@@ -31,6 +38,16 @@
 - `RDTFastIndex`
   - Same RDT tree logic with faster query strategy in Python.
   - Recommended default implementation.
+- `RDTAdaptiveIndex`
+  - v2 adaptive path with occupancy-capped subdivision, auto-tuning, and
+    leaf-directory queries.
+  - Useful for build+query frame-cost experiments.
+- `RDTv3Index`
+  - v3 workload-aware self-sizing path.
+  - Useful when radius and queries-per-build are declared before build.
+- `RDTv4Index`
+  - v4 analytic self-configuration framework.
+  - Useful for latest research on pre-build configuration and regret studies.
 - `@sreid90/rdt-spatial-index` (`packages/rdt-spatial-index/`)
   - JavaScript/Node implementation path with reference + fast variants.
   - Intended for Node ecosystems; compiled Python backends are separate.

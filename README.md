@@ -15,6 +15,7 @@ and publication-oriented outputs are part of the repository.
 
 ## Start Here
 
+- [REVIEWER_GUIDE.md](REVIEWER_GUIDE.md): shortest path through v1-v4, evidence, and caveats.
 - [IMPLEMENTATIONS.md](IMPLEMENTATIONS.md): recommended class path and backend matrix.
 - [TESTING.md](TESTING.md): correctness and consistency test entry points.
 - [BENCHMARKS.md](BENCHMARKS.md): quick and publication benchmark commands.
@@ -28,7 +29,10 @@ and publication-oriented outputs are part of the repository.
 
 1. Use `RDTFastIndex` as the default practical implementation.
 2. Use `RDTIndex` as the reference correctness baseline.
-3. Add `RDTCIndex`, `RDTCythonIndex`, or `RDTNumbaIndex` only when compiled
+3. Use `RDTAdaptiveIndex`, `RDTv3Index`, and `RDTv4Index` when you are
+   evaluating the v2-v4 research variants and can reproduce their workload
+   assumptions.
+4. Add `RDTCIndex`, `RDTCythonIndex`, or `RDTNumbaIndex` only when compiled
    acceleration is needed and your environment supports it.
 
 ## Install
@@ -115,6 +119,18 @@ Or run:
 
 See [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md) and
 [publication/RESULTS_SUMMARY.md](publication/RESULTS_SUMMARY.md).
+
+## Spatial-Index Versions
+
+| Version | Entry point | Reviewer status |
+|---|---|---|
+| v1/reference | `RDTIndex`, `RDTFastIndex` | Stable baseline and recommended default path. |
+| v2/adaptive | `RDTAdaptiveIndex` | Tested research variant for adaptive build+query workloads. |
+| v3/self-sizing | `RDTv3Index` | Tested research variant for declared radius/query-count workloads. |
+| v4/framework | `RDTv4Index` | Latest research variant for analytic pre-build configuration. |
+
+See [REVIEWER_GUIDE.md](REVIEWER_GUIDE.md) for the honest comparison,
+negative results, and which files to inspect.
 
 ## Limitations Up Front
 

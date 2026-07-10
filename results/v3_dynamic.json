@@ -1,0 +1,44 @@
+{
+  "20000": {
+    "classic-sqrt": {
+      "frame_ms": 1.97,
+      "fps": 507.8
+    },
+    "v3-auto": {
+      "frame_ms": 1.38,
+      "fps": 723.2
+    },
+    "scipy-kd": {
+      "frame_ms": 4.78,
+      "fps": 209.2
+    }
+  },
+  "100000": {
+    "classic-sqrt": {
+      "frame_ms": 10.1,
+      "fps": 99.0
+    },
+    "v3-auto": {
+      "frame_ms": 6.65,
+      "fps": 150.3
+    },
+    "scipy-kd": {
+      "frame_ms": 26.18,
+      "fps": 38.2
+    }
+  },
+  "500000": {
+    "classic-sqrt": {
+      "frame_ms": 88.1,
+      "fps": 11.4
+    },
+    "v3-auto": {
+      "frame_ms": 33.64,
+      "fps": 29.7
+    },
+    "scipy-kd": {
+      "frame_ms": 148.9,
+      "fps": 6.7
+    }
+  }
+}

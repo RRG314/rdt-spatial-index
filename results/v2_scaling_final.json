@@ -1,0 +1,296 @@
+{
+  "uniform_50000": {
+    "ScipyKD": {
+      "build_ms": 95.81,
+      "query_ms": 3.5,
+      "correct": true
+    },
+    "UniformGrid": {
+      "build_ms": 23.19,
+      "query_ms": 9.523,
+      "correct": true
+    },
+    "Quadtree": {
+      "build_ms": 7.65,
+      "query_ms": 12.653,
+      "correct": true
+    },
+    "RDTFast(a=1.5)": {
+      "build_ms": 7.76,
+      "query_ms": 12.377,
+      "correct": true
+    },
+    "RDTFast(auto-a)": {
+      "build_ms": 4.01,
+      "query_ms": 9.981,
+      "correct": true
+    },
+    "RDT-C(a=1.5)": {
+      "build_ms": 5.05,
+      "query_ms": 0.441,
+      "correct": true
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 4.98,
+      "query_ms": 12.587,
+      "correct": true
+    },
+    "RDT-v2-C": {
+      "build_ms": 4.53,
+      "query_ms": 0.318,
+      "correct": true
+    }
+  },
+  "uniform_200000": {
+    "ScipyKD": {
+      "build_ms": 50.81,
+      "query_ms": 7.641,
+      "correct": true
+    },
+    "UniformGrid": {
+      "build_ms": 93.6,
+      "query_ms": 12.808,
+      "correct": true
+    },
+    "Quadtree": {
+      "build_ms": 34.79,
+      "query_ms": 31.873,
+      "correct": true
+    },
+    "RDTFast(a=1.5)": {
+      "build_ms": 331.37,
+      "query_ms": 466.905,
+      "correct": true
+    },
+    "RDTFast(auto-a)": {
+      "build_ms": 240.1,
+      "query_ms": 342.003,
+      "correct": true
+    },
+    "RDT-C(a=1.5)": {
+      "build_ms": 323.79,
+      "query_ms": 29.36,
+      "correct": true
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 36.5,
+      "query_ms": 22.899,
+      "correct": true
+    },
+    "RDT-v2-C": {
+      "build_ms": 38.67,
+      "query_ms": 1.401,
+      "correct": true
+    }
+  },
+  "uniform_500000": {
+    "ScipyKD": {
+      "build_ms": 139.41,
+      "query_ms": 20.189,
+      "correct": true
+    },
+    "UniformGrid": {
+      "build_ms": 247.2,
+      "query_ms": 20.945,
+      "correct": true
+    },
+    "Quadtree": {
+      "build_ms": 132.22,
+      "query_ms": 156.372,
+      "correct": true
+    },
+    "RDTFast(a=1.5)": {
+      "build_ms": 753.95,
+      "query_ms": 891.542,
+      "correct": true
+    },
+    "RDTFast(auto-a)": {
+      "build_ms": 467.32,
+      "query_ms": 624.685,
+      "correct": true
+    },
+    "RDT-C(a=1.5)": {
+      "build_ms": 614.17,
+      "query_ms": 56.037,
+      "correct": true
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 94.12,
+      "query_ms": 43.056,
+      "correct": true
+    },
+    "RDT-v2-C": {
+      "build_ms": 90.65,
+      "query_ms": 3.388,
+      "correct": true
+    }
+  },
+  "uniform_1000000": {
+    "ScipyKD": {
+      "build_ms": 313.99,
+      "query_ms": 39.316,
+      "correct": true
+    },
+    "UniformGrid": {
+      "build_ms": 474.23,
+      "query_ms": 37.4,
+      "correct": true
+    },
+    "Quadtree": {
+      "build_ms": 265.25,
+      "query_ms": 156.881,
+      "correct": true
+    },
+    "RDTFast(a=1.5)": {
+      "build_ms": 1591.72,
+      "query_ms": 1311.632,
+      "correct": true
+    },
+    "RDTFast(auto-a)": {
+      "build_ms": 716.08,
+      "query_ms": 923.591,
+      "correct": true
+    },
+    "RDT-C(a=1.5)": {
+      "build_ms": 1027.44,
+      "query_ms": 90.926,
+      "correct": true
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 158.4,
+      "query_ms": 53.623,
+      "correct": true
+    },
+    "RDT-v2-C": {
+      "build_ms": 160.16,
+      "query_ms": 7.556,
+      "correct": true
+    }
+  },
+  "clustered_200000": {
+    "ScipyKD": {
+      "build_ms": 44.49,
+      "query_ms": 8.702,
+      "correct": true
+    },
+    "UniformGrid": {
+      "build_ms": 88.87,
+      "query_ms": 6.175,
+      "correct": true
+    },
+    "Quadtree": {
+      "build_ms": 46.39,
+      "query_ms": 38.353,
+      "correct": true
+    },
+    "RDTFast(a=1.5)": {
+      "build_ms": 105.13,
+      "query_ms": 147.738,
+      "correct": true
+    },
+    "RDTFast(auto-a)": {
+      "build_ms": 54.78,
+      "query_ms": 20.883,
+      "correct": true
+    },
+    "RDT-C(a=1.5)": {
+      "build_ms": 93.19,
+      "query_ms": 8.956,
+      "correct": true
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 31.22,
+      "query_ms": 18.169,
+      "correct": true
+    },
+    "RDT-v2-C": {
+      "build_ms": 30.98,
+      "query_ms": 1.032,
+      "correct": true
+    }
+  },
+  "clustered_500000": {
+    "ScipyKD": {
+      "build_ms": 125.63,
+      "query_ms": 21.76,
+      "correct": true
+    },
+    "UniformGrid": {
+      "build_ms": 200.58,
+      "query_ms": 8.435,
+      "correct": true
+    },
+    "Quadtree": {
+      "build_ms": 106.29,
+      "query_ms": 75.271,
+      "correct": true
+    },
+    "RDTFast(a=1.5)": {
+      "build_ms": 178.33,
+      "query_ms": 217.886,
+      "correct": true
+    },
+    "RDTFast(auto-a)": {
+      "build_ms": 143.43,
+      "query_ms": 49.857,
+      "correct": true
+    },
+    "RDT-C(a=1.5)": {
+      "build_ms": 177.66,
+      "query_ms": 15.126,
+      "correct": true
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 87.82,
+      "query_ms": 32.679,
+      "correct": true
+    },
+    "RDT-v2-C": {
+      "build_ms": 81.71,
+      "query_ms": 2.834,
+      "correct": true
+    }
+  },
+  "clustered_1000000": {
+    "ScipyKD": {
+      "build_ms": 256.38,
+      "query_ms": 44.796,
+      "correct": true
+    },
+    "UniformGrid": {
+      "build_ms": 413.2,
+      "query_ms": 13.338,
+      "correct": true
+    },
+    "Quadtree": {
+      "build_ms": 228.98,
+      "query_ms": 141.63,
+      "correct": true
+    },
+    "RDTFast(a=1.5)": {
+      "build_ms": 302.77,
+      "query_ms": 302.441,
+      "correct": true
+    },
+    "RDTFast(auto-a)": {
+      "build_ms": 293.06,
+      "query_ms": 77.949,
+      "correct": true
+    },
+    "RDT-C(a=1.5)": {
+      "build_ms": 291.19,
+      "query_ms": 21.498,
+      "correct": true
+    },
+    "RDT-v2(numpy)": {
+      "build_ms": 164.96,
+      "query_ms": 53.834,
+      "correct": true
+    },
+    "RDT-v2-C": {
+      "build_ms": 161.63,
+      "query_ms": 5.271,
+      "correct": true
+    }
+  }
+}
